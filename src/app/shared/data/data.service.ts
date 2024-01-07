@@ -226,7 +226,7 @@ export class DataService {
               route: routes.patientDashboard,
               base: routes.patientDashboard,
               permision: 'patient_dashboard',
-              show_nav: true,
+              show_nav: false,
             },
           ],
         },
@@ -488,7 +488,7 @@ export class DataService {
               route: routes.listadoEspecialidadesPatient,
               base: routes.listadoEspecialidadesPatient,
               permision: 'list_specialty_patient',
-              show_nav: true,
+              show_nav: false,
             },
             
             {

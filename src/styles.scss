@@ -235,4 +235,7 @@ ngx-material-timepicker-content {
     left: -250px ;
   }
 
+  .modal-content {
+    z-index: 99999999;
+  }
 }

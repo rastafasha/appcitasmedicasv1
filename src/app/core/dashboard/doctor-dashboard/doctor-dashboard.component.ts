@@ -19,6 +19,7 @@ import {
 } from 'ng-apexcharts';
 import { DashboardService } from '../service/dashboard.service';
 import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
+import { ActivatedRoute } from '@angular/router';
 interface data {
   value: string ;
 }
@@ -97,6 +98,7 @@ export class DoctorDashboardComponent {
   constructor(
     public dashboardService:DashboardService,
     public doctorService:DoctorService,
+    public activatedRoute:ActivatedRoute,
   ) {
     this.chartOptionsOne = {
       chart: {
@@ -253,7 +255,19 @@ export class DoctorDashboardComponent {
     this.getDoctors();
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
+    console.log(this.user);
+    if(this.user.roles[0]==='DOCTOR'){
+
+      this.dashboardDoctorProfile();
+    }
+    // this.activatedRoute.params.subscribe((resp:any)=>{
+    //   console.log(resp);
+    //   this.doctor_id = resp.id;
+    // });
   }
+
+
+  
 
   getDoctors(){
     this.dashboardService.getConfigDashboard().subscribe((resp:any)=>{
@@ -262,7 +276,37 @@ export class DoctorDashboardComponent {
     })
   }
 
+  dashboardDoctorProfile(){
+    this.doctor_id = this.user.id;
+    let data ={
+      doctor_id:this.doctor_id
+    }
+    
+    this.dashboardService.dashboardDoctor(data).subscribe((resp:any)=>{
+      console.log(resp);
+
+      this.appointments= resp.appointments.data;
+
+      this.num_appointments_current= resp.num_appointments_current;
+      this.num_appointments_before= resp.num_appointments_before;
+      this.porcentaje_d= resp.porcentaje_d;
+
+      this.num_appointments_attention_current= resp.num_appointments_attention_current;
+      this.num_appointments_attention_before= resp.num_appointments_attention_before;
+      this.porcentaje_da= resp.porcentaje_da;
+
+      this.num_appointments_total_pay_current= resp.num_appointments_total_pay_current;
+      this.num_appointments_total_pay_before= resp.num_appointments_total_pay_before;
+      this.porcentaje_dtp= resp.porcentaje_dtp;
+
+      this.num_appointments_total_pending_current= resp.num_appointments_total_pending_current;
+      this.num_appointments_total_pending_before= resp.num_appointments_total_pending_before;
+      this.porcentaje_dtpn= resp.porcentaje_dtpn;
+    });
+  }
+
   dashboardDoctor(){
+    
     let data ={
       doctor_id:this.doctor_id
     }
@@ -449,13 +493,14 @@ export class DoctorDashboardComponent {
   }
 
   selectDoctor(){
-     
     this.dashboardDoctor();
-    this.dashboardDoctorYear();
+    // this.dashboardDoctorProfile();
   }
-
+  
   selectedYear(){
     this.dashboardDoctorYear();
+    // this.dashboardDoctorProfileYear();
+    
   }
 
   selecedList: data[] = [

@@ -54,6 +54,13 @@ export class DoctorService {
     return this.http.post(URL,data,{headers:headers});
   }
 
+
+  yo(user:any){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    // let headers = this.headers;
+    let URL = url_servicios+'/me';
+    return this.http.post(URL,user, {headers: headers})
+  }
   
   
   deleteDoctor(doctor_id:any){

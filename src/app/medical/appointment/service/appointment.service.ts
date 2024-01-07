@@ -68,6 +68,11 @@ export class AppointmentService {
     let URL = url_servicios+"/appointment/destroy/"+appointment_id;
     return this.http.delete(URL, {headers:headers});
   }
+  updateConfirmation(data:any, appointment_id:any){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = url_servicios+"/appointment/update/cofirmation/"+appointment_id;
+    return this.http.put(URL,data,{headers:headers});
+  }
 
   //cita medica
   registerAttention(data:any){

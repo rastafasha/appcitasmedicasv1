@@ -35,12 +35,15 @@ export class ListAppointmentsComponent {
 
   public appointment_generals:any = [];
   public appointment_id:any;
+  public appointment:any;
   public appointment_selected:any;
   public text_validation:any;
   public speciality_id:number= 0;
   public date = null;
   specialities:any = [];
   hours:any;
+
+  confimation:any= null;
 
   constructor(
     public appointmentService: AppointmentService,
@@ -293,6 +296,24 @@ export class ListAppointmentsComponent {
     //   }
     // });
 
+  }
+
+  cambiarStatus(data:any){
+    let VALUE = data.confimation;
+    console.log(VALUE);
+    
+    this.appointmentService.updateConfirmation(data, data.id).subscribe(
+      resp =>{
+        console.log(resp);
+        // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        // this.toaster.open({
+        //   text:'Producto Actualizado!',
+        //   caption:'Mensaje de Validación',
+        //   type:'success',
+        // })
+        this.getTableData();
+      }
+    )
   }
 
 }
