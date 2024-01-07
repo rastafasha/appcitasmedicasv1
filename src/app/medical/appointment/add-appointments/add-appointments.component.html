@@ -50,7 +50,7 @@
                                         <label >Speciality <span class="login-danger">*</span></label>
                                         <mat-select [(ngModel)]="speciality_id" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Speciality">
                                             <mat-option *ngFor="let data of specialities" [value]="data.id">
-                                            {{data.name}}
+                                            {{data.name}} | ${{data.price}}
                                             </mat-option>
                                         </mat-select>
                                     </div>
