@@ -68,7 +68,7 @@ export class DoctorDashboardComponent {
   public chartOptionsOne: Partial<ChartOptions>;
   public chartOptionsTwo: Partial<ChartOptions>;
   public chartOptionsThree: Partial<ChartOptions>;
-  public selectedValue: string = "2023"  ;
+  public selectedValue: string = "2024"  ;
 
   public doctors:any = [];
   public doctor_id:any;
@@ -94,6 +94,8 @@ export class DoctorDashboardComponent {
   public query_n_appointment_year_before:any = [];
 
   public user:any;
+
+  public appointment_pendings: any =[];
 
   constructor(
     public dashboardService:DashboardService,
@@ -253,17 +255,32 @@ export class DoctorDashboardComponent {
     this.doctorService.closeMenuSidebar();
     window.scrollTo(0, 0);
     this.getDoctors();
+
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
     console.log(this.user);
+
     if(this.user.roles[0]==='DOCTOR'){
 
       this.dashboardDoctorProfile();
+      this.getDoctor();
     }
     // this.activatedRoute.params.subscribe((resp:any)=>{
     //   console.log(resp);
     //   this.doctor_id = resp.id;
     // });
+  }
+
+
+  getDoctor(){
+    this.doctor_id = this.user.id
+    this.doctorService.showDoctorProfile(this.doctor_id).subscribe((resp:any)=>{
+      console.log(resp);
+      this.appointment_pendings= resp.appointment_pendings.data;
+      this.appointments= resp.appointments;
+
+  
+    })
   }
 
 
@@ -303,6 +320,166 @@ export class DoctorDashboardComponent {
       this.num_appointments_total_pending_before= resp.num_appointments_total_pending_before;
       this.porcentaje_dtpn= resp.porcentaje_dtpn;
     });
+  }
+  dashboardDoctorProfileYear(){
+    this.doctor_id = this.user.id;
+    let data ={
+      year: this.selectedValue,
+      doctor_id:this.doctor_id
+    }
+    this.query_income_year = null;
+    this.query_n_appointment_year= null;
+    this.query_n_appointment_year_before= null;
+    this.dashboardService.dashboardDoctorYear(data).subscribe((resp:any)=>{
+      // console.log(resp);
+
+      //start
+      this.query_income_year = resp.query_income_year;
+      let data_income:any = [];
+      this.query_income_year.forEach((element:any) => {
+        data_income.push(element.income);
+      });
+
+      this.chartOptionsOne = {
+        chart: {
+          height: 200,
+          type: 'line',
+          toolbar: {
+            show: false,
+          },
+        },
+        grid: {
+          show: true, 
+          xaxis: {
+            lines: {
+              show: false
+             }
+           },  
+          yaxis: {
+            lines: { 
+              show: true 
+             }
+           },   
+          },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          curve: 'smooth',
+        },
+        series: [
+            {
+              name: 'Income',
+              color: '#2E37A4',
+              data: data_income,
+            },
+          ],
+        xaxis: {
+          categories: resp.months_name,
+        },
+      };
+      
+      // this.chartOptionsOne.xaxis.categories = resp.months_name
+      // this.chartOptionsOne.series = [
+      //   {
+      //     name: 'Income',
+      //     color: '#2E37A4',
+      //     data: data_income,
+      //   },
+      // ]
+      //end
+      
+      //start
+      this.query_patient_by_genders = resp.query_patients_by_gender;
+      let data_by_gender:any = [];
+
+      this.query_patient_by_genders.forEach((item:any) => {
+        data_by_gender.push(parseInt(item.hombre));
+        data_by_gender.push(parseInt(item.mujer));
+      });
+
+      this.chartOptionsTwo.series = data_by_gender;
+      //end
+      //start
+      this.query_n_appointment_year= resp.query_n_appointment_year;
+      this.query_n_appointment_year_before= resp.query_n_appointment_year_before;
+      
+      let n_appointment_year:any =[]
+      this.query_n_appointment_year.forEach((item:any)=>{
+        n_appointment_year.push(item.count_appointments);
+      })
+      let n_appointment_year_before:any =[];
+      this.query_n_appointment_year_before.forEach((item:any)=>{
+        n_appointment_year_before.push(item.count_appointments);
+      })
+      
+      this.chartOptionsThree = {
+        chart: {
+          height: 230,
+          type: 'bar',
+          stacked: false,
+          toolbar: {
+            show: false,
+          },
+        },
+        grid: {
+          show: true, 
+          xaxis: {
+            lines: {
+              show: false
+             }
+           },  
+          yaxis: {
+            lines: { 
+              show: true 
+             }
+           },   
+          },
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              legend: {
+                position: 'bottom',
+                offsetX: -10,
+                offsetY: 0,
+              },
+            },
+          },
+        ],
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '55%',
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        stroke: {
+          show: true,
+          width: 6,
+          colors: ['transparent'],
+        },
+        series: [
+          {
+            name: (parseInt(this.selectedValue))+"",
+            color: '#2E37A4',
+            data: n_appointment_year,
+          },
+          {
+            name: (parseInt(this.selectedValue) - 1)+"",
+            
+            color: '#D5D7ED',
+            data: n_appointment_year_before,
+          },
+        ],
+        xaxis: {
+          categories: resp.months_name,
+        },
+      };
+      //end
+    })
   }
 
   dashboardDoctor(){
@@ -494,6 +671,7 @@ export class DoctorDashboardComponent {
 
   selectDoctor(){
     this.dashboardDoctor();
+    // this.getDoctor();
     // this.dashboardDoctorProfile();
   }
   
@@ -509,6 +687,10 @@ export class DoctorDashboardComponent {
     {value: '2024'},
     {value: '2025'},
     {value: '2026'},
+    {value: '2027'},
+    {value: '2028'},
+    {value: '2029'},
+    {value: '2030'},
     
   ];
   selecedLists: data[] = [

@@ -250,7 +250,7 @@
                         <h4 class="card-title d-inline-block">Recent Appointments</h4> <a [routerLink]="routes.appointmentList" class="patient-views float-end">Show all</a>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
+                        <div class="table-responsive scrooldiv2">
                             <table matSort  class="table mb-0 border-0 datatable custom-table patient-profile-table">
                                 <thead>
                                     <tr>
@@ -264,7 +264,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let data of appointments">
+                                    <tr *ngFor="let data of appointments| slice:0:15">
                                         
                                         <td >{{data.date_appointment_format}}</td>
                                         <td >{{data.patient.full_name}}</td>

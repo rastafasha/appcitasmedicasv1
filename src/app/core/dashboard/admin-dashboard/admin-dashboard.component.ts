@@ -22,6 +22,7 @@ import { DataService } from 'src/app/shared/data/data.service';
 import { recentPatients, upcomingAppointments } from 'src/app/shared/models/models';
 import { DashboardService } from '../service/dashboard.service';
 import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
+import { AppointmentService } from 'src/app/medical/appointment/service/appointment.service';
 export type ChartOptions = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   series: ApexAxisChartSeries | any;
@@ -65,7 +66,7 @@ interface data {
 })
 export class AdminDashboardComponent {
   public routes = routes;
-  public selectedValue: string ='2023';
+  public selectedValue: string ='2024';
   @ViewChild('chart') chart!: ChartComponent;
   public chartOptionsOne: Partial<ChartOptions>;
   public chartOptionsTwo: Partial<ChartOptions>;
@@ -76,6 +77,7 @@ export class AdminDashboardComponent {
  
   //datos reales
   public appointments:any = [];
+  public appointment_pendings:any = [];
 
   public num_appointments_current: number = 0;
   public num_appointments_before: number = 0;
@@ -104,6 +106,7 @@ export class AdminDashboardComponent {
     public data : DataService,
     public dashboardService : DashboardService,
     public doctorService : DoctorService,
+    public appointmentService : AppointmentService,
     
     ) {
       this.chartOptionsOne = {
@@ -265,13 +268,21 @@ export class AdminDashboardComponent {
     window.scrollTo(0, 0);
     this.getDashboardAdmin();
     this.getDashboardAdminYear();
+    this.getAppointmentPending();
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
   }
 
+  getAppointmentPending(){
+    this.appointmentService.pendings().subscribe((resp:any)=>{
+      // console.log(resp);
+      this.appointment_pendings = resp.appointments.data;
+    })
+  }
+
   getDashboardAdmin(){
     this.dashboardService.dashboardAdmin({}).subscribe((resp:any)=>{
-      // console.log(resp);
+      console.log(resp);
 
       this.appointments = resp.appointments.data;
 
@@ -434,6 +445,10 @@ export class AdminDashboardComponent {
     {value: '2024'},
     {value: '2025'},
     {value: '2026'},
+    {value: '2027'},
+    {value: '2028'},
+    {value: '2029'},
+    {value: '2030'},
   ];
   
 }

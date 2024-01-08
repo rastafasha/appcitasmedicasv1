@@ -26,6 +26,11 @@ export class AppointmentService {
     let URL = url_servicios+"/appointment/filter";
     return this.http.post(URL,data, {headers:headers});
   }
+  pendings(){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = url_servicios+"/appointment/pending";
+    return this.http.get(URL, {headers:headers});
+  }
 
   getPatient(n_doc:string =''){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
