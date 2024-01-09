@@ -296,6 +296,7 @@ export class routes {
   public static get salary(): string {
     return this.baseUrl + '/appointment-pay/list';
   }
+  
   public static get salaryView(): string {
     return this.baseUrl + '/payroll/salary-view';
   }
@@ -404,5 +405,12 @@ export class routes {
   }
   public static get listadoEspecialidadesPatient(): string {
     return this.baseUrl + '/specialities/list-specialities';
+  }
+
+  public static get salaryCobro(): string {
+    return this.baseUrl + '/appointment-pay/list-pagos';
+  }
+  public static get salaryCobrar(): string {
+    return this.baseUrl + '/appointment-pay/punto-de-venta';
   }
 }

@@ -8,16 +8,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ListAppoimentCobrosComponent } from './list-appoiment-cobros/list-appoiment-cobros.component';
+import { ListAppoimentCobrarComponent } from './list-appoiment-cobrar/list-appoiment-cobrar.component';
 
 
 @NgModule({
   declarations: [
     AppointmentPayComponent,
-    ListAppoimentPayComponent
+    ListAppoimentPayComponent,
+    ListAppoimentCobrosComponent,
+    ListAppoimentCobrarComponent
   ],
   exports: [
     AppointmentPayComponent,
-    ListAppoimentPayComponent
+    ListAppoimentPayComponent,
+    ListAppoimentCobrosComponent,
+    ListAppoimentCobrarComponent
   ],
   imports: [
     CommonModule,

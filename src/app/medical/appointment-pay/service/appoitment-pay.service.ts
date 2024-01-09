@@ -65,4 +65,6 @@ export class AppoitmentPayService {
     let URL = url_servicios+"/appointmentpay/destroy/"+appointmentpay_id;
     return this.http.delete(URL, {headers:headers});
   }
+
+  
 }

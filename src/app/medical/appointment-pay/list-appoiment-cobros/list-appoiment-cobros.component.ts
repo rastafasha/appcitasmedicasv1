@@ -1,22 +1,24 @@
 import { Component } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { routes } from 'src/app/shared/routes/routes';
-import { PatientMService } from '../service/patient-m.service';
-import { FileSaverService } from 'ngx-filesaver';
-import { DoctorService } from '../../doctors/service/doctor.service';
 import * as XLSX from 'xlsx';
-import jspdf from 'jspdf';
+import { MatTableDataSource } from '@angular/material/table';
+import { FileSaverService } from 'ngx-filesaver';
+import { routes } from 'src/app/shared/routes/routes';
+import { DoctorService } from '../../doctors/service/doctor.service';
+import { PatientMService } from '../../patient-m/service/patient-m.service';
+import { PaymentService } from '../service/payment.service';
 
 declare var $:any;  
 @Component({
-  selector: 'app-list-patient-m',
-  templateUrl: './list-patient-m.component.html',
-  styleUrls: ['./list-patient-m.component.scss']
+  selector: 'app-list-appoiment-cobros',
+  templateUrl: './list-appoiment-cobros.component.html',
+  styleUrls: ['./list-appoiment-cobros.component.scss']
 })
-export class ListPatientMComponent {
+export class ListAppoimentCobrosComponent {
+
   public routes = routes;
 
-  public patientList: any = [];
+  public paymentList: any = [];
+  public payments: any ;
   dataSource!: MatTableDataSource<any>;
 
   public showFilter = false;
@@ -33,13 +35,13 @@ export class ListPatientMComponent {
   public pageSelection: Array<any> = [];
   public totalPages = 0;
 
-  public patient_generals:any = [];
+  public payment_generals:any = [];
   public patient_id:any;
   public patient_selected:any;
   public text_validation:any;
 
   constructor(
-    public patientService: PatientMService,
+    public paymentService: PaymentService,
     public doctorService: DoctorService,
     private fileSaver: FileSaverService
     ){
@@ -52,34 +54,34 @@ export class ListPatientMComponent {
   }
 
   private getTableData(page=1): void {
-    this.patientList = [];
+    this.paymentList = [];
     this.serialNumberArray = [];
 
-    this.patientService.listPatients(page, this.searchDataValue).subscribe((resp:any)=>{
-      // console.log(resp);
+    this.paymentService.getAll().subscribe((resp:any)=>{
+      console.log(resp.payments);
+      this.paymentList = resp.payments.data;
 
       this.totalDataPatient = resp.total;
-      this.patientList = resp.patients.data;
       this.patient_id = resp.patients.id;
       // this.getTableDataGeneral();
-      this.dataSource = new MatTableDataSource<any>(this.patientList);
+      this.dataSource = new MatTableDataSource<any>(this.paymentList);
       this.calculateTotalPages(this.totalDataPatient, this.pageSize);
     })
   }
 
   getTableDataGeneral(){
-    this.patientList = [];
+    this.paymentList = [];
     this.serialNumberArray = [];
     
-    this.patient_generals.map((res: any, index: number) => {
+    this.payment_generals.map((res: any, index: number) => {
       const serialNumber = index + 1;
       if (index >= this.skip && serialNumber <= this.limit) {
        
-        this.patientList.push(res);
+        this.paymentList.push(res);
         this.serialNumberArray.push(serialNumber);
       }
     });
-    this.dataSource = new MatTableDataSource<any>(this.patientList);
+    this.dataSource = new MatTableDataSource<any>(this.paymentList);
     this.calculateTotalPages(this.totalDataPatient, this.pageSize);
   }
   selectUser(staff:any){
@@ -87,33 +89,33 @@ export class ListPatientMComponent {
   }
 
   deletePatient(){
-    this.patientService.deletePatient(this.patient_selected.id).subscribe((resp:any)=>{
-      // console.log(resp);
+    // this.paymentService.deletePatient(this.patient_selected.id).subscribe((resp:any)=>{
+    //   // console.log(resp);
 
-      if(resp.message == 403){
-        this.text_validation = resp.message_text;
-      }else{
+    //   if(resp.message == 403){
+    //     this.text_validation = resp.message_text;
+    //   }else{
 
-        let INDEX = this.patientList.findIndex((item:any)=> item.id == this.patient_selected.id);
-      if(INDEX !=-1){
-        this.patientList.splice(INDEX,1);
+    //     let INDEX = this.paymentList.findIndex((item:any)=> item.id == this.patient_selected.id);
+    //   if(INDEX !=-1){
+    //     this.paymentList.splice(INDEX,1);
 
-        $('#delete_patient').hide();
-        $("#delete_patient").removeClass("show");
-        $(".modal-backdrop").remove();
-        $("body").removeClass();
-        $("body").removeAttr("style");
-        this.patient_selected = null;
-        this.getTableData();
-      }
-      }
-    })
+    //     $('#delete_patient').hide();
+    //     $("#delete_patient").removeClass("show");
+    //     $(".modal-backdrop").remove();
+    //     $("body").removeClass();
+    //     $("body").removeAttr("style");
+    //     this.patient_selected = null;
+    //     this.getTableData();
+    //   }
+    //   }
+    // })
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public searchData() {
     // this.dataSource.filter = value.trim().toLowerCase();
-    // this.patientList = this.dataSource.filteredData;
+    // this.paymentList = this.dataSource.filteredData;
     this.pageSelection = [];
     this.limit = this.pageSize;
     this.skip = 0;
@@ -122,12 +124,12 @@ export class ListPatientMComponent {
   }
 
   public sortData(sort: any) {
-    const data = this.patientList.slice();
+    const data = this.paymentList.slice();
 
     if (!sort.active || sort.direction === '') {
-      this.patientList = data;
+      this.paymentList = data;
     } else {
-      this.patientList = data.sort((a, b) => {
+      this.paymentList = data.sort((a, b) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const aValue = (a as any)[sort.active];
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -198,7 +200,7 @@ export class ListPatientMComponent {
 
 
     //custom code
-    const worksheet = XLSX.utils.json_to_sheet(this.patientList);
+    const worksheet = XLSX.utils.json_to_sheet(this.paymentList);
 
     const workbook = {
       Sheets:{
@@ -221,7 +223,7 @@ export class ListPatientMComponent {
     this.getTableDataGeneral();
 
     //custom code
-    const worksheet = XLSX.utils.json_to_sheet(this.patientList);
+    const worksheet = XLSX.utils.json_to_sheet(this.paymentList);
 
     const workbook = {
       Sheets:{
@@ -246,7 +248,7 @@ export class ListPatientMComponent {
 
 
     //custom code
-    const worksheet = XLSX.utils.json_to_sheet(this.patientList);
+    const worksheet = XLSX.utils.json_to_sheet(this.paymentList);
 
     const workbook = {
       Sheets:{
@@ -283,5 +285,21 @@ export class ListPatientMComponent {
 
   }
 
-
+  cambiarStatus(data:any){
+    let VALUE = data.confimation;
+    console.log(VALUE);
+    
+    this.paymentService.updateStatus(data, data.id).subscribe(
+      resp =>{
+        console.log(resp);
+        // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        // this.toaster.open({
+        //   text:'Producto Actualizado!',
+        //   caption:'Mensaje de Validación',
+        //   type:'success',
+        // })
+        this.getTableData();
+      }
+    )
+  }
 }
