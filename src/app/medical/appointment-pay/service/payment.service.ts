@@ -23,9 +23,9 @@ export class PaymentService {
   }
 
 
-   update(data:any, payment_id:any){
+   update(data:any, id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/payment/update/"+payment_id;
+    let URL = url_servicios+"/payment/update/"+id;
     return this.http.put(URL,data,{headers:headers});
   }
 

@@ -25,7 +25,7 @@ export class ListAppoimentCobrosComponent {
   public searchDataValue = '';
   public lastIndex = 0;
   public pageSize = 10;
-  public totalDataPatient = 0;
+  public totalDataPayment = 0;
   public skip = 0;
   public limit: number = this.pageSize;
   public pageIndex = 0;
@@ -38,7 +38,6 @@ export class ListAppoimentCobrosComponent {
   public payment_generals:any = [];
   public patient_id:any;
   public patient_selected:any;
-  public text_validation:any;
 
   constructor(
     public paymentService: PaymentService,
@@ -61,11 +60,12 @@ export class ListAppoimentCobrosComponent {
       // console.log(resp.payments.data);
       this.paymentList = resp.payments.data;
 
-      this.totalDataPatient = resp.total;
+      this.totalDataPayment = resp.payments.data.length;
+      this.payment_generals = resp.payments.data;
       // this.patient_id = resp.patients.id;
-      // this.getTableDataGeneral();
+      this.getTableDataGeneral();
       this.dataSource = new MatTableDataSource<any>(this.paymentList);
-      this.calculateTotalPages(this.totalDataPatient, this.pageSize);
+      this.calculateTotalPages(this.totalDataPayment, this.pageSize);
     })
   }
 
@@ -73,7 +73,7 @@ export class ListAppoimentCobrosComponent {
     this.paymentList = [];
     this.serialNumberArray = [];
     
-    this.payments.map((res: any, index: number) => {
+    this.payment_generals.map((res: any, index: number) => {
       const serialNumber = index + 1;
       if (index >= this.skip && serialNumber <= this.limit) {
        
@@ -82,7 +82,7 @@ export class ListAppoimentCobrosComponent {
       }
     });
     this.dataSource = new MatTableDataSource<any>(this.paymentList);
-    this.calculateTotalPages(this.totalDataPatient, this.pageSize);
+    this.calculateTotalPages(this.totalDataPayment, this.pageSize);
   }
   
 
@@ -150,9 +150,9 @@ export class ListAppoimentCobrosComponent {
     this.searchDataValue = '';
   }
 
-  private calculateTotalPages(totalDataPatient: number, pageSize: number): void {
+  private calculateTotalPages(totalDataPayment: number, pageSize: number): void {
     this.pageNumberArray = [];
-    this.totalPages = totalDataPatient / pageSize;
+    this.totalPages = totalDataPayment / pageSize;
     if (this.totalPages % 1 != 0) {
       this.totalPages = Math.trunc(this.totalPages + 1);
     }
@@ -260,10 +260,10 @@ export class ListAppoimentCobrosComponent {
   }
 
   cambiarStatus(data:any){
-    let VALUE = data.confimation;
+    let VALUE = data.status;
     console.log(VALUE);
     
-    this.paymentService.update(data, data.id).subscribe(
+    this.paymentService.updateStatus(data, data.id).subscribe(
       resp =>{
         console.log(resp);
         // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
