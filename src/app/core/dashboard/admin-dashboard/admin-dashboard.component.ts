@@ -268,7 +268,7 @@ export class AdminDashboardComponent {
     window.scrollTo(0, 0);
     this.getDashboardAdmin();
     this.getDashboardAdminYear();
-    this.getAppointmentPending();
+    // this.getAppointmentPending();
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
   }
@@ -282,7 +282,7 @@ export class AdminDashboardComponent {
 
   getDashboardAdmin(){
     this.dashboardService.dashboardAdmin({}).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
 
       this.appointments = resp.appointments.data;
 

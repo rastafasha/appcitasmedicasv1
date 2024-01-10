@@ -377,13 +377,13 @@ export class DataService {
               permision: 'list_patient',
               show_nav: true,
             },
-            {
-              menuValue: 'Patients Profile',
-              route: routes.patientProfile,
-              base: routes.patientProfile,
-              permision: 'profile_patient',
-              show_nav: true,
-            },
+            // {
+            //   menuValue: 'Patients Profile',
+            //   route: routes.patientProfile,
+            //   base: routes.patientProfile,
+            //   permision: 'profile_patient',
+            //   show_nav: false,
+            // },
           ],
         },
        
@@ -451,7 +451,7 @@ export class DataService {
               route: routes.salaryCobrar,
               base: routes.salaryCobrar,
               permision: 'show_payment_cobrar',
-              show_nav: true,
+              show_nav: false,
             },
             {
               menuValue: 'Delete Pagos',

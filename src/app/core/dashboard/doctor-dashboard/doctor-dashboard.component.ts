@@ -258,7 +258,7 @@ export class DoctorDashboardComponent {
 
     let USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
-    console.log(this.user);
+    // console.log(this.user);
 
     if(this.user.roles[0]==='DOCTOR'){
 
@@ -275,7 +275,7 @@ export class DoctorDashboardComponent {
   getDoctor(){
     this.doctor_id = this.user.id
     this.doctorService.showDoctorProfile(this.doctor_id).subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
       this.appointment_pendings= resp.appointment_pendings.data;
       this.appointments= resp.appointments;
 

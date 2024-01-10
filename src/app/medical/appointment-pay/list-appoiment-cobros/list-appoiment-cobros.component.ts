@@ -58,11 +58,11 @@ export class ListAppoimentCobrosComponent {
     this.serialNumberArray = [];
 
     this.paymentService.getAll().subscribe((resp:any)=>{
-      console.log(resp.payments);
+      // console.log(resp.payments.data);
       this.paymentList = resp.payments.data;
 
       this.totalDataPatient = resp.total;
-      this.patient_id = resp.patients.id;
+      // this.patient_id = resp.patients.id;
       // this.getTableDataGeneral();
       this.dataSource = new MatTableDataSource<any>(this.paymentList);
       this.calculateTotalPages(this.totalDataPatient, this.pageSize);
@@ -73,7 +73,7 @@ export class ListAppoimentCobrosComponent {
     this.paymentList = [];
     this.serialNumberArray = [];
     
-    this.payment_generals.map((res: any, index: number) => {
+    this.payments.map((res: any, index: number) => {
       const serialNumber = index + 1;
       if (index >= this.skip && serialNumber <= this.limit) {
        
@@ -84,33 +84,7 @@ export class ListAppoimentCobrosComponent {
     this.dataSource = new MatTableDataSource<any>(this.paymentList);
     this.calculateTotalPages(this.totalDataPatient, this.pageSize);
   }
-  selectUser(staff:any){
-    this.patient_selected = staff;
-  }
-
-  deletePatient(){
-    // this.paymentService.deletePatient(this.patient_selected.id).subscribe((resp:any)=>{
-    //   // console.log(resp);
-
-    //   if(resp.message == 403){
-    //     this.text_validation = resp.message_text;
-    //   }else{
-
-    //     let INDEX = this.paymentList.findIndex((item:any)=> item.id == this.patient_selected.id);
-    //   if(INDEX !=-1){
-    //     this.paymentList.splice(INDEX,1);
-
-    //     $('#delete_patient').hide();
-    //     $("#delete_patient").removeClass("show");
-    //     $(".modal-backdrop").remove();
-    //     $("body").removeClass();
-    //     $("body").removeAttr("style");
-    //     this.patient_selected = null;
-    //     this.getTableData();
-    //   }
-    //   }
-    // })
-  }
+  
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public searchData() {
@@ -213,7 +187,7 @@ export class ListAppoimentCobrosComponent {
 
     const blobData = new Blob([excelBuffer],{type: EXCEL_TYPE});
 
-    this.fileSaver.save(blobData, "patients_db_appcitasmedicas",)
+    this.fileSaver.save(blobData, "transferencias_db_appcitasmedicas",)
 
   }
   csvExport(){
@@ -236,7 +210,7 @@ export class ListAppoimentCobrosComponent {
 
     const blobData = new Blob([excelBuffer],{type: CSV_TYPE});
 
-    this.fileSaver.save(blobData, "staffs_db_appcitasmedicas", CSV_EXTENSION)
+    this.fileSaver.save(blobData, "transferencias_db_appcitasmedicas", CSV_EXTENSION)
 
   }
 
@@ -261,7 +235,7 @@ export class ListAppoimentCobrosComponent {
 
     const blobData = new Blob([excelBuffer],{type: TXT_TYPE});
 
-    this.fileSaver.save(blobData, "patients_db_appcitasmedicas", TXT_EXTENSION)
+    this.fileSaver.save(blobData, "transferencias_db_appcitasmedicas", TXT_EXTENSION)
 
   }
 
@@ -289,7 +263,7 @@ export class ListAppoimentCobrosComponent {
     let VALUE = data.confimation;
     console.log(VALUE);
     
-    this.paymentService.updateStatus(data, data.id).subscribe(
+    this.paymentService.update(data, data.id).subscribe(
       resp =>{
         console.log(resp);
         // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
