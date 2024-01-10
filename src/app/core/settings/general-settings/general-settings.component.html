@@ -52,68 +52,57 @@
         </div>
         
         <div class="row">
-            <div class="col-md-6">
+            
+            <div class="col-xs-12 col-sm-6 ">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Website Basic Details</h5>
+                        <h5 class="card-title">Detalles de Dirección</h5>
                     </div>
                     <div class="card-body pt-0">
                         <form>
                             <div class="settings-form">
                                 <div class="form-group">
-                                    <label>Website Name <span class="star-red">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter Website Name">
-                                </div>
-                                <div class="form-group ">
-                                    <p class="settings-label">Logo <span class="star-red">*</span></p>
-                                    <div class="settings-btn">
-                                        <input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" class="hide-input">
-                                        <label for="file" class="upload">
-                                            <i class="feather icon-upload upload-icon"></i>
-                                        </label>
-                                    </div>
-                                    <h6 class="settings-size">Recommended image size is <span>150px x 150px</span></h6>
-                                    <div class="upload-images" [ngClass]="{'d-none':deleteIcon2 === false}">
-                                        <img src="assets/img/logo-dark.png" alt="Image">
-                                        <a (click)="deleteIconFunc2()" href="javascript:void(0);" class="btn-icon logo-hide-btn">
-                                            <i class="feather icon-x-circle"></i>
-                                        </a>
-                                    </div>
+                                    <label>Nombre Clínica o Consultorio <span class="star-red">*</span></label>
+                                    <input type="text" name="name" [(ngModel)]="name" class="form-control" placeholder=" Name">
                                 </div>
                                 <div class="form-group">
-                                    <p class="settings-label">Favicon <span class="star-red">*</span></p>
-                                    <div class="settings-btn">
-                                        <input type="file" accept="image/*" name="image" id="files" onchange="loadFile(event)" class="hide-input">
-                                        <label for="file" class="upload">
-                                            <i class="feather icon-upload upload-icon"></i>
-                                        </label>
-                                    </div>
-                                    <h6 class="settings-size">
-                                        Recommended image size is <span>16px x 16px or 32px x 32px</span>
-                                    </h6>
-                                    <h6 class="settings-size mt-1">Accepted formats: only png and ico</h6>
-                                    <div class="upload-images upload-size" [ngClass]="{'d-none':deleteIcon1 === false}">
-                                        <img src="assets/img/favicon.png" alt="Image">
-                                        <a (click)="deleteIconFunc1()" href="javascript:void(0);" class="btn-icon logo-hide-btn">
-                                            <i class="feather icon-x-circle"></i>
-                                        </a>
-                                    </div>
+                                    <label>Dirección <span class="star-red">*</span></label>
+                                    <input type="text" name="address" [(ngModel)]="address" class="form-control" placeholder="Enter Address">
+                                </div>
+                                <div class="form-group">
+                                    <label>Télefono <span class="star-red">*</span></label>
+                                    <input type="text" name="phone" [(ngModel)]="phone" class="form-control" placeholder="Enter phone">
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-5 col-md-6">
+                                    <div class="col-md-6">
                                         <div class="form-group">
-                                            <div class="status-toggle d-flex justify-content-between align-items-center">
-                                                <p class="mb-0">RTL</p>
-                                                <input type="checkbox" id="status_1" class="check">
-                                                <label for="status_1" class="checktoggle">checkbox</label>
-                                            </div>
+                                            <label>Ciudad <span class="star-red">*</span></label>
+                                            <input type="text" name="city" [(ngModel)]="city" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Estado/Provincia <span class="star-red">*</span></label>
+                                            <input type="text" name="state" [(ngModel)]="state" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Zip/Código Postal <span class="star-red">*</span></label>
+                                            <input type="text" name="zip" [(ngModel)]="zip" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Pais <span class="star-red">*</span></label>
+                                            <input type="text" name="country" [(ngModel)]="country" class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="settings-btns">
-                                        <button type="submit" class="border-0 btn btn-primary btn-gradient-primary btn-rounded">Update</button>&nbsp;&nbsp;
-                                        <button type="submit" class="btn btn-secondary btn-rounded">Cancel</button>
+                                        <button type="submit" class="border-0 btn btn-primary btn-gradient-primary btn-rounded" (click)="save()">Guardar</button>&nbsp;&nbsp;
+                                        <!-- <button type="submit" class="btn btn-secondary btn-rounded">Cancel</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -122,64 +111,34 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-xs-12 col-sm-6 ">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Address Details</h5>
+                        <h5 class="card-title">Detalles</h5>
+                        
                     </div>
                     <div class="card-body pt-0">
-                        <form>
-                            <div class="settings-form">
-                                <div class="form-group">
-                                    <label>Address Line 1 <span class="star-red">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter Address Line 1">
-                                </div>
-                                <div class="form-group">
-                                    <label>Address Line 2 <span class="star-red">*</span></label>
-                                    <input type="text" class="form-control" placeholder="Enter Address Line 2">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>City <span class="star-red">*</span></label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>State/Province <span class="star-red">*</span></label>
-                                        <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select">
-                                            <mat-option *ngFor="let data of selectedList1" [value]="data.value">
-                                            {{data.value}}
-                                            </mat-option>
-                                        </mat-select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Zip/Postal Code <span class="star-red">*</span></label>
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Country <span class="star-red">*</span></label>
-                                        <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select">
-                                            <mat-option *ngFor="let data of selectedList2" [value]="data.value">
-                                            {{data.value}}
-                                            </mat-option>
-                                        </mat-select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-0">
-                                    <div class="settings-btns">
-                                        <button type="submit" class="border-0 btn btn-primary btn-gradient-primary btn-rounded">Update</button>&nbsp;&nbsp;
-                                        <button type="submit" class="btn btn-secondary btn-rounded">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        <ng-container *ngFor="let setting of settings">
+                            <h4>Nombre de la Clínica o Consultorio</h4>
+                            <p>{{setting.name}}</p>
+                            <h4>Dirección</h4>
+                            <p>{{setting.address}}</p>
+                            <h4>Teléfono</h4>
+                            <p>{{setting.phone}}</p>
+                            <h4>Ciudad</h4>
+                            <p>{{setting.city}}</p>
+                            <h4>Estado/Provincia</h4>
+                            <p>{{setting.state}}</p>
+                            <h4>Zip/Código Postal</h4>
+                            <p>{{setting.zip}}</p>
+                            <h4>País</h4>
+                            <p>{{setting.country}}</p>
+
+                            <div class="clear"></div>
+                            <a class="btn btn-outline-danger btn-sm" href="#" onclick="return false;" (click)="deleteTipoPago(setting)" title="Edit">
+                                <i class="fa fa-trash pl--0"></i>
+                            </a>
+                        </ng-container>
                     </div>
                 </div>
             </div>

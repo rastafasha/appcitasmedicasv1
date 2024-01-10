@@ -15,33 +15,31 @@ export class GeneralSettingsComponent {
   public deleteIcon2  = true;
   public selectedValue! : string ;
 
+  public name: any;
+  public address: any;
+  public phone: any;
+  public city: any;
+  public state: any;
+  public zip: any;
+  public country: any;
+  public setting: any;
+  public settings: any;
+
+
   constructor(
     public settingService: SettignService
   ){}
 
-  deleteIconFunc1(){
-    this.deleteIcon1 = !this.deleteIcon1
-  }
-  deleteIconFunc2(){
-    this.deleteIcon2 = !this.deleteIcon2
-  }
+  // deleteIconFunc1(){
+  //   this.deleteIcon1 = !this.deleteIcon1
+  // }
+  // deleteIconFunc2(){
+  //   this.deleteIcon2 = !this.deleteIcon2
+  // }
   
-selectedList1: data[] = [
-  {value: 'Select'},
-  {value: 'California'},
-  {value: 'Tasmania'},
-  {value: 'Auckland'},
-  {value: 'Marlborough'},
-];
-selectedList2: data[] = [
-  {value: 'India'},
-  {value: 'London'},
-  {value: 'France'},
-  {value: 'USA'},
-];
-
   ngOnInit(): void {
     // this.getSetting();
+    this.getSettings();
     
   }
 
@@ -50,6 +48,47 @@ selectedList2: data[] = [
       console.log(resp);
     })
   }
+
+  getSettings(){
+    this.settingService.getAllSettings().subscribe((resp:any)=>{
+      console.log(resp);
+      this.settings= resp.settings.data;
+    })
+}
+
+save(){
+
+  let data = {
+    name: this.name,
+    address: this.address,
+    phone: this.phone,
+    city: this.city,
+    state:this.state,
+    zip:this.zip,
+    country: this.country
+  }
+  this.settingService.createSetting(data).subscribe((resp:any)=>{
+    console.log(resp);
+    this.getSettings();
+     this.name= '';
+     this.address= '';
+     this.phone= '';
+     this.city= '';
+    this.state= '';
+    this.zip= '';
+     this.country = '';
+
+  })
+}
+
+deleteTipoPago(setting:any){debugger
+
+  this.settingService.deleteSetting(setting.id).subscribe(
+    (resp:any) =>{
+      this.getSettings();
+    });
+  
+}
 
 
 }
