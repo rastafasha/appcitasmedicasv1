@@ -234,7 +234,7 @@ export class ListPatientMComponent {
 
     const blobData = new Blob([excelBuffer],{type: CSV_TYPE});
 
-    this.fileSaver.save(blobData, "staffs_db_appcitasmedicas", CSV_EXTENSION)
+    this.fileSaver.save(blobData, "patients_db_appcitasmedicas", CSV_EXTENSION)
 
   }
 

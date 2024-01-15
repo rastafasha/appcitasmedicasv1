@@ -64,6 +64,11 @@ const routes: Routes = [
       import('./medical/calendar-appointment/calendar-appointment.module').then((m) => m.CalendarAppointmentModule),
   },
   {
+    path: 'publicidad',
+    loadChildren: () =>
+      import('./medical/publicidad/publicidad.module').then((m) => m.PublicidadModule),
+  },
+  {
     path: 'error',
     loadChildren: () =>
       import('./error/error.module').then((m) => m.ErrorModule),

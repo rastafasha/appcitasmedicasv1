@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
 import { AppointmentService } from '../service/appointment.service';
 import { DoctorService } from '../../doctors/service/doctor.service';
+import { SettignService } from 'src/app/core/settings/settigs.service';
 
 @Component({
   selector: 'app-add-appointments',
@@ -39,14 +40,16 @@ export class AddAppointmentsComponent {
   DOCTORS:any = [];
   DOCTOR:any = [];
   DOCTOR_SELECTED:any;
-
+  
   selected_segment_hour:any;
-
+  
+  tiposdepagos:any;
   
 
   constructor(
     public appointmentService:AppointmentService,
     public doctorService:DoctorService,
+    public settigService: SettignService,
     public router: Router
   ){
 
@@ -59,6 +62,8 @@ export class AddAppointmentsComponent {
       this.hours = resp.hours;
       this.specialities = resp.specialities;
     })
+
+    this.getTiposdePago();
   }
   
   filtro(){
@@ -112,7 +117,7 @@ export class AddAppointmentsComponent {
         this.n_doc= 0;
   }
 
-  save(){
+  save(){debugger
     this.text_validation = '';
 
     if(this.amount < this.amount_add){
@@ -151,6 +156,15 @@ export class AddAppointmentsComponent {
       this.router.navigate(['/appointments/list']);
     })
   }
+
+
+  getTiposdePago(){
+    this.settigService.getActivas().subscribe((resp:any)=>{
+      console.log(resp);
+      this.tiposdepagos = resp.tiposdepagos;
+      // console.log(this.tiposdepagos);
+    })
+}
 
 
 }

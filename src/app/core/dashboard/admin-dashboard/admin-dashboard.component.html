@@ -19,8 +19,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="morning-user">
-                        <h2>Good Day, <span>{{user.name}}</span></h2>
-                        <p>Have a nice day at work</p>
+                        <h2>Buen día, <span>{{user.name}}</span></h2>
+                        <p>Que tengas un día productivo.</p>
                     </div>
                 </div>
                 <div class="col-md-6 position-blk">
@@ -38,7 +38,7 @@
                         <img src="assets/img/icons/calendar.svg" alt="">
                     </div>
                     <div class="dash-content dash-count">
-                        <h4>Appointments</h4>
+                        <h4>Citas Médicas.</h4>
                         <h3 style="color: #2e37a4;"><span class="counter-up" >{{num_appointments_current}}/<small>{{num_appointments_before}}</small></span></h3>
                         <p *ngIf="porcentaje_d >= 0"><span class="passive-view"><i class="feather icon-arrow-up-right me-1"></i>{{porcentaje_d}}%</span> vs last month</p>
                         <p *ngIf="porcentaje_d < 0"><span class="negative-view"><i class="feather icon-arrow-down-right me-1"></i>{{porcentaje_d}}%</span> vs last month</p>
@@ -51,7 +51,7 @@
                         <img src="assets/img/icons/profile-add.svg" alt="">
                     </div>
                     <div class="dash-content dash-count">
-                        <h4>New Patients</h4>
+                        <h4>Nuevos Pacientes.</h4>
                         <h3 style="color: #2e37a4;"><span class="counter-up" >{{num_patients_current}}/<small>{{num_patients_before}}</small></span></h3>
                         <p *ngIf="porcentaje_dp >= 0"><span class="passive-view"><i class="feather icon-arrow-up-right me-1"></i>{{porcentaje_dp}}%</span> vs last month</p>
                         <p *ngIf="porcentaje_dp < 0"><span class="negative-view"><i class="feather icon-arrow-down-right me-1"></i>{{porcentaje_dp}}%</span> vs last month</p>
@@ -64,7 +64,7 @@
                         <img src="assets/img/icons/scissor.svg" alt="">
                     </div>
                     <div class="dash-content dash-count">
-                        <h4>Appointments Att.</h4>
+                        <h4>Citas Atendidas.</h4>
                         <h3 style="color: #2e37a4;"><span class="counter-up" >{{num_appointments_attention_current}}/<small>{{num_appointments_attention_before}}</small></span></h3>
                         <p *ngIf="porcentaje_da >= 0"><span class="negative-view"><i class="feather icon-arrow-down-right me-1"></i>{{porcentaje_da}}%</span> vs last month</p>
                         <p *ngIf="porcentaje_da < 0"><span class="negative-view"><i class="feather icon-arrow-down-right me-1"></i>{{porcentaje_da}}%</span> vs last month</p>
@@ -77,7 +77,7 @@
                         <img src="assets/img/icons/empty-wallet.svg" alt="">
                     </div>
                     <div class="dash-content dash-count">
-                        <h4>Earnings</h4>
+                        <h4>Ganacias.</h4>
                         <h3 style="color: #2e37a4;">$<span class="counter-up" > {{num_appointments_total_current}}/<small>{{num_appointments_total_before}}</small></span></h3>
                         <p *ngIf="porcentaje_dt >= 0"><span class="passive-view"><i class="feather icon-arrow-up-right me-1"></i>{{porcentaje_dt}}%</span> vs last month</p>
                         <p *ngIf="porcentaje_dt < 0"><span class="negative-view"><i class="feather icon-arrow-down-right me-1"></i>{{porcentaje_dt}}%</span> vs last month</p>
@@ -90,13 +90,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="chart-title patient-visit">
-                            <h4>Patient Visit by Gender</h4>
-                            <div >
+                            <h4>Pacientes por Género</h4>
+                            <!-- <div >
                                 <ul class="nav chat-user-total">
-                                    <li><i class="fa fa-circle current-users" aria-hidden="true"></i>Male 75%</li>
-                                    <li><i class="fa fa-circle old-users" aria-hidden="true"></i> Female 25%</li>
+                                    <li><i class="fa fa-circle current-users" aria-hidden="true"></i>Masculino 75%</li>
+                                    <li><i class="fa fa-circle old-users" aria-hidden="true"></i> Femenino 25%</li>
                                 </ul>
-                            </div>
+                            </div> -->
                             <div class="form-group mb-0">
                                 <mat-select [(ngModel)]="selectedValue" class="form-control select" (selectionChange)="selectedYear()"  placeholder="2023">
                                         <mat-option *ngFor="let data of selecedList" [value]="data.value">
@@ -138,7 +138,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="chart-title">
-                            <h4>Patient by Speciality</h4>
+                            <h4>Pacientes por Especialidad</h4>
                         </div>	
                         <div id="donut-chart-dash" class="chart-user-icon">
                             <apx-chart class="donut-chart-custom"
@@ -158,7 +158,7 @@
             <div class="col-12 col-md-12  col-xl-4">
                 <div class="card top-departments">
                     <div class="card-header">
-                        <h4 class="card-title mb-0">Top Specialities</h4>
+                        <h4 class="card-title mb-0">Top Especialidades</h4>
                     </div>
                     <div class="card-body scrooldiv">
                         <div class="activity-top" *ngFor="let speciality of query_patients_speciality_porcentaje">
@@ -176,7 +176,7 @@
             <div class="col-12 col-md-12  col-xl-8">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title ">Appointemt Pendings</h4>
+                        <h4 class="card-title ">Citas Pendientes</h4>
                     </div>
                     <div class="card-body p-0 table-dash">
                         <div class="table-responsive">
@@ -184,10 +184,10 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th mat-sort-header="date">Date</th>
+                                        <th mat-sort-header="date">Fecha</th>
                                         <th mat-sort-header="doctor">Doctor</th>
                                         <th mat-sort-header="status">Status</th>
-                                        <th mat-sort-header="statuspayment">Status Payment</th>
+                                        <th mat-sort-header="statuspayment">Status Pago</th>
                                         <th mat-sort-header="charges">Monto ($)</th>
                                         <th></th>
                                     </tr>

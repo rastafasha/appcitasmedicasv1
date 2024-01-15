@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a routerLink="/appointments/list">Appointment </a></li>
+                        <li class="breadcrumb-item"><a routerLink="/appointments/list">Citas </a></li>
                         <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
-                        <li class="breadcrumb-item active">Edit Appointment </li>
+                        <li class="breadcrumb-item active">Editar Cita </li>
                     </ul>
                 </div>
             </div>
@@ -24,12 +24,12 @@
                             <div class="row align-items-center" >
                                 <div class="col-12">
                                     <div class="form-heading">
-                                        <h4>Appointment Details: #{{appointment_id}}</h4>
+                                        <h4>Cita Detalle: #{{appointment_id}}</h4>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-3">  
                                     <div class="form-group local-forms">
-                                        <label >Date Of Appointment  <span class="login-danger">*</span></label>
+                                        <label >Fecha de la Cita<span class="login-danger">*</span></label>
                                         <input (dateChange)="onDateChange($event)" class="form-control datetimepicker" name="date_appointment" [(ngModel)]="date_appointment" type="text" matInput [matDatepicker]="picker"  >
                                         <mat-datepicker #picker></mat-datepicker>
                                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -38,7 +38,7 @@
                                 <div class="col-12 col-md-6 col-xl-3">
                                     <div class="form-group local-forms">
                                         <label >Hora <span class="login-danger">*</span></label>
-                                        <mat-select [(ngModel)]="hour" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Hour">
+                                        <mat-select [(ngModel)]="hour" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Seleccione Hora">
                                             <mat-option *ngFor="let data of hours" [value]="data.id">
                                             {{data.name}}
                                             </mat-option>
@@ -47,10 +47,10 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-3">
                                     <div class="form-group local-forms">
-                                        <label >Speciality <span class="login-danger">*</span></label>
-                                        <mat-select [(ngModel)]="speciality_id" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Speciality">
+                                        <label >Especialidad <span class="login-danger">*</span></label>
+                                        <mat-select [(ngModel)]="speciality_id" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Seleccione Especialidad">
                                             <mat-option *ngFor="let data of specialities" [value]="data.id">
-                                            {{data.name}}
+                                                {{data.name}} | ${{data.price}}
                                             </mat-option>
                                         </mat-select>
                                     </div>
@@ -179,20 +179,20 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">  
                                     <div class="form-group local-forms">
-                                        <label >First Name <span class="login-danger">*</span></label>
+                                        <label >Nombre <span class="login-danger">*</span></label>
                                         <input class="form-control" name="name"  disabled [(ngModel)]="name" type="text"  >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label >Last Name <span class="login-danger">*</span></label>
+                                        <label >Apellido <span class="login-danger">*</span></label>
                                         <input class="form-control" name="surname"  disabled [(ngModel)]="surname" type="text"  >
                                     </div>
                                 </div>
                                
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label >Mobile <span class="login-danger">*</span></label>
+                                        <label >Teléfono móvil <span class="login-danger">*</span></label>
                                         <input class="form-control" name="phone"  disabled [(ngModel)]="phone" type="text"  >
                                     </div>
                                 </div>

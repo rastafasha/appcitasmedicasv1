@@ -413,4 +413,11 @@ export class routes {
   public static get salaryCobrar(): string {
     return this.baseUrl + '/appointment-pay/punto-de-venta';
   }
+
+  public static get publicidad(): string {
+    return this.baseUrl + '/publicidad/list';
+  }
+  public static get publicidadRegister(): string {
+    return this.baseUrl + '/publicidad/register';
+  }
 }

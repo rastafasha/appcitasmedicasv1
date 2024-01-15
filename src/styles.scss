@@ -229,13 +229,19 @@ ngx-material-timepicker-content {
 }
 
 
+
+
 //cerrar modal
 @media(max-width:768px){
   .cerrar{
     left: -250px ;
   }
 
+  .modal-body {z-index: 9999;}
+  
+
   .modal-content {
-    z-index: 99999999;
+    z-index: 9999 !important;
   }
 }
+

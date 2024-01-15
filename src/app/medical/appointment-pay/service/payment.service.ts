@@ -16,12 +16,40 @@ export class PaymentService {
 
   
 
-  getAll(){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/pagos';
-    return this.http.get(URL, {headers:headers});
-  }
+  // getAll(page:number=1, search:string=''){
+  //   let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+  //   let URL = url_servicios+'/payment?page='+page+"&search="+search;
+  //   return this.http.get(URL, {headers:headers});
+  // }
 
+
+  getAll(page:number=1, 
+    search_referencia:string='', 
+    // search_patient:string='', 
+    // speciality_id:number=0, 
+    // date_start:string= '',
+    // date_end:string= '',
+    ){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let LINK = "";
+    if(search_referencia){
+    LINK+="&search_referencia="+search_referencia;
+    }
+    // if(search_patient){
+    // LINK+="&search_patient="+search_patient;
+    // }
+    // if(speciality_id){
+    // LINK+="&speciality_id="+speciality_id;
+    // }
+    // if(date_start){
+    // LINK+="&date_start="+date_start;
+    // }
+    // if(date_end){
+    // LINK+="&date_end="+date_end;
+    // }
+    let URL = url_servicios+'/payment?page='+page+LINK;
+    return this.http.get(URL, {headers:headers});
+}
 
    update(data:any, id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});

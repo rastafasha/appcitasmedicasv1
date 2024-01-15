@@ -47,6 +47,11 @@ const routes: Routes = [
       loadChildren: () =>
         import('./calendar-appointment/calendar-appointment.module').then((m) => m.CalendarAppointmentModule),
     },
+    {
+      path: 'publicidad',
+      loadChildren: () =>
+        import('./publicidad/publicidad.module').then((m) => m.PublicidadModule),
+    },
   ]  
 }
 ];

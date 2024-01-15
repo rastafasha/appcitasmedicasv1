@@ -270,14 +270,14 @@ export class DataService {
           ],
         },
         {
-          menuValue: 'Staffs',
+          menuValue: 'Personal',
           hasSubRoute: true,
           showSubRoute: false,
           base: 'staffs',
           img: 'assets/img/icons/menu-icon-08.svg',
           subMenus: [
             {
-              menuValue: 'Agregar Staff',
+              menuValue: 'Agregar Personal',
               route: routes.addStaff,
               base: routes.addStaff,
               permision: 'register_staff',
@@ -313,7 +313,7 @@ export class DataService {
           ],
         },
         {
-          menuValue: 'Doctors',
+          menuValue: 'Doctores',
           hasSubRoute: true,
           showSubRoute: false,
           base: 'doctor',
@@ -357,7 +357,7 @@ export class DataService {
           ],
         },
         {
-          menuValue: 'Patients',
+          menuValue: 'Pacientes',
           hasSubRoute: true,
           showSubRoute: false,
           base: 'patient',
@@ -388,7 +388,7 @@ export class DataService {
         },
        
         {
-          menuValue: 'Appointments',
+          menuValue: 'Citas',
           hasSubRoute: true,
           showSubRoute: false,
           base: 'appointments',
@@ -433,13 +433,6 @@ export class DataService {
           img: 'assets/img/icons/menu-icon-09.svg',
           subMenus: [
             {
-              menuValue: 'Ver Pagos',
-              route: routes.salary,
-              base: routes.salary,
-              permision: 'show_payment',
-              show_nav: true,
-            },
-            {
               menuValue: 'Lista Transferencias',
               route: routes.salaryCobro,
               base: routes.salaryCobro,
@@ -447,11 +440,11 @@ export class DataService {
               show_nav: true,
             },
             {
-              menuValue: 'Add Pagos',
-              route: routes.salaryCobrar,
-              base: routes.salaryCobrar,
-              permision: 'show_payment_cobrar',
-              show_nav: false,
+              menuValue: 'Ver Pagos',
+              route: routes.salary,
+              base: routes.salary,
+              permision: 'show_payment',
+              show_nav: true,
             },
             {
               menuValue: 'Delete Pagos',
@@ -556,7 +549,18 @@ export class DataService {
         //   ],
         // },
         {
-          menuValue: 'Settings',
+          menuValue: 'Publicidad',
+          route: routes.publicidad,
+          hasSubRoute: false,
+          showSubRoute: false,
+          img: 'assets/img/icons/call-icon-01.svg',
+          base: routes.publicidad,
+          permision: 'list_publicidad',
+          show_nav: true,
+          subMenus: [],
+        },
+        {
+          menuValue: 'Configuración',
           route: routes.settings,
           hasSubRoute: false,
           showSubRoute: false,

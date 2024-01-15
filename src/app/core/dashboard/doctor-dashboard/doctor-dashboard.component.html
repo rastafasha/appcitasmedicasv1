@@ -26,8 +26,8 @@
                         </mat-select>
                     </div>
                     <div class="morning-user">
-                        <h2>Good Day, Dr.<span>{{user.name}}</span></h2>
-                        <p>Have a nice day at work</p>
+                        <h2>Buen día, Dr.<span>{{user.name}}</span></h2>
+                        <p>Que tengas un día productivo.</p>
                     </div>
                 </div>
                 <div class="col-md-6 position-blk">
@@ -61,7 +61,7 @@
                                 <span class="status-green" *ngIf="porcentaje_d >= 0">{{porcentaje_d}}%</span>
                                 <span class="status-pink" *ngIf="porcentaje_d < 0">{{porcentaje_d}}%</span>
                             </h4>
-                            <h5>Appointments</h5>
+                            <h5>Citas</h5>
                         </div>
                     </div>
                 </div>
@@ -77,7 +77,7 @@
                                 <span class="status-green" *ngIf="porcentaje_da >= 0">{{porcentaje_da}}%</span>
                                 <span class="status-pink" *ngIf="porcentaje_da < 0">{{porcentaje_da}}%</span>
                             </h4>
-                            <h5>Attentions</h5>
+                            <h5>Atendidas</h5>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                 <span class="status-green" *ngIf="porcentaje_dtp >= 0">{{porcentaje_dtp}}%</span>
                                 <span class="status-pink" *ngIf="porcentaje_dtp < 0">{{porcentaje_dtp}}%</span>
                             </h4>
-                            <h5>Earnings</h5>
+                            <h5>Ganancias</h5>
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
                                 <span class="status-green" *ngIf="porcentaje_dtpn >= 0">{{porcentaje_dtpn}}%</span>
                                 <span class="status-pink" *ngIf="porcentaje_dtpn < 0">{{porcentaje_dtpn}}%</span>
                             </h4>
-                            <h5>Pending</h5>
+                            <h5>Pendientes</h5>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="chart-title patient-visit mb-0">
-                            <h4>Income</h4>
+                            <h4>Entrada</h4>
                             <!-- <div class="income-value" >
                                 <h3><span>$</span> 20,560</h3>
                                 <p><span class="passive-view"><i class="feather icon-arrow-up-right me-1"></i>40%</span> vs last month</p>
@@ -183,11 +183,11 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="chart-title patient-visit">
-                            <h4>Appointments </h4>
+                            <h4>Citas </h4>
                             <div >
                                 <ul class="nav chat-user-total">
-                                    <li><i class="fa fa-circle low-users" aria-hidden="true"></i>Low</li>
-                                    <li><i class="fa fa-circle current-users" aria-hidden="true"></i> High</li>
+                                    <li><i class="fa fa-circle low-users" aria-hidden="true"></i>Bajo</li>
+                                    <li><i class="fa fa-circle current-users" aria-hidden="true"></i> Alto</li>
                                 </ul>
                             </div>
                             <!-- <div class="form-group mb-0">
@@ -247,7 +247,7 @@
             <div class="col-12 col-lg-12 col-xl-5 d-flex">
                 <div class="card flex-fill comman-shadow">
                     <div class="card-header">
-                        <h4 class="card-title d-inline-block">Recent Appointments</h4> <a [routerLink]="routes.appointmentList" class="patient-views float-end">Show all</a>
+                        <h4 class="card-title d-inline-block">Citas Recientes</h4> <a [routerLink]="routes.appointmentList" class="patient-views float-end">Show all</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive scrooldiv2">
@@ -255,10 +255,10 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th mat-sort-header="date">Date</th>
-                                        <th mat-sort-header="doctor">Patient</th>
+                                        <th mat-sort-header="date">Fecha</th>
+                                        <th mat-sort-header="doctor">Paciente</th>
                                         <th mat-sort-header="status">Status</th>
-                                        <th mat-sort-header="statuspayment">Status Payment</th>
+                                        <th mat-sort-header="statuspayment">Status Pago</th>
                                         <th mat-sort-header="charges">Monto ($)</th>
                                         <th></th>
                                     </tr>

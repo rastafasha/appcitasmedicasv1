@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
 import { SettignService } from '../settigs.service';
+import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
 interface data {
   value: string ;
 }
@@ -27,7 +28,8 @@ export class GeneralSettingsComponent {
 
 
   constructor(
-    public settingService: SettignService
+    public settingService: SettignService,
+    public doctorService: DoctorService,
   ){}
 
   // deleteIconFunc1(){
@@ -40,6 +42,7 @@ export class GeneralSettingsComponent {
   ngOnInit(): void {
     // this.getSetting();
     this.getSettings();
+    this.doctorService.closeMenuSidebar();
     
   }
 

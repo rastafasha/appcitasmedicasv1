@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
 import { PaymentMethod } from '../paymentMethod';
 import { SettignService } from '../settigs.service';
+import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
 
 @Component({
   selector: 'app-payment-settings',
@@ -30,10 +31,12 @@ export class PaymentSettingsComponent {
 
   constructor(
     private settigService: SettignService,
+    private doctorService: DoctorService,
     ) {}
 
   ngOnInit(): void {
       this.getTiposdePago();
+      this.doctorService.closeMenuSidebar();
   }
 
   selectedTypeEdit(tipo:any){

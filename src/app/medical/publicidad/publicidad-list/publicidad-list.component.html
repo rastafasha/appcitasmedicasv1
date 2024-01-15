@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a routerLink="/">Dashboard </a></li>
+                      <li class="breadcrumb-item"><a routerLink="/publicidad/list">Dashboard</a></li>
                         <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
-                        <li class="breadcrumb-item active">Personal</li>
+                        <li class="breadcrumb-item active">Publicidad List</li>
                     </ul>
                 </div>
             </div>
@@ -26,26 +26,19 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <div class="doctor-table-blk">
-                                        <h3>Personal</h3>
+                                        <h3>Publicidad List</h3>
                                         <div class="doctor-search-blk">
-                                            <div class="top-nav-search table-search-blk">
-                                                    <input  class="form-control" placeholder="Search here" [(ngModel)]="searchDataValue"
-                                                    (ngModelChange)="searchData(searchDataValue)">
-                                                    <a class="btn"><img src="assets/img/icons/search-normal.svg" alt=""></a>
-                                            </div>
+                                            
                                             <div class="add-group">
-                                                <a routerLink="/staffs/add-staff" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
+                                                <a data-bs-toggle="modal" data-bs-target="#add_publicidad" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
                                                 <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2"><img src="assets/img/icons/re-fresh.svg" alt=""></a>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <!-- <a type="button" (click)="pdfExport()" class=" me-2"><img src="assets/img/icons/pdf-icon-01.svg"   alt="Export to Pdf"  title="Export to Pdf"></a> -->
-                                    <a type="button" (click)="txtExport()" class=" me-2"><img src="assets/img/icons/pdf-icon-02.svg"   alt="Export to TXT" title="Export to TXT"></a>
-                                    <a type="button" (click)="csvExport()" class=" me-2"><img src="assets/img/icons/pdf-icon-03.svg"    alt="Export to CSV" title="Export to CSV"></a>
-                                    <a type="button" (click)="excelExport()" ><img src="assets/img/icons/pdf-icon-04.svg"   alt="Export to XLS" title="Export to XLS"></a>
-                                    
+                                     
                                 </div>
                             </div>
                         </div>
@@ -56,34 +49,50 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th mat-sort-header="name">Nobre</th>
-                                        <th mat-sort-header="email">email</th>
-                                        <th mat-sort-header="especializacion">Especialización</th>
-                                        <th mat-sort-header="telefono">Teléfono</th>
-                                        <th mat-sort-header="role">Role</th>
+                                        <th mat-sort-header="imagen">imagen</th>
+                                        <th mat-sort-header="status">status</th>
+                                        <th mat-sort-header="confirmar">Confirmar</th>
                                         <th mat-sort-header="created">Creación</th>
-                                         <th ></th> <!--acciones -->
+                                         <th ></th> 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let data of staffList">
+                                    <tr *ngFor="let data of publicidadList">
                                         
-                                        <td>{{data.name + ' ' + (data.surname ? data.surname: '')}}</td>
-                                        <td>{{data.email}}</td>
-                                        <td>{{data.education}}</td>
-                                        <td>{{data.mobile}}</td>
-                                        <td>{{data.roles.name}}</td>
-                                        <!-- <td>{{data.permision_pluck.length > 0 ? data.permision_pluck: 'TODOS LOS PERMISOS' }}</td> -->
+                                        <td>
+                                            <img [src]="data.avatar" style="height: auto; width:150px" >
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-success"
+                                                *ngIf="data.state === 2">Publicado</span>
+                                            <span class="badge bg-primary"
+                                                *ngIf="data.state === 1">Pendiente</span>
+                                        </td>
+                                        <td>
+                                            <!--begin::Input-->
+                                            <select
+                                            class="form-control form-select-solid fw-bolder"
+                                            name="state" [(ngModel)]="data.state" (change)="cambiarStatus(data)"
+                                            placeholder="state">
+                                            <option value="">Seleccione</option>
+                                              <option value="1">Pendiente</option>
+                                              <option value="2">Publicado</option>
+                                              </select>
+                                          </td>
+                                        <!-- <td><button [ngClass]="{'status-green' : data.status === 'APPROVED', 'status-pink' : data.status === 2}" class="custom-badge">{{data.status == 'APPROVED' ? 'Aprobado' : 'Pendiente'}}</button></td> -->
                                         <td>{{data.created_at | date }}</td>
                                         
                                         <td class="text-end">
-                                            <div class="dropdown dropdown-action" *ngIf="data.id !=1">
+                                            <div class="dropdown dropdown-action" >
                                                 <a href="javascript:void(0);" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" [routerLink]="['/staffs/list/edit/', data.id]"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);" (click)="selectUser(data)" 
+                                                  <a class="dropdown-item" (click)="selectPublicidad(data)" 
+                                                  data-bs-toggle="modal" 
+                                                  [attr.data-bs-target]="'#edit_publicidad-'+data.id"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
+                                                  
+                                                    <a class="dropdown-item" href="javascript:void(0);" (click)="selectPublicidad(data)" 
                                                     data-bs-toggle="modal" 
-                                                    [attr.data-bs-target]="'#delete_staff-'+data.id"
+                                                    [attr.data-bs-target]="'#delete_publicidad-'+data.id"
                                                     >
                                                     <i class="fa fa-trash-alt m-r-5"></i> Delete</a>
                                                 </div>
@@ -91,12 +100,12 @@
                                         </td>
 
                                         <!-- modal -->
-                                        <div [attr.id]="'delete_staff-'+data.id" class="modal fade delete-modal" role="dialog">
+                                        <div [attr.id]="'delete_publicidad-'+data.id" class="modal fade delete-modal" role="dialog">
                                           <div class="modal-dialog modal-dialog-centered">
                                               <div class="modal-content">
                                                   <div class="modal-body text-center">
                                                       <img src="assets/img/sent.png" alt="" width="50" height="46">
-                                                      <h3 *ngIf="staff_selected">Are you sure want to delete this user {{staff_selected.email}}?</h3>
+                                                      <h3 *ngIf="publicidad_selected">Are you sure want to delete this {{publicidad_selected.id}}?</h3>
                                                       <!-- validacion si esta en uso -->
                                                       <div class="form-group row" *ngIf="text_validation">
                                                         <div class="col-md-12">
@@ -110,13 +119,56 @@
                                                     </div>
                                                       <!-- validacion si esta en uso -->
                                                       <div class="m-t-20"> <a href="javascript:void(0);" class="btn btn-white me-1" data-bs-dismiss="modal">Close</a>
-                                                          <button type="submit" class="btn btn-danger" (click)="deleteRol()">Delete</button>
+                                                          <button type="submit" class="btn btn-danger" (click)="deletePublicidad()">Delete</button>
                                                       </div>
                                                   </div>
                                               </div>
                                           </div>
                                         </div>
                                         <!-- modal -->
+                                        <!-- modal edit-->
+                                        <div [attr.id]="'edit_publicidad-'+data.id" class="modal fade delete-modal" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-body text-center">
+                                                        <h3> Editar Publicidad: {{data.id}}</h3>
+                                                        <p>Tamaño máximo:1920x1080 | Peso máximo: 500kb</p>
+                                                        <br>
+                                                        <div class="col-12 col-md-6 col-xl-6">
+                                                            <div class="form-group local-top-form">
+                                                                <label class="local-top">Imagen <span class="login-danger">*</span></label>
+                                                                <div class="settings-btn upload-files-avator">
+                                                                    <input type="file" accept="image/*" name="image" id="file" (change)="loadFile($event)" class="hide-input">
+                                                                    <label for="file" class="upload">Seleccionar Archivo</label>
+                                                                </div>
+                                                            </div>
+                                                            <div *ngIf="IMAGE_PREVISUALIZA">
+                                                                <img [src]="IMAGE_PREVISUALIZA" style="width: 250px;" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <!-- validacion si esta en uso -->
+                                                        <div class="form-group row" *ngIf="text_success">
+                                                            <div class="col-12">
+                                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                                    <strong>Exito!</strong>{{text_success}}.
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                                                        <span aria-hidden="true"> </span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- validacion si esta en uso -->
+                                                        <div class="m-t-20"> <a href="javascript:void(0);" (click)="closeReload()" class="btn btn-white me-1" data-bs-dismiss="modal">Close</a>
+                                                            <button type="submit" class="btn btn-success" (click)="editPublicidad(data)">Actualizar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+                                          <!-- modal -->
+                                       
+
+                                          
                                     </tr>
                                 </tbody>
                             </table>
@@ -125,7 +177,7 @@
                                   <div class="dataTables_info">
                                     Showing {{ serialNumberArray[0] }} to
                                     {{ serialNumberArray[serialNumberArray.length - 1] }} of
-                                    {{ totalDataStaff }} entries
+                                    {{ totalDataPublicidad }} entries
                                   </div>
                                 </div>
                 
@@ -213,7 +265,7 @@
                                           disabled:
                                             currentPage ===
                                               pageNumberArray[pageNumberArray.length - 1] ||
-                                              staffList.length === 0
+                                              publicidadList.length === 0
                                         }"
                                       >
                                         <a
@@ -234,6 +286,45 @@
             </div>					
         </div>
     </div>
+     <!-- modal add-->
+     <div id="add_publicidad" class="modal fade add-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center">
+                    <!-- <img src="assets/img/sent.png" alt="" width="50" height="46"> -->
+                    <h3> Agregar Publicidad</h3>
+                    <p>Tamaño máximo:700x350px | Peso máximo: 500kb</p>
+                    <br>
+                    <div class="col-12 col-md-6 col-xl-6">
+                        <div class="form-group local-top-form">
+                            <label class="local-top">Imagen <span class="login-danger">*</span></label>
+                            <div class="settings-btn upload-files-avator">
+                                <input type="file" accept="image/*" name="image" id="file" (change)="loadFile($event)" class="hide-input">
+                                <label for="file" class="upload">Seleccionar Archivo</label>
+                            </div>
+                        </div>
+                        <div *ngIf="FILE_AVATAR">
+                            <img [src]="IMAGE_PREVISUALIZA" style="width: 250px;" alt="">
+                        </div>
+                    </div>
+                    <div class="form-group row" *ngIf="text_success">
+                        <div class="col-12">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Exito!</strong>{{text_success}}.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"> </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-t-20"> <a href="javascript:void(0);" (click)="closeReload()" class="btn btn-white me-1" data-bs-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-success" (click)="addPublicidad()">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      <!-- modal -->
 </div>
 
 

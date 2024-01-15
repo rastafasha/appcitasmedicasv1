@@ -332,7 +332,7 @@ export class ListAppoimentPayComponent {
 
     const blobData = new Blob([excelBuffer],{type: EXCEL_TYPE});
 
-    this.fileSaver.save(blobData, "appointments_pays_db_appcitasmedicas",)
+    this.fileSaver.save(blobData, "pagoscitas_db_appcitasmedicas",)
 
   }
   csvExport(){
@@ -355,7 +355,7 @@ export class ListAppoimentPayComponent {
 
     const blobData = new Blob([excelBuffer],{type: CSV_TYPE});
 
-    this.fileSaver.save(blobData, "appointments_pays_db_appcitasmedicas", CSV_EXTENSION)
+    this.fileSaver.save(blobData, "pagoscitas_db_appcitasmedicas", CSV_EXTENSION)
 
   }
 
@@ -380,7 +380,7 @@ export class ListAppoimentPayComponent {
 
     const blobData = new Blob([excelBuffer],{type: TXT_TYPE});
 
-    this.fileSaver.save(blobData, "appointments_pays_db_appcitasmedicas", TXT_EXTENSION)
+    this.fileSaver.save(blobData, "pagoscitas_db_appcitasmedicas", TXT_EXTENSION)
 
   }
 

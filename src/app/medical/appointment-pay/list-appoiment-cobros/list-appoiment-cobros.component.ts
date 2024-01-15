@@ -23,6 +23,7 @@ export class ListAppoimentCobrosComponent {
 
   public showFilter = false;
   public searchDataValue = '';
+  public searchReferencia = '';
   public lastIndex = 0;
   public pageSize = 10;
   public totalDataPayment = 0;
@@ -56,11 +57,11 @@ export class ListAppoimentCobrosComponent {
     this.paymentList = [];
     this.serialNumberArray = [];
 
-    this.paymentService.getAll().subscribe((resp:any)=>{
+    this.paymentService.getAll(page, this.searchReferencia).subscribe((resp:any)=>{
       // console.log(resp.payments.data);
       this.paymentList = resp.payments.data;
 
-      this.totalDataPayment = resp.payments.data.length;
+      this.totalDataPayment = resp.total;
       this.payment_generals = resp.payments.data;
       // this.patient_id = resp.patients.id;
       this.getTableDataGeneral();

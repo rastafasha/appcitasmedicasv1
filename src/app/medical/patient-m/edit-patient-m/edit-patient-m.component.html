@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a routerLink="/patients/list">Patients </a></li>
+                        <li class="breadcrumb-item"><a routerLink="/patients/list">Pacientes </a></li>
                         <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
-                        <li class="breadcrumb-item active">Edit Patient </li>
+                        <li class="breadcrumb-item active">Editar Paciente </li>
                     </ul>
                 </div>
             </div>
@@ -23,18 +23,18 @@
                             <div class="row" >
                                 <div class="col-12">
                                     <div class="form-heading">
-                                        <h4>Patient Details: #{{patient_id}}</h4>
+                                        <h4>Paciente Detalle: #{{patient_id}}</h4>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">  
                                     <div class="form-group local-forms">
-                                        <label >First Name <span class="login-danger">*</span></label>
+                                        <label >Nombre<span class="login-danger">*</span></label>
                                         <input class="form-control" name="name" [(ngModel)]="name" type="text"  >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label >Last Name <span class="login-danger">*</span></label>
+                                        <label >Apellido <span class="login-danger">*</span></label>
                                         <input class="form-control" name="surname" [(ngModel)]="surname" type="text"  >
                                     </div>
                                 </div>
@@ -46,13 +46,13 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label >Mobile <span class="login-danger">*</span></label>
+                                        <label >Teléfono móvil <span class="login-danger">*</span></label>
                                         <input class="form-control" name="phone" [(ngModel)]="phone" type="text"  >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label >Date Of Birth  <span class="login-danger">*</span></label>
+                                        <label >Fecha de Nacimiento<span class="login-danger">*</span></label>
                                         <input class="form-control datetimepicker" name="birth_date" [(ngModel)]="birth_date" type="text" matInput [matDatepicker]="picker"  >
                                         <mat-datepicker #picker></mat-datepicker>
                                         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -60,21 +60,21 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label >Education <span class="login-danger">*</span></label>
+                                        <label >Profesión <span class="login-danger">*</span></label>
                                         <input class="form-control" name="education" [(ngModel)]="education" type="text"  >
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group select-gender">
-                                        <label class="gen-label">Gender<span class="login-danger">*</span></label>
+                                        <label class="gen-label">Género<span class="login-danger">*</span></label>
                                         <div class="form-check-inline">
                                             <label class="form-check-label">
-                                                <input type="radio" name="gender" [value]="1" [(ngModel)]="gender" class="form-check-input">Male
+                                                <input type="radio" name="gender" [value]="1" [(ngModel)]="gender" class="form-check-input">Masculino
                                             </label>
                                         </div>
                                         <div class="form-check-inline">
                                             <label class="form-check-label">
-                                                <input type="radio" name="gender" [value]="2" [(ngModel)]="gender" class="form-check-input">Female
+                                                <input type="radio" name="gender" [value]="2" [(ngModel)]="gender" class="form-check-input">Femenino
                                             </label>
                                         </div>
                                     </div>
@@ -90,7 +90,7 @@
                                 
                                 <div class="col-12 col-sm-12">
                                     <div class="form-group local-forms">
-                                        <label>Address  <span class="login-danger">*</span></label>
+                                        <label>Dirección  <span class="login-danger">*</span></label>
                                         <textarea class="form-control" name="address" [(ngModel)]="address" rows="3" cols="30"></textarea>
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@
                                         <label class="local-top">Foto <span class="login-danger">*</span></label>
                                         <div class="settings-btn upload-files-avator">
                                             <input type="file" accept="image/*" name="image" id="file" (change)="loadFile($event)" class="hide-input">
-                                            <label for="file" class="upload">Choose File</label>
+                                            <label for="file" class="upload">Seleccione Foto</label>
                                         </div>
                                     </div>
                                     <div *ngIf="IMAGE_PREVISUALIZA">
