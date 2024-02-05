@@ -4,15 +4,15 @@ import { FileSaverService } from 'ngx-filesaver';
 import { routes } from 'src/app/shared/routes/routes';
 import { PaymentService } from '../../appointment-pay/service/payment.service';
 import { DoctorService } from '../../doctors/service/doctor.service';
-import { PublicidadService } from '../service/publicidad.service';
+import { PubService } from '../service/pub.service';
 
 declare var $:any;  
 @Component({
-  selector: 'app-publicidad-list',
-  templateUrl: './publicidad-list.component.html',
-  styleUrls: ['./publicidad-list.component.scss']
+  selector: 'app-pub-list',
+  templateUrl: './pub-list.component.html',
+  styleUrls: ['./pub-list.component.scss']
 })
-export class PublicidadListComponent {
+export class PubListComponent {
   public routes = routes;
 
   public publicidadList: any = [];
@@ -47,7 +47,7 @@ export class PublicidadListComponent {
   public text_validation:string = '';
 
   constructor(
-    public publicidadService: PublicidadService,
+    public pubService: PubService,
     public doctorService: DoctorService,
     ){
 
@@ -65,12 +65,12 @@ export class PublicidadListComponent {
     this.publicidadList = [];
     this.serialNumberArray = [];
 
-    this.publicidadService.listPublicidads().subscribe((resp:any)=>{
+    this.pubService.listPubs().subscribe((resp:any)=>{
       // console.log(resp.payments.data);
-      this.publicidadList = resp.publicidads.data;
+      this.publicidadList = resp.pubs.data;
 
-      this.totalDataPublicidad = resp.publicidads.length;
-      this.publicidad_generals = resp.publicidads.data;
+      this.totalDataPublicidad = resp.pubs.length;
+      this.publicidad_generals = resp.pubs.data;
       // this.patient_id = resp.patients.id;
       this.getTableDataGeneral();
       this.dataSource = new MatTableDataSource<any>(this.publicidadList);
@@ -179,7 +179,7 @@ export class PublicidadListComponent {
     let VALUE = data.status;
     console.log(VALUE);
     
-    this.publicidadService.updateStatus(data, data.id).subscribe(
+    this.pubService.updateStatus(data, data.id).subscribe(
       resp =>{
         console.log(resp);
         // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
@@ -195,7 +195,7 @@ export class PublicidadListComponent {
 
   deletePublicidad(){
 
-    this.publicidadService.deletePublicidad(this.publicidad_selected.id).subscribe((resp:any) => {
+    this.pubService.deletePub(this.publicidad_selected.id).subscribe((resp:any) => {
       // console.log(resp);
       let INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
       if(INDEX != -1){
@@ -228,7 +228,7 @@ export class PublicidadListComponent {
     let formData = new FormData();
     formData.append('imagen', this.FILE_AVATAR);
 
-    this.publicidadService.createPublicidad(formData).subscribe((resp:any) => {
+    this.pubService.createPub(formData).subscribe((resp:any) => {
       // console.log(resp);
       let INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
       // this.text_success = "La publicidad se registró correctamente";
@@ -252,7 +252,7 @@ export class PublicidadListComponent {
     formData.append('imagen', this.FILE_AVATAR);
     // formData.append('id', this.publicidad_id);
 
-    this.publicidadService.editPublicidad(formData, publicidad.id).subscribe((resp:any) => {
+    this.pubService.editPub(formData, publicidad.id).subscribe((resp:any) => {
       // console.log(resp);
       let INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
       // this.text_success = "La publicidad se Actualizó correctamente";
@@ -286,7 +286,7 @@ export class PublicidadListComponent {
   }
 
   getPublicidad(){
-    this.publicidadService.getPublicidad(this.publicidad_selected.id).subscribe((resp:any)=>{
+    this.pubService.getPub(this.publicidad_selected.id).subscribe((resp:any)=>{
       console.log(resp);
       this.publicidadd = resp.publicidad;
     })

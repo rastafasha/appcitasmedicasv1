@@ -66,7 +66,7 @@ const routes: Routes = [
   {
     path: 'publicidad',
     loadChildren: () =>
-      import('./medical/publicidad/publicidad.module').then((m) => m.PublicidadModule),
+      import('./medical/pub/pub.module').then((m) => m.PubModule),
   },
   {
     path: 'error',

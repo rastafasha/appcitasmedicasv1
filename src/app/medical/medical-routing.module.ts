@@ -50,7 +50,7 @@ const routes: Routes = [
     {
       path: 'publicidad',
       loadChildren: () =>
-        import('./publicidad/publicidad.module').then((m) => m.PublicidadModule),
+        import('./pub/pub.module').then((m) => m.PubModule),
     },
   ]  
 }

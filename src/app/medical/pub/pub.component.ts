@@ -9,11 +9,11 @@ interface Route {
 }
 
 @Component({
-  selector: 'app-publicidad',
-  templateUrl: './publicidad.component.html',
-  styleUrls: ['./publicidad.component.scss']
+  selector: 'app-pub',
+  templateUrl: './pub.component.html',
+  styleUrls: ['./pub.component.scss']
 })
-export class PublicidadComponent {
+export class PubComponent {
   public miniSidebar = 'false';
   public expandMenu = 'false';
   public mobileSidebar = 'false';

@@ -37,6 +37,7 @@ export class AddDoctorComponent {
 
   public speciality_id:any;
   public specialities:any = [];
+  
   public hours_days:any =[];
   public hours_selecteds:any = [];
   public days_week = [

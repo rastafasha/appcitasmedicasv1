@@ -136,15 +136,7 @@
             <a [routerLink]="routes.settings"  class="hasnotifications nav-link"><img src="assets/img/icons/setting-icon-01.svg" alt=""> </a>
         </li> -->
     </ul>
-    <div class="dropdown mobile-user-menu float-end">
-        <a href="javascript:void(0);" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
-        <div class="dropdown-menu dropdown-menu-end">
-            <a class="dropdown-item" [routerLink]="['/doctors/profile/', user.id]">My Profile</a>
-            <a class="dropdown-item" [routerLink]="['/doctors/list/edit/', user.id]">Edit Profile</a>
-            <a class="dropdown-item" [routerLink]="routes.settings">Settings</a>
-            <a class="dropdown-item" style="cursor: pointer;"(click)="logout()">Logout</a>
-        </div>
-    </div>
+    
 </div>
 <div class="notification-box">
     <div class="msg-sidebar notifications msg-noti">

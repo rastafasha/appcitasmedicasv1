@@ -6,49 +6,49 @@ import { AuthService } from 'src/app/shared/auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class PublicidadService {
+export class PubService {
 
   constructor(
     public http: HttpClient,
     public authService:AuthService
   ) { }
 
-  listPublicidads(){
+  listPubs(){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/publicidad';
+    let URL = url_servicios+'/pub';
     return this.http.get(URL, {headers:headers});
   }
   
-  getPublicidad(publicidad_id:any){
+  getPub(pub_id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/publicidad/show/'+publicidad_id;
+    let URL = url_servicios+'/pub/show/'+pub_id;
     return this.http.get(URL, {headers:headers});
   }
-  createPublicidad(data){
+  createPub(data){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/publicidad/store';
+    let URL = url_servicios+'/pub/store';
     return this.http.post(URL,data, {headers:headers});
   }
-  editPublicidad( data:any, publicidad_id:any,){
+  editPub( data:any, pub_id:any,){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/publicidad/update/'+publicidad_id;
+    let URL = url_servicios+'/pub/update/'+pub_id;
     return this.http.post(URL,data,{headers:headers});
   }
-  deletePublicidad(publicidad_id:any){
+  deletePub(pub_id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/publicidad/destroy/'+publicidad_id;
+    let URL = url_servicios+'/pub/destroy/'+pub_id;
     return this.http.delete(URL, {headers:headers});
   }
 
-  showPublicidad(publicidad_id:any){
+  showPub(pub_id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/publicidad/profile/"+publicidad_id;
+    let URL = url_servicios+"/pub/profile/"+pub_id;
     return this.http.get(URL,{headers:headers});
   }
 
-  updateStatus(data:any, publicidad_id:any){
+  updateStatus(data:any, pub_id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/publicidad/update/status/"+publicidad_id;
+    let URL = url_servicios+"/pub/update/status/"+pub_id;
     return this.http.put(URL,data,{headers:headers});
   }
 }
