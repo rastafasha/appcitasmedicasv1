@@ -228,7 +228,7 @@ export class DoctorDashboardComponent {
         },
         {
           name: 'High',
-          color: '#2E37A4',
+          color: '#513081',
           data: [13, 23, 20, 8, 13, 27, 30, 25, 10, 15, 20],
         },
       ],
@@ -370,7 +370,7 @@ export class DoctorDashboardComponent {
         series: [
             {
               name: 'Income',
-              color: '#2E37A4',
+              color: '#513081',
               data: data_income,
             },
           ],
@@ -383,7 +383,7 @@ export class DoctorDashboardComponent {
       // this.chartOptionsOne.series = [
       //   {
       //     name: 'Income',
-      //     color: '#2E37A4',
+      //     color: '#513081',
       //     data: data_income,
       //   },
       // ]
@@ -464,7 +464,7 @@ export class DoctorDashboardComponent {
         series: [
           {
             name: (parseInt(this.selectedValue))+"",
-            color: '#2E37A4',
+            color: '#513081',
             data: n_appointment_year,
           },
           {
@@ -557,7 +557,7 @@ export class DoctorDashboardComponent {
         series: [
             {
               name: 'Income',
-              color: '#2E37A4',
+              color: '#513081',
               data: data_income,
             },
           ],
@@ -570,7 +570,7 @@ export class DoctorDashboardComponent {
       // this.chartOptionsOne.series = [
       //   {
       //     name: 'Income',
-      //     color: '#2E37A4',
+      //     color: '#513081',
       //     data: data_income,
       //   },
       // ]
@@ -651,7 +651,7 @@ export class DoctorDashboardComponent {
         series: [
           {
             name: (parseInt(this.selectedValue))+"",
-            color: '#2E37A4',
+            color: '#513081',
             data: n_appointment_year,
           },
           {

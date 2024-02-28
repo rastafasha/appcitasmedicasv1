@@ -560,6 +560,70 @@ export class DataService {
           subMenus: [],
         },
         {
+          menuValue: 'Laboratorio',
+          hasSubRoute: true,
+          showSubRoute: false,
+          base: 'laboratory',
+          img: 'assets/img/icons/menu-icon-03.svg',
+          subMenus: [
+            {
+              menuValue: 'Laboratory List',
+              route: routes.laboratoryList,
+              base: routes.laboratoryList,
+              permision: 'list_laboratory',
+              show_nav: true,
+            },
+            {
+              menuValue: 'Edit Laboratory',
+              route: '',
+              base: '',
+              permision: 'edit_laboratory',
+              show_nav: false,
+            },
+            // {
+            //   menuValue: '',
+            //   route: '',
+            //   base: '',
+            //   // route: routes.registerLocation,
+            //   // base: routes.registerLocation,
+            //   permision: 'edit_location',
+            //   show_nav: false,
+            // }
+          ],
+        },
+        {
+          menuValue: 'Location',
+          hasSubRoute: true,
+          showSubRoute: false,
+          base: 'location',
+          img: 'assets/img/icons/menu-icon-03.svg',
+          subMenus: [
+            {
+              menuValue: 'Location List',
+              route: routes.LocationList,
+              base: routes.LocationList,
+              permision: 'list_location',
+              show_nav: true,
+            },
+            {
+              menuValue: 'Add Location',
+              route: routes.registerLocation,
+              base: routes.registerLocation,
+              permision: 'register_location',
+              show_nav: false,
+            },
+            // {
+            //   menuValue: '',
+            //   route: '',
+            //   base: '',
+            //   // route: routes.registerLocation,
+            //   // base: routes.registerLocation,
+            //   permision: 'edit_location',
+            //   show_nav: false,
+            // }
+          ],
+        },
+        {
           menuValue: 'Configuración',
           route: routes.settings,
           hasSubRoute: false,

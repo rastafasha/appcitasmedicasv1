@@ -1,22 +1,9 @@
 <div class="header">
-    <div class="header-left pt-3">
-        <img src="assets/img/logomalcolm.png" width="35" height="35" alt=""> <span>App Clínica</span>
-        <!-- <div *ngIf="user">
-            <div *ngIf="user.roles =='SUPERADMIN'">
-                <a [routerLink]="routes.adminDashboard" class="logo">
-                </a>
-            </div>
-            <div *ngIf="user.roles =='DOCTOR'">
-                <a [routerLink]="routes.doctorDashboard" class="logo">
-                    <img src="assets/img/logo.png" width="35" height="35" alt=""> <span>Pre Clinic</span>
-                </a>
-            </div>
-            <div *ngIf="user.roles =='PATIENT'">
-                <a [routerLink]="routes.patientDashboard" class="logo">
-                    <img src="assets/img/logo.png" width="35" height="35" alt=""> <span>Pre Clinic</span>
-                </a>
-            </div>
-        </div> -->
+    <div class="header-left pt-3 header-left-modif">
+        <img class="logoav" *ngIf="!avatar_setting" src="assets/img/logomalcolm.png" width="35" height="35" alt=""> 
+        <img class="logoav" *ngIf="avatar_setting" [src]="avatar_setting" width="35" height="35" alt=""> 
+        <span class="ttapp" >App Clínicas</span>
+        <span class="nmclin" >{{name_setting}}</span>
         
     </div>
     <a (click)="toggleSideBar()" id="toggle_btn" href="javascript:void(0);"><img src="assets/img/icons/bar-icon.svg"  alt=""></a>
@@ -123,10 +110,8 @@
             <div class="dropdown-menu">
                 <a *ngIf="user.roles =='DOCTOR'" class="dropdown-item" [routerLink]="['/doctors/profile/', user.id]">Mi Perfil</a>
                 <a *ngIf="user.roles =='SUPERADMIN'" class="dropdown-item" [routerLink]="['/doctors/profile/', user.id]">Mi Perfil</a>
-                <a *ngIf="user.roles =='PATIENT'" class="dropdown-item" [routerLink]="['/patients/profile/', user.id]">Mi Perfil</a>
                 <a *ngIf="user.roles =='DOCTOR'" class="dropdown-item" [routerLink]="['/doctors/list/edit/', user.id]">Editar Perfil</a>
                 <a *ngIf="user.roles =='SUPERADMIN'" class="dropdown-item" [routerLink]="['/doctors/list/edit/', user.id]">Editar Perfil</a>
-                <a *ngIf="user.roles =='PATIENT'"class="dropdown-item" [routerLink]="['/patients/list/edit/', user.id]">Editar Perfil</a>
                 <!-- <a class="dropdown-item" [routerLink]="routes.settings">Configuracion</a> -->
                 <a class="dropdown-item" style="cursor: pointer;"(click)="logout()">Salir</a>
                 <!-- [routerLink]="routes.login" -->
@@ -138,7 +123,7 @@
     </ul>
     
 </div>
-<div class="notification-box">
+<!-- <div class="notification-box">
     <div class="msg-sidebar notifications msg-noti">
         <div class="topnav-dropdown-header">
             <span>Messages</span>
@@ -342,8 +327,8 @@
                 </li>
             </ul>
         </div>
-        <!-- <div class="topnav-dropdown-footer">
+        <div class="topnav-dropdown-footer">
             <a [routerLink]="routes.chat">See all messages</a>
-        </div> -->
+        </div>
     </div>
-</div>
+</div> -->

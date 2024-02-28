@@ -1,6 +1,6 @@
 $color_1: #333448;
 $color_2: #009ce7;
-$color_3: #2e37a4;
+$color_3: #513081;
 $color_4: #000;
 $color_5: #757575;
 $color_6: #009efb;
@@ -14,7 +14,7 @@ $color_13: #333;
 $color_14: #00d3c7;
 $color_15: #7460ee;
 $color_16: #fff;
-$color_17: #2e37a4;
+$color_17: #513081;
 $color_18: rgba(46, 55, 164, 0.3);
 $color_19: rgba(46, 55, 164, 0.5);
 $color_20: #888;
@@ -104,11 +104,11 @@ $background-color_3: #009efb;
 $background-color_4: #55ce63;
 $background-color_5: #ffbc34;
 $background-color_6: #f62d51;
-$background-color_7: #2e37a4;
+$background-color_7: #513081;
 $background-color_8: #00d3c7;
 $background-color_9: #028ee1;
 $background-color_10: #e6294b;
-$background-color_11: #2e37a4;
+$background-color_11: #513081;
 $background-color_12: rgba(0, 0, 0, 0.2);
 $background-color_13: #eee;
 $background-color_14: rgba(255, 255, 255, 0.1);
@@ -147,26 +147,26 @@ $background-color_46: rgba(0, 0, 0, 0.5);
 $background-color_47: rgba(0, 0, 0, 0.66);
 $background-color_48: #c4c4c4;
 $background-color_49: rgba(0, 0, 0, 0.25);
-$border-color_1: #2e37a4;
+$border-color_1: #513081;
 $border-color_2: #dee2e6;
 $border-color_3: transparent;
 $border-color_4: #009efb;
 $border-color_5: #00d3c7;
 $border-color_6: #18aefa;
-$border-color_7: #2e37a4;
+$border-color_7: #513081;
 $border-color_8: #ccc transparent transparent;
 $border-color_9: transparent transparent #ccc;
 $border-color_10: #f3f3f3;
 $border-color_11: transparent transparent #ffffff #ffffff;
 $border-color_12: #eaeaea;
 $border-color_13: transparent transparent transparent #009efb;
-$border-top-color_1: #2e37a4;
+$border-top-color_1: #513081;
 $border-right-color_1: #fff;
 $border-right-color_2: #009efb;
 $border-right-color_3: #00d3c7;
 $border-bottom-color_1: #ddd;
 $border-bottom-color_2: #009efb;
-$border-bottom-color_3: #2e37a4;
+$border-bottom-color_3: #513081;
 $border-left-color_1: transparent;
 $border-left-color_2: #009efb;
 
@@ -2229,12 +2229,12 @@ table.table {
     }
   }
   .btn-primary {
-    background: linear-gradient(92.39deg, #4e57cd 1.86%, #2e37a4 100%);
+    background: linear-gradient(92.39deg, #4e57cd 1.86%, #513081 100%);
     border-radius: 12px;
     font-size: 16px;
     padding: 10px 15px;
     &:hover {
-      background: linear-gradient(92.39deg, #2e37a4 1.86%, #00318b 100%);
+      background: linear-gradient(92.39deg, #513081 1.86%, #00318b 100%);
       border: 1px solid #00318b;
     }
   }
@@ -2886,7 +2886,7 @@ table.dataTable {
 .doctor-box-icon {
   width: 66px;
   height: 66px;
-  background: #2e37a4;
+  background: #513081;
   border-radius: 12px;
   margin-right: 10px;
   display: -webkit-box;
@@ -3970,7 +3970,7 @@ table.dataTable {
     padding: 10px 20px;
     margin-bottom: 20px;
     &:hover {
-      background: #2e37a4;
+      background: #513081;
       .user-titles {
         h5 {
           color: $color_35;
@@ -4086,7 +4086,7 @@ table.dataTable {
 .chat-user-count {
   margin-left: auto;
   span {
-    background: #2e37a4;
+    background: #513081;
     border-radius: 50px;
     width: 15px;
     height: 15px;
@@ -4558,8 +4558,8 @@ table.dataTable {
       }
       &:hover {
         a {
-          background: #2e37a4;
-          border: 1px solid #2e37a4;
+          background: #513081;
+          border: 1px solid #513081;
         }
         img {
           filter: invert(1) brightness(100);
@@ -5024,23 +5024,23 @@ a.voice-icon {
             filter: invert(1) brightness(100);
           }
           opacity: 0.8;
-          background: #2e37a4;
+          background: #513081;
         }
       }
       > a.showChatList.active {
-        background: #2e37a4;
+        background: #513081;
       }
       > a.showInviteList.active {
-        background: #2e37a4;
+        background: #513081;
       }
       > a.hand-raise.active {
-        background: #2e37a4;
+        background: #513081;
       }
       > a.mute-bt.stop {
-        background: #2e37a4;
+        background: #513081;
       }
       > a.mute-video.stop {
-        background: #2e37a4;
+        background: #513081;
         .feather-video-off {
           filter: invert(1) brightness(100);
         }
@@ -5068,7 +5068,7 @@ a.voice-icon {
     a {
       &:hover {
         opacity: 0.8;
-        background: #2e37a4;
+        background: #513081;
       }
       width: 80px;
       height: 50px;
@@ -5087,7 +5087,7 @@ a.voice-icon {
       color: $color_44;
     }
     a.record-icon.active {
-      background: #2e37a4;
+      background: #513081;
     }
     a.share-icon {
       background: #eb4132;
@@ -6939,7 +6939,7 @@ html.menu-opened {
   }
   .multipleSelection {
     .selectBox {
-      border: 2px solid #2e37a4;
+      border: 2px solid #513081;
       border-radius: 6px;
     }
   }
@@ -7198,14 +7198,14 @@ html.menu-opened {
     font-weight: 600;
     color: $color_17;
     background: #ffffff;
-    border: 2px solid #2e37a4;
+    border: 2px solid #513081;
     border-radius: 8px;
     width: 100%;
     padding: 11px 0;
     &:hover {
       color: $color_35;
-      background: #2e37a4;
-      border: 2px solid #2e37a4;
+      background: #513081;
+      border: 2px solid #513081;
       img {
         filter: invert(0) brightness(100);
       }
@@ -7277,7 +7277,7 @@ html.menu-opened {
       margin-right: 36px;
       a.active {
         color: $color_17;
-        border-bottom: 2px solid #2e37a4;
+        border-bottom: 2px solid #513081;
       }
       a {
         font-weight: 500;
@@ -7313,7 +7313,7 @@ html.menu-opened {
     background-color: $background-color_11;
     padding: 12px 0;
     min-width: 167px;
-    border: 1px solid #2e37a4;
+    border: 1px solid #513081;
     border-radius: 6px;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -7590,14 +7590,14 @@ h2.card-middle-avatar {
   width: 266px;
   border-radius: 4px;
   padding: 15px;
-  background: #2e37a4;
+  background: #513081;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 266px;
   border-radius: 4px;
   padding: 15px;
-  background: #2e37a4;
+  background: #513081;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7633,7 +7633,7 @@ h2.card-middle-avatar {
   height: 50px;
   .upload {
     position: absolute;
-    background: #2e37a4;
+    background: #513081;
     border-radius: 4px;
     right: 6px;
     top: 8px;
@@ -7721,7 +7721,7 @@ h2.card-middle-avatar {
   .upload {
     position: absolute;
     z-index: 11;
-    background: #2e37a4;
+    background: #513081;
     border-radius: 5px;
     right: 2px;
     top: 1.5px;
@@ -7738,7 +7738,7 @@ h2.card-middle-avatar {
 .nav-tabs.menu-tabs {
   .nav-link {
     &:hover {
-      background: #2e37a4;
+      background: #513081;
       color: $color_16;
     }
     position: relative;
@@ -7762,7 +7762,7 @@ h2.card-middle-avatar {
   .nav-item.active {
     .nav-link {
       color: $color_16;
-      background: #2e37a4;
+      background: #513081;
     }
   }
 }
@@ -7924,7 +7924,7 @@ a.btn.add-links {
     -ms-flex-pack: center;
     &:hover {
       border: 0;
-      background: #2e37a4;
+      background: #513081;
       transition: all 0.5s ease;
       -moz-transition: all 0.5s ease;
       -o-transition: all 0.5s ease;
@@ -8184,9 +8184,9 @@ a.status-grey {
     background: rgba(51, 52, 72, 0.05);
     color: $color_1;
     &:hover {
-      background: #2e37a4;
+      background: #513081;
       color: $color_16;
-      border: 1px solid #2e37a4;
+      border: 1px solid #513081;
     }
   }
 }
@@ -8324,8 +8324,8 @@ a.status-grey {
     padding: 9px 15px;
   }
   .follow-btns {
-    background: #2e37a4;
-    border: 1px solid #2e37a4;
+    background: #513081;
+    border: 1px solid #513081;
     margin-right: 15px;
     &:hover {
       background: #00d3c7;
@@ -8336,8 +8336,8 @@ a.status-grey {
     background: #00d3c7;
     border: 1px solid #00d3c7;
     &:hover {
-      background: #2e37a4;
-      border: 1px solid #2e37a4;
+      background: #513081;
+      border: 1px solid #513081;
     }
   }
 }
@@ -8444,7 +8444,7 @@ a.status-grey {
   }
 }
 .bg-operations {
-  background: #2e37a4;
+  background: #513081;
 }
 .bg-statistics {
   background: #00d3c7;
@@ -8591,7 +8591,7 @@ a.status-grey {
         &::after {
           position: absolute;
           content: "";
-          background: #2e37a4;
+          background: #513081;
           width: 100%;
           height: 4px;
           left: 0;
@@ -8611,7 +8611,7 @@ a.status-grey {
           &::after {
             position: absolute;
             content: "";
-            background: #2e37a4;
+            background: #513081;
             width: 100%;
             height: 4px;
             left: 0;
@@ -10156,7 +10156,7 @@ blockquote {
       height: 20px;
       font-size: 10px;
       margin-right: 10px;
-      background: #2e37a4;
+      background: #513081;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -10214,7 +10214,7 @@ blockquote {
     position: relative;
   }
   .save-invoice-btn {
-    background: #2e37a4;
+    background: #513081;
   }
 }
 .check {
@@ -10224,7 +10224,7 @@ blockquote {
         background-color: $background-color_3;
         border: 1px solid #009efb;
         background-color: $background-color_11;
-        border: 1px solid #2e37a4;
+        border: 1px solid #513081;
         &:after {
           background-color: $background-color_1;
           left: 100%;
@@ -10647,7 +10647,7 @@ td.add-remove {
     background: #1b2559;
   }
   .bank-save-btn {
-    background: #2e37a4;
+    background: #513081;
   }
   .btn {
     min-width: 160px;
@@ -10811,7 +10811,7 @@ td.add-remove {
   }
 }
 .invoice-issues-box {
-  background: #2e37a4;
+  background: #513081;
   border-radius: 10px;
   text-align: center;
   padding: 10px;
@@ -10852,7 +10852,7 @@ td.add-remove {
   }
 }
 .invoice-item-bg {
-  background: #2e37a4;
+  background: #513081;
   border-radius: 10px;
   margin-top: 30px;
   margin-bottom: 30px;
@@ -10921,7 +10921,7 @@ td.add-remove {
 }
 .paid-continue-btn {
   background-color: $background-color_11;
-  border: 1px solid #2e37a4;
+  border: 1px solid #513081;
   border-radius: 5px;
   color: $color_16;
   display: block;
@@ -10932,7 +10932,7 @@ td.add-remove {
 }
 .paid-cancel-btn {
   background-color: $background-color_1;
-  border: 1px solid #2e37a4;
+  border: 1px solid #513081;
   border-radius: 5px;
   color: $color_17;
   display: block;
@@ -11101,7 +11101,7 @@ td.add-remove {
       height: 20px;
       width: 20px;
       background-color: $background-color_1;
-      border: 1px solid #2e37a4;
+      border: 1px solid #513081;
       border-radius: 50%;
       &:after {
         display: block;
@@ -11113,7 +11113,7 @@ td.add-remove {
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: #2e37a4;
+        background: #513081;
         -moz-transition: all 0.3s ease-in-out;
         -o-transition: all 0.3s ease-in-out;
         -webkit-transition: all 0.3s ease-in-out;
@@ -11127,8 +11127,8 @@ td.add-remove {
     height: 42px;
     margin-right: 6px;
     color: $color_16;
-    background: #2e37a4;
-    border: 1px solid #2e37a4;
+    background: #513081;
+    border: 1px solid #513081;
     border-radius: 5px;
     font-size: 20px;
     display: flex;

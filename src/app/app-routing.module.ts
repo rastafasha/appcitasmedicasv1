@@ -69,6 +69,17 @@ const routes: Routes = [
       import('./medical/pub/pub.module').then((m) => m.PubModule),
   },
   {
+    path: 'location',
+    loadChildren: () =>
+      import('./medical/location/location.module').then((m) => m.LocationModule),
+  },
+
+  {
+    path: 'laboratory',
+    loadChildren: () =>
+      import('./medical/laboratory/laboratory.module').then((m) => m.LaboratoryModule),
+  },
+  {
     path: 'error',
     loadChildren: () =>
       import('./error/error.module').then((m) => m.ErrorModule),

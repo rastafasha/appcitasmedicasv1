@@ -52,6 +52,16 @@ const routes: Routes = [
       loadChildren: () =>
         import('./pub/pub.module').then((m) => m.PubModule),
     },
+    {
+      path: 'location',
+      loadChildren: () =>
+        import('./location/location.module').then((m) => m.LocationModule),
+    },
+    {
+      path: 'laboratory',
+      loadChildren: () =>
+        import('./laboratory/laboratory.module').then((m) => m.LaboratoryModule),
+    },
   ]  
 }
 ];

@@ -23,6 +23,9 @@ export class AtencionMedicaComponent {
   name_companion:string = '';
   surname_companion:string = '';
 
+  laboratory:boolean = false;
+  laboratory_number:number = 1;
+
   public medical:any = [];
   description:any;
   name_medical:any;
@@ -67,11 +70,18 @@ export class AtencionMedicaComponent {
     // cita medica
 
     this.appointmentService.showCitamedica(this.appointment_id).subscribe((resp:any)=>{
-      // console.log(resp);
+      console.log(resp);
 
       this.appointment_atention_selected = resp.appointment_attention;
       this.medical =this.appointment_atention_selected.receta_medica;
       this.description =this.appointment_atention_selected.description;
+      this.laboratory_number =this.appointment_atention_selected.laboratory;
+
+      if(this.laboratory_number === 2){
+        this.laboratory = true
+      }else{
+        this.laboratory = false
+      }
 
 
     })
@@ -99,10 +109,17 @@ export class AtencionMedicaComponent {
       return;
     }
 
+    if(this.laboratory == true ){
+      this.laboratory_number = 2
+    }else{
+      this.laboratory_number = 1
+    }
+
     let data ={
       appointment_id: this.appointment_id,
       description: this.description,
       medical: this.medical,
+      laboratory: this.laboratory_number,
       patient_id: this.appointment_selected.patient_id,
     }
 

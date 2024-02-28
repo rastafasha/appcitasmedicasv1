@@ -291,7 +291,7 @@ export class PatientDashboardComponent implements OnInit {
         },
         {
           name: 'High',
-          color: '#2E37A4',
+          color: '#513081',
           data: [20, 20, 20, 20, 20, 20, 20],
         },
       ],
@@ -338,7 +338,7 @@ export class PatientDashboardComponent implements OnInit {
       series: [
         {
           name: 'High',
-          color: '#2E37A4',
+          color: '#513081',
           data: [44, 55, 57, 56, 61, 58, 63, 60, 66],
         },
         {
@@ -385,7 +385,7 @@ export class PatientDashboardComponent implements OnInit {
       series: [
         {
           name: 'Sleep',
-          color: '#2E37A4',
+          color: '#513081',
           data: [20, 21, 20, 21, 20, 21, 22],
         },
       ],

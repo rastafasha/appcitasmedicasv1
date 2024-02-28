@@ -46,7 +46,7 @@ updateSetting(data, setting_id:any, ){
  
   let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
   let URL = url_servicios+'/setting/update/'+setting_id;
-  return this.http.put(URL,data,{headers:headers});
+  return this.http.post(URL,data,{headers:headers});
 }
 
 deleteSetting(setting_id): Observable<any> {

@@ -156,7 +156,7 @@ export class AdminDashboardComponent {
         series: [
           {
             name: 'Male',
-            color: '#2E37A4',
+            color: '#513081',
             data: [] //[20, 30, 41, 67, 22, 43, 40, 10, 30, 20, 40],
           },
           {
@@ -250,7 +250,7 @@ export class AdminDashboardComponent {
         series: [
           {
             name: 'Income',
-            color: '#2E37A4',
+            color: '#513081',
             data:[] //[45, 60, 75, 51, 42, 42, 30],
           },
         ],
@@ -324,7 +324,7 @@ export class AdminDashboardComponent {
       let Patient_by_Genders =[
         {
           name: 'Male',
-          color: '#2E37A4',
+          color: '#513081',
           data: data_male,
         },
         {
@@ -388,7 +388,7 @@ export class AdminDashboardComponent {
         series: [
             {
               name: 'Income',
-              color: '#2E37A4',
+              color: '#513081',
               data: data_income,
             },
           ],
@@ -401,7 +401,7 @@ export class AdminDashboardComponent {
       // this.chartOptionsThree.series = [
       //   {
       //     name: 'Income',
-      //     color: '#2E37A4',
+      //     color: '#513081',
       //     data: data_income,
       //   },
       // ]

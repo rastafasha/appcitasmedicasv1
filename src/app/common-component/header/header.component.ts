@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SettignService } from 'src/app/core/settings/settigs.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { routes } from 'src/app/shared/routes/routes';
 import { SideBarService } from 'src/app/shared/side-bar/side-bar.service';
@@ -19,6 +20,10 @@ export class HeaderComponent {
   public usuario:any;
   public user_id:any;
   public avatar:any;
+  public settings:any;
+  public setting_selectedId:any;
+  public avatar_setting:any;
+  public name_setting:any;
 
   imagenSerUrl = environment.url_media;
   constructor(
@@ -26,6 +31,7 @@ export class HeaderComponent {
     private sideBar: SideBarService,
     public authService: AuthService,
     public activatedRoute: ActivatedRoute,
+    public settingService: SettignService,
     ) {
     this.sideBar.toggleSideBar.subscribe((res: string) => {
       if (res == 'true') {
@@ -47,7 +53,20 @@ export class HeaderComponent {
       this.user_id = resp.id;
     });
     this.getDoctor();
+    this.getSettings();
   }
+
+
+
+  getSettings(){
+    this.settingService.getAllSettings().subscribe((resp:any)=>{
+      // console.log(resp);
+      this.settings= resp.settings.data;
+      this.setting_selectedId= resp.settings.data[0].id;
+      this.avatar_setting= resp.settings.data[0].avatar;
+      this.name_setting= resp.settings.data[0].name;
+    })
+}
   
   getDoctor(){
     this.authService.getUserRomoto(this.user_id).subscribe((resp:any)=>{

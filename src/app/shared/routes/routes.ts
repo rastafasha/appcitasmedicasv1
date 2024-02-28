@@ -420,4 +420,17 @@ export class routes {
   public static get publicidadRegister(): string {
     return this.baseUrl + '/publicidad/register';
   }
+
+  public static get LocationList(): string {
+    return this.baseUrl + '/location/list';
+  }
+  public static get registerLocation(): string {
+    return this.baseUrl + '/location/register';
+  }
+  public static get laboratoryList(): string {
+    return this.baseUrl + '/laboratory/list';
+  }
+  public static get laboratoryEdit(): string {
+    return this.baseUrl + '/laboratory/edit';
+  }
 }

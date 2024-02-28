@@ -45,24 +45,50 @@
                                     </div>
                                 </div>
                                
-                                <div class="col-12 col-md-6 col-xl-4">
+                                <div class="col-12 col-md-3">
                                     <div class="form-group local-forms">
                                         <label >Mobile <span class="login-danger">*</span></label>
                                         <input class="form-control" name="phone"  disabled [(ngModel)]="phone" type="text"  >
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6 col-xl-3">  
+                                <div class="col-12 col-md-3">  
                                     <div class="form-group local-forms">
                                         <label >Nombre Acompañante <span class="login-danger">*</span></label>
                                         <input class="form-control" name="name_companion"  disabled [(ngModel)]="name_companion" type="text"  >
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6 col-xl-3">  
+                                <div class="col-12 col-md-3">  
                                     <div class="form-group local-forms">
                                         <label >Apellido Acompañante <span class="login-danger">*</span></label>
                                         <input class="form-control" name="surname_companion"  disabled [(ngModel)]="surname_companion" type="text"  >
                                     </div>
                                 </div>
+                                <div class="col-xs-12 col-sm-3">
+
+                                    <div class="form-group ">
+                                        <div _ngcontent-rhp-c92="" class="card-header d-flex justify-content-between align-items-center">
+                                            <h5 _ngcontent-rhp-c92="" class="card-title">Laboratorio?</h5>
+                                            <div _ngcontent-rhp-c92="" class="status-toggle d-flex justify-content-between align-items-center">
+                                                <input _ngcontent-rhp-c92="" type="checkbox" id="laboratory"  class="check" name="laboratory" [checked]="laboratory == true" [ngModelOptions]="{standalone: true}" [(ngModel)]="laboratory">
+                                                <label _ngcontent-rhp-c92="" for="laboratory" class="checktoggle" value="true">checkbox</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12 col-md-3">  
+                                    <div class="form-group local-forms">
+                                        <label >Laboratorio? <span class="login-danger">*</span></label>
+                                        
+                                        
+                                        <select class="form-control form-select-solid fw-bolder"
+                                                        name="laboratory" [(ngModel)]="laboratory"
+                                                        [ngModelOptions]="{standalone: true}">
+                                                        <option>-- Select --</option>
+                                                        <option value="1">No</option>
+                                                        <option value="2">Si</option>
+                                                    </select>
+                                    </div>
+                                </div> -->
                             </div>
                             <!-- paciente -->
                             <div class="row align-items-center" >
