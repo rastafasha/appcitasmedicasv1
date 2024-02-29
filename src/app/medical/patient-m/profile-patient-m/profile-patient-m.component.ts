@@ -6,7 +6,7 @@ import { patientProfile } from 'src/app/shared/models/models';
 import { routes } from 'src/app/shared/routes/routes';
 import { PatientMService } from '../service/patient-m.service';
 import { DoctorService } from '../../doctors/service/doctor.service';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-profile-patient-m',
   templateUrl: './profile-patient-m.component.html',
@@ -14,6 +14,7 @@ import { DoctorService } from '../../doctors/service/doctor.service';
 })
 export class ProfilePatientMComponent {
   public routes = routes;
+  imagenSerUrl = environment.url_media;
 public patientProfile: any[];
 option_selected:number = 1;
 public patient_id: any;

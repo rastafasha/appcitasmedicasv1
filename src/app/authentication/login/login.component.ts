@@ -120,6 +120,9 @@ export class LoginComponent implements OnInit {
       if(this.user.roles == 'PATIENT' ){
         this.router.navigate([routes.patientDashboard]);
       }
+      if(this.user.roles == 'LABORATORIO' ){
+        this.router.navigate([routes.laboratoryList]);
+      }
       //roles secundarios
       if(this.user.roles == 'DOCTOR ESPECIALISTA' ){
         this.router.navigate([routes.doctorDashboard]);

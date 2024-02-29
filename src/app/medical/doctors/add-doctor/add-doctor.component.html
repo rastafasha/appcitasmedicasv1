@@ -117,7 +117,17 @@
                                         </mat-select>
                                     </div>
                                 </div>
-                                <div class="col-12 col-sm-12">
+                                <div class="col-12 col-md-6 col-xl-4">
+                                    <div class="form-group local-forms">
+                                        <label >Location <span class="login-danger">*</span></label>
+                                        <mat-select [(ngModel)]="selectedValueLocation" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Location">
+                                            <mat-option *ngFor="let data of locations" [value]="data.id">
+                                            {{data.title}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-8">
                                     <div class="form-group local-forms">
                                         <label>Dirección  <span class="login-danger">*</span></label>
                                         <textarea class="form-control" name="address" [(ngModel)]="address" rows="3" cols="30"></textarea>

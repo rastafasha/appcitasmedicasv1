@@ -12,6 +12,7 @@ import { DoctorService } from '../service/doctor.service';
 export class AddDoctorComponent {
   public routes = routes;
   public selectedValue!: string;
+  public selectedValueLocation!: string;
 
   public name: string = '';
   public surname: string = '';
@@ -37,6 +38,7 @@ export class AddDoctorComponent {
 
   public speciality_id:any;
   public specialities:any = [];
+  public locations:any = [];
   
   public hours_days:any =[];
   public hours_selecteds:any = [];
@@ -83,6 +85,7 @@ export class AddDoctorComponent {
       // console.log(resp);
       this.roles = resp.roles;
       this.specialities = resp.specialities;
+      this.locations = resp.locations;
       this.hours_days = resp.hours_days;
     })
   }
@@ -131,7 +134,7 @@ export class AddDoctorComponent {
     formData.append('role_id', this.selectedValue);
     formData.append('speciality_id', this.speciality_id);
     formData.append('imagen', this.FILE_AVATAR);
-
+    formData.append('location_id', this.selectedValueLocation);
     let HOUR_SCHEDULES:any = [];
 
     this.days_week.forEach((day:any) => {

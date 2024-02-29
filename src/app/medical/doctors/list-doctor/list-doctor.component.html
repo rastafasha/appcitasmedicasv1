@@ -68,7 +68,11 @@
                                 <tbody>
                                     <tr *ngFor="let data of doctorList">
                                         
-                                        <td>{{data.name + ' ' + (data.surname ? data.surname: '')}}</td>
+                                        <td>
+                                          <a [routerLink]="['/doctors/profile/', data.id]">
+                                            {{data.name + ' ' + (data.surname ? data.surname: '')}}
+                                          </a>
+                                        </td>
                                         <td>{{data.email}}</td>
                                         <td>{{data.education}}</td>
                                         <td>{{data.mobile}}</td>

@@ -35,8 +35,11 @@
                                                         <img src="./assets/img/no-image.jpg" >
                                                     </div>
                                                     <div *ngIf="patient_selected.avatar">
-                                                        <img  [src]="patient_selected.avatar"  [alt]="patient_selected.name">
+                                                        <img  src="{{imagenSerUrl}}{{patient_selected.avatar}}"  [alt]="patient_selected.first_name">
                                                     </div>
+                                                    <!-- <div *ngIf="patient_selected.avatar">
+                                                        <img  [src]="patient_selected.avatar"  [alt]="patient_selected.name">
+                                                    </div> -->
                                                 </div>
                                                 <div class="names-profiles">
                                                     <h4>{{patient_selected.full_name}}</h4>

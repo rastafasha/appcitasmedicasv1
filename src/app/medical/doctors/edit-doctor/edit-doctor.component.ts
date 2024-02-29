@@ -11,6 +11,7 @@ import { DoctorService } from '../service/doctor.service';
 export class EditDoctorComponent {
   public routes = routes;
   public selectedValue!: string;
+  public selectedValueLocation!: string;
 
   public name: string = '';
   public surname: string = '';
@@ -36,6 +37,7 @@ export class EditDoctorComponent {
 
   public speciality_id:any;
   public specialities:any = [];
+  public locations:any = [];
   public hours_days:any =[];
   public hours_selecteds:any = [];
   public days_week = [
@@ -87,6 +89,7 @@ export class EditDoctorComponent {
       // console.log(resp);
       this.roles = resp.roles;
       this.specialities = resp.specialities;
+      this.locations = resp.locations;
       this.hours_days = resp.hours_days;
 
       this.doctorService.showDoctor(this.doctor_id).subscribe((resp:any)=>{
@@ -94,6 +97,8 @@ export class EditDoctorComponent {
         this.doctor_selected = resp.user;
 
         this.selectedValue = this.doctor_selected.roles.id;
+        this.selectedValueLocation = this.doctor_selected.location_id;
+
         this.speciality_id = this.doctor_selected.speciality.id;
         this.name = this.doctor_selected.name;
         this.surname = this.doctor_selected.surname;
