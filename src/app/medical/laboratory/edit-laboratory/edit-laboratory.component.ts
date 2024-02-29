@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
 import { AppointmentService } from '../../appointment/service/appointment.service';
-
+import Swal from 'sweetalert2';
+import { LaboratoryService } from '../service/laboratory.service';
 @Component({
   selector: 'app-edit-laboratory',
   templateUrl: './edit-laboratory.component.html',
@@ -36,9 +37,14 @@ export class EditLaboratoryComponent {
   appointment_selected:any;
   appointment_atention_selected:any;
 
+  FILES:any = [];
+  FilesAdded:any = [];
+  name_laboratory:any;
 
   constructor(
     public appointmentService:AppointmentService,
+    public laboratoryService:LaboratoryService,
+
     public router: Router,
     public ativatedRoute: ActivatedRoute
   ){
@@ -87,44 +93,54 @@ export class EditLaboratoryComponent {
 
     })
 
-  }
-
-  addMedicamento(){
-    this.medical.push({
-      name_medical: this.name_medical,
-      uso: this.uso
+    this.laboratoryService.getLaboratoryByAppointment(this.appointment_id).subscribe((resp:any)=>{
+      console.log(resp);
+      this.FilesAdded = resp.laboratories.data;
     })
-    this.name_medical = '';
-    this.uso = '';
+
   }
 
-  deleteMedical(i:any){
-    this.medical.splice(i,1);
+  
+
+
+  processFile($event:any){
+    for (const file of $event.target.files){
+      this.FILES.push(file);
+    }
+    console.log(this.FILES);
+  
   }
   
 
   save(){
     this.text_validation = '';
-    if(!this.description || this.medical.length == 0){
-      this.text_validation = 'Es requerido ingresar el diagnostico y una receta medica';
+    // if(!this.name_laboratory){
+    //   this.text_validation = 'Es requerido ingresar un nombre';
+    //   return;
+    // }
+
+
+    if(this.FILES.length === 0){
+      this.text_validation = 'Necesitas subir un recurso'
+      // this.toaster.open({
+      //   text:'Necesitas subir un recurso de la clase',
+      //   caption:'VALIDACIÓN',
+      //   type:'danger'
+      // });
       return;
+
     }
 
-    if(this.laboratory == true ){
-      this.laboratory_number = 2
-    }else{
-      this.laboratory_number = 1
-    }
+    
 
-    let data ={
-      appointment_id: this.appointment_id,
-      description: this.description,
-      medical: this.medical,
-      laboratory: this.laboratory_number,
-      patient_id: this.appointment_selected.patient_id,
-    }
+    let formData = new FormData();
+    formData.append('appointment_id', this.appointment_id);
 
-    this.appointmentService.registerAttention(data).subscribe((resp:any)=>{
+    this.FILES.forEach((file:any, index:number)=>{
+      formData.append("files["+index+"]", file);
+    });
+
+    this.laboratoryService.storeLaboratory(formData).subscribe((resp:any)=>{
       // console.log(resp);
       this.text_success = 'Se guardó la informacion de la cita médica'
     })

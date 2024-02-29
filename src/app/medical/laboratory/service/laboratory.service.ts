@@ -48,6 +48,11 @@ export class LaboratoryService {
     let URL = url_servicios+"/laboratory/show/"+laboratory_id;
     return this.http.get(URL,{headers:headers});
   }
+  getLaboratoryByAppointment(appointment_id:any){
+    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    let URL = url_servicios+"/laboratory/showByAppointment/"+appointment_id;
+    return this.http.get(URL,{headers:headers});
+  }
   editLaboratory(data:any, laboratory_id:any){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = url_servicios+"/laboratory/update/"+laboratory_id;

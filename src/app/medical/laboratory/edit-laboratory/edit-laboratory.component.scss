@@ -1,0 +1,21 @@
+.files{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    width: 50%;
+    float: left;
+}
+.filesvg{
+    grid-area: 1 / 1 / 3 / 2;
+    margin: 0 auto;
+}
+.tititle{
+    grid-area: 1 / 2 / 2 / 4;
+    font-size: 14px;
+}
+.sizeee{
+    grid-area: 2 / 2 / 3 / 4;
+    font-size: 12px;
+}
