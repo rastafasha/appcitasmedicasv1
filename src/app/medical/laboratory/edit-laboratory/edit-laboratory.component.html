@@ -231,7 +231,7 @@
                                                         <!--begin::Wrapper-->
                                                         <div class="files">
                                                             <img src="assets/svg/doc.svg" class="w-50px ms-n1 me-1 filesvg" alt="">
-                                                            <a href="#" onclick="return false;" class="text-gray-800 text-hover-primary fw-bolder tititle">{{FILE.name_file}}</a>
+                                                            <a [href]="FILE.file" target="_blank" class="text-gray-800 text-hover-primary fw-bolder tititle">{{FILE.name_file}}</a>
                                                             <br>
                                                             <span class="text-gray-400 fw-bolder sizeee">Size:
                                                             <a href="#" onclick="return false;" class="text-gray-800 text-hover-primary fw-bolder">{{FILE.size}} Kb.</a></span>

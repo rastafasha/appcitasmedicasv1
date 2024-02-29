@@ -1,9 +1,11 @@
 {
-  "name": "App Clínica",
-  "short_name": "App Clínica",
-  "theme_color": "#1976d2",
+  "name": "Health Connect",
+  "short_name": "Health Connect",
+  "theme_color": "#513081",
+  "description": "App to connect health clinics and patients.",
   "background_color": "#fafafa",
   "display": "standalone",
+  "category": "medical",
   "scope": "./",
   "start_url": "./",
   "icons": [

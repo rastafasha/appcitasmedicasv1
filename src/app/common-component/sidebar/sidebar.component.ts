@@ -16,6 +16,7 @@ export class SidebarComponent {
   page = '';
   currentUrl = '';
   public classAdd = false;
+  year: number = new Date().getFullYear();
 
   public multilevel: Array<boolean> = [false, false, false];
 
