@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "preclinic-angular": {
+    "health_connect_admin": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/preclinic-angular",
+            "outputPath": "dist/health_connect_admin",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -85,10 +85,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "preclinic-angular:build:production"
+              "browserTarget": "health_connect_admin:build:production"
             },
             "development": {
-              "browserTarget": "preclinic-angular:build:development"
+              "browserTarget": "health_connect_admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -96,7 +96,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "preclinic-angular:build"
+            "browserTarget": "health_connect_admin:build"
           }
         },
         "test": {

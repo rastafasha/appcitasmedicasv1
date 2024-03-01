@@ -107,8 +107,15 @@ export class EditLaboratoryComponent {
     for (const file of $event.target.files){
       this.FILES.push(file);
     }
-    console.log(this.FILES);
+    // console.log(this.FILES);
   
+  }
+
+  deleteFile(FILE:any){
+    this.FilesAdded.splice(FILE,1);
+    this.laboratoryService.deleteLaboratory(FILE.id).subscribe((resp:any)=>{
+      this.getAppointment();
+    })
   }
   
 
@@ -143,6 +150,7 @@ export class EditLaboratoryComponent {
     this.laboratoryService.storeLaboratory(formData).subscribe((resp:any)=>{
       // console.log(resp);
       this.text_success = 'Se guardó la informacion de la cita médica'
+      this.getAppointment();
     })
 
   }
