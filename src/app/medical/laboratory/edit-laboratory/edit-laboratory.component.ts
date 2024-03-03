@@ -4,6 +4,8 @@ import { routes } from 'src/app/shared/routes/routes';
 import { AppointmentService } from '../../appointment/service/appointment.service';
 import Swal from 'sweetalert2';
 import { LaboratoryService } from '../service/laboratory.service';
+import { DomSanitizer } from '@angular/platform-browser';
+declare var $:any;  
 @Component({
   selector: 'app-edit-laboratory',
   templateUrl: './edit-laboratory.component.html',
@@ -41,10 +43,14 @@ export class EditLaboratoryComponent {
   FilesAdded:any = [];
   name_laboratory:any;
 
+  public file_selected:any;
+  public doc:any;
+  public FILE:any;
+
   constructor(
     public appointmentService:AppointmentService,
     public laboratoryService:LaboratoryService,
-
+    private _sanitizer: DomSanitizer,
     public router: Router,
     public ativatedRoute: ActivatedRoute
   ){
@@ -117,6 +123,39 @@ export class EditLaboratoryComponent {
       this.getAppointment();
     })
   }
+
+
+  deleteDocument(i:any){
+    this.FILES.splice(i,1);
+  }
+
+  selectDoc(FILE:any){
+    this.file_selected = FILE;
+  }
+
+  getDocumentIframe(url) {
+    var document, results;
+
+    if (url === null) {
+        return '';
+    }
+    results = url.match('[\\?&]v=([^&#]*)');
+    document   = (results === null) ? url : results[1];
+
+    return this._sanitizer.bypassSecurityTrustResourceUrl(document);
+}
+
+closeModalDoc(){
+
+  $('#view-doc').hide();
+      $("#view-doc").removeClass("show");
+      $("#view-doc").css("display", "none !important");
+      $(".modal").css("display", "none !important");
+      $(".modal-backdrop").remove();
+      $("body").removeClass();
+      $("body").removeAttr("style");
+      this.file_selected = null;
+}
   
 
   save(){
