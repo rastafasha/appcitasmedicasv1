@@ -248,22 +248,22 @@
                                                         <!--end::Info-->
                                                         <!-- modal -->
    
-                                                        <div class="modal fade" [attr.id]="'view-doc-'+FILE.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                           <div class="modal-dialog modal-lg">
-                                                             <div class="modal-content">
-                                                               <div class="modal-header">
-                                                                 <h5 class="modal-title" id="exampleModalLabel">{{FILE.name_file}}</h5>
-                                                                 <!-- <button type="button" class="btn btn-danger close" data-dismiss="modal" (click)="closeModalDoc()" aria-label="Close">
-                                                                   <span aria-hidden="true">&times;</span>
-                                                                 </button> -->
-   
-                                                               </div>
-                                                               <div class="modal-body">
-                                                                   <embed [src]="getDocumentIframe(FILE.file)" class="pdf-content"/>
-                                                               </div>
-                                                             </div>
-                                                           </div>
-                                                         </div>
+
+
+                                                         <div [attr.id]="'view-doc-'+FILE.id" class="modal fade add-modal" role="dialog">
+                                                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">{{FILE.name_file}}</h5>
+                                                                        <a href="javascript:void(0);" (click)="closeReload()" class="btn btn-white me-1" data-bs-dismiss="modal">Close</a>
+                                                                      </div>
+                                                                    <div class="modal-body text-center">
+                                                                        <embed [src]="getDocumentIframe(FILE.file)"  class="pdf-content"/>
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                          </div>
    
                                                            <!-- modal -->
                                                     </ng-container>
