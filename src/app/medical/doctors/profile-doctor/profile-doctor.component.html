@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Doctors </a></li>
+                        <li class="breadcrumb-item"><a href="/doctors/list">Doctores </a></li>
                         <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
-                        <li class="breadcrumb-item active">Doctor Profile</li>
+                        <li class="breadcrumb-item active">Perfil del Doctor</li>
                     </ul>
                 </div>
             </div>
@@ -48,22 +48,22 @@
                                         <div class="col-lg-4 col-md-4 d-flex align-items-center">
                                             <div class="follow-group">
                                                 <div class="doctor-follows">
-                                                    <h5>Appointments</h5>
+                                                    <h5>Citas</h5>
                                                     <h4>{{num_appointment}}</h4>
                                                 </div>
                                                 <div class="doctor-follows">
-                                                    <h5>Money</h5>
+                                                    <h5>Ganancia</h5>
                                                     <h4>{{money_of_appointments|currency}}</h4>
                                                 </div>
                                                 <div class="doctor-follows">
-                                                    <h5>Appointment Pending</h5>
+                                                    <h5>Citas Pendientes</h5>
                                                     <h4>{{num_appointment_pendings}}</h4>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 d-flex align-items-center">
                                             <div class="follow-btn-group">
-                                                <a [routerLink]="['/doctors/list/edit/', doctor_id]" class="btn btn-info follow-btns">Edit</a>
+                                                <a [routerLink]="['/doctors/list/edit/', doctor_id]" *ngIf="isPermission('edit_doctor')" class="btn btn-info follow-btns">Edit</a>
                                                 <!-- <button type="submit" class="btn btn-info message-btns">Message</button> -->
                                             </div>
                                         </div>
@@ -79,13 +79,13 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="heading-detail ">
-                                        <h4 class="mb-3">About me</h4>
-                                        <p>Hello I am Smith Bruklin a Gynaecologist in Sanjivni Hospital Surat. I love to work with all my hospital staff and seniour doctors.</p>
+                                        <h4 class="mb-3">Sobre mí</h4>
+                                        <!-- <p>Hello I am Smith Bruklin a Gynaecologist in Sanjivni Hospital Surat. I love to work with all my hospital staff and seniour doctors.</p> -->
                                     </div>
                                     <div class="about-me-list">
                                         <ul class="list-space">
                                             <li>
-                                                <h4>Gender</h4>
+                                                <h4>Género</h4>
                                                 <span *ngIf="doctor_selected.gender == 2">Femenino</span>
                                                 <span *ngIf="doctor_selected.gender == 1">Masculino</span>
                                             </li>
@@ -94,7 +94,7 @@
                                                 <span>{{doctor_selected.education}}</span>
                                             </li>
                                             <li>
-                                                <h4>Designation</h4>
+                                                <h4>Designación</h4>
                                                 <span>{{doctor_selected.designation}}</span>
                                             </li>
                                         </ul>
@@ -108,7 +108,7 @@
                                     <div class="about-me-list">
                                         <ul class="list-space">
                                             <li>
-                                                <h4>Birth Day</h4>
+                                                <h4>Nacimiento</h4>
                                                 <span>{{doctor_selected.birth_date}}</span>
                                             </li>
                                             <li>
@@ -140,10 +140,10 @@
                                     <div class="tab-content-set">
                                         <ul class="nav">
                                             <li>
-                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected == 1}" (click)="optionSelected(1)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-02.svg" alt=""></span>List Appointments </a>
+                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected == 1}" (click)="optionSelected(1)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-02.svg" alt=""></span>Citas Realizadas </a>
                                             </li>
                                             <li>
-                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected == 2}" (click)="optionSelected(2)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-16.svg" alt=""></span>Settings</a>
+                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected == 2}" (click)="optionSelected(2)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-16.svg" alt=""></span>Configuración</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -186,24 +186,24 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-heading">
-                                                            <h4>Account Setting</h4>
+                                                            <h4>Configuración de Cuenta</h4>
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-12">  
                                                         <div class="form-group local-forms">
-                                                            <label >Name </label>
+                                                            <label >Nombre </label>
                                                             <input class="form-control" type="text" name="name" [(ngModel)]="name" >
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-12">  
                                                         <div class="form-group local-forms">
-                                                            <label >Lastname </label>
+                                                            <label >Apellido </label>
                                                             <input class="form-control" type="text" name="surname" [(ngModel)]="surname" >
                                                         </div>
                                                     </div>
                                                     <div class="col-12 col-sm-12">  
                                                         <div class="form-group local-forms">
-                                                            <label >Mobile </label>
+                                                            <label >Teléfono móvil </label>
                                                             <input class="form-control" type="text" name="mobile" [(ngModel)]="mobile" >
                                                         </div>
                                                     </div>
@@ -215,25 +215,25 @@
                                                     </div>
                                                     <div class="col-12 col-sm-12">
                                                         <div class="form-group local-forms">
-                                                            <label>Address  <span class="login-danger">*</span></label>
+                                                            <label>Dirección  <span class="login-danger">*</span></label>
                                                             <textarea class="form-control" rows="3" cols="30" [(ngModel)]="address" name="address"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-heading">
-                                                        <h4>Security Setting</h4>
+                                                        <h4>Configuración de Seguridad</h4>
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12">
                                                     <div class="form-group local-forms">
-                                                        <label >New Password </label>
+                                                        <label >Nueva Contraseña </label>
                                                         <input class="form-control" type="password" name="password" [(ngModel)]="password" >
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-12">
                                                     <div class="form-group local-forms">
-                                                        <label >Confirm Password </label>
+                                                        <label >Confirme Contraseña </label>
                                                         <input class="form-control" type="password"  name="password_repeat" [(ngModel)]="password_repeat" >
                                                     </div>
                                                 </div>
@@ -274,7 +274,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title ">Appointemt Pendings</h4>
+                                    <h4 class="card-title ">Citas Pendientes</h4>
                                 </div>
                                 <div class="card-body p-0 table-dash">
                                     <div class="table-responsive scrooldiv2">
@@ -282,10 +282,10 @@
                                             <thead>
                                                 <tr>
                                                     
-                                                    <th mat-sort-header="date">Date</th>
-                                                    <th mat-sort-header="doctor">Patient</th>
+                                                    <th mat-sort-header="date">Fecha</th>
+                                                    <th mat-sort-header="doctor">Paciente</th>
                                                     <th mat-sort-header="status">Status</th>
-                                                    <th mat-sort-header="statuspayment">Status Payment</th>
+                                                    <th mat-sort-header="statuspayment">Status Pago</th>
                                                     <th mat-sort-header="charges">Monto ($)</th>
                                                     <th></th>
                                                 </tr>

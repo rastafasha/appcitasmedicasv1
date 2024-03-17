@@ -42,6 +42,7 @@ export class EditLaboratoryComponent {
   FILES:any = [];
   FilesAdded:any = [];
   name_laboratory:any;
+  antecedent_alerg:any;
 
   public file_selected:any;
   public doc:any;
@@ -78,6 +79,7 @@ export class EditLaboratoryComponent {
       this.phone = this.appointment_selected.patient.phone; 
       this.name_companion = this.appointment_selected.patient.name_companion;
       this.surname_companion = this.appointment_selected.patient.surname_companion;
+      this.antecedent_alerg = this.appointment_selected.patient.antecedent_alerg;
 
     });
     // cita medica

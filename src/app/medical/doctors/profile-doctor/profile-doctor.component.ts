@@ -4,6 +4,7 @@ import { DataService } from 'src/app/shared/data/data.service';
 import { routes } from 'src/app/shared/routes/routes';
 import { DoctorService } from '../service/doctor.service';
 import { ActivatedRoute } from '@angular/router';
+import { RolesService } from '../../roles/service/roles.service';
 
 @Component({
   selector: 'app-profile-doctor',
@@ -20,6 +21,7 @@ public num_appointment: number = 0;
 public money_of_appointments: number = 0;
 public num_appointment_pendings: number = 0;
 public doctor_selected: any;
+public user: any;
 public appointment_pendings: any =[];
 public appointments: any =[];
 name:string='';
@@ -37,6 +39,7 @@ public text_validation:string = '';
 constructor(
   public doctorService: DoctorService,
   public activatedRoute: ActivatedRoute,
+  public roleService: RolesService,
   )
 {
 }
@@ -49,6 +52,17 @@ ngOnInit(): void {
     this.doctor_id = resp.id;
   });
   this.getDoctor();
+  this.user = this.roleService.authService.user;
+}
+
+isPermission(permission:string){
+  if(this.user.roles.includes('SUPERADMIN')){
+    return true;
+  }
+  if(this.user.permissions.includes(permission)){
+    return true;
+  }
+  return false;
 }
 
 getDoctor(){

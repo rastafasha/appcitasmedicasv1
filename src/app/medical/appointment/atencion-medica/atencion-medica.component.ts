@@ -34,6 +34,7 @@ export class AtencionMedicaComponent {
   appointment_id:any;
   appointment_selected:any;
   appointment_atention_selected:any;
+  antecedent_alerg:any;
 
 
   constructor(
@@ -65,6 +66,7 @@ export class AtencionMedicaComponent {
       this.phone = this.appointment_selected.patient.phone; 
       this.name_companion = this.appointment_selected.patient.name_companion;
       this.surname_companion = this.appointment_selected.patient.surname_companion;
+      this.antecedent_alerg = this.appointment_selected.patient.antecedent_alerg;
 
     });
     // cita medica

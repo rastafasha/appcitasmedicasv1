@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a routerLink="/patients/list">Patients </a></li>
+                        <li class="breadcrumb-item"><a routerLink="/patients/list">Pacientes </a></li>
                         <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
-                        <li class="breadcrumb-item active">Patient Profile</li>
+                        <li class="breadcrumb-item active">Perfil de Paciente</li>
                     </ul>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="about-info mb-10">
-                                    <h4>Patients Profile </h4>
+                                    <h4>Perfil de Paciente </h4>
                                 </div>
                                 <div class="doctor-profile-head">
                                     <!-- <div class="profile-bg-img">
@@ -50,15 +50,15 @@
                                         <div class="col-lg-4 col-md-4 d-flex align-items-center">
                                             <div class="follow-group">
                                                 <div class="doctor-follows">
-                                                    <h5>Appointments</h5>
+                                                    <h5>Citas Médicas</h5>
                                                     <h4>{{num_appointment}}</h4>
                                                 </div>
                                                 <div class="doctor-follows">
-                                                    <h5>Money</h5>
+                                                    <h5>Inversion</h5>
                                                     <h4>{{money_of_appointments|currency}}</h4>
                                                 </div>
                                                 <div class="doctor-follows">
-                                                    <h5>Appointment Pending</h5>
+                                                    <h5>Citas Pendientes</h5>
                                                     <h4>{{num_appointment_pendings}}</h4>
                                                 </div>
                                             </div>
@@ -81,13 +81,13 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="heading-detail ">
-                                        <h4 class="mb-3">About me</h4>
+                                        <h4 class="mb-3">Sobre Mí</h4>
                                         <p>{{patient_selected.current_desease}}</p>
                                     </div>
                                     <div class="about-me-list">
                                         <ul class="list-space">
                                             <li>
-                                                <h4>Gender</h4>
+                                                <h4>Género</h4>
                                                 <span *ngIf="patient_selected.gender == 2">Femenino</span>
                                                 <span *ngIf="patient_selected.gender == 1">Masculino</span>
                                             </li>
@@ -231,10 +231,10 @@
                                     <div class="tab-content-set">
                                         <ul class="nav">
                                             <li>
-                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected == 1}" (click)="optionSelected(1)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-02.svg" alt=""></span>About me</a>
+                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected == 1}" (click)="optionSelected(1)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-02.svg" alt=""></span>Sobre Mi</a>
                                             </li>
                                             <li>
-                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected == 2}" (click)="optionSelected(2)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-16.svg" alt=""></span>List Appointments</a>
+                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected == 2}" (click)="optionSelected(2)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-16.svg" alt=""></span>Citas Atendidas</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -243,13 +243,13 @@
                                             <div class="row">
                                                 <div class="col-xl-3 col-md-6">
                                                     <div class="detail-personal">
-                                                        <h2>Full Name</h2>
+                                                        <h2>Nombre Completo</h2>
                                                         <h3>{{patient_selected.full_name}}</h3>
                                                     </div>
                                                 </div>
                                                 <div class="col-xl-3 col-md-6">
                                                     <div class="detail-personal">
-                                                        <h2>Mobile </h2>
+                                                        <h2>Teléfono móvil </h2>
                                                         <h3>{{patient_selected.phone}}</h3>
                                                     </div>
                                                 </div>
@@ -261,7 +261,7 @@
                                                 </div>
                                                 <div class="col-xl-3 col-md-6">
                                                     <div class="detail-personal">
-                                                        <h2>Direccion</h2>
+                                                        <h2>Dirección</h2>
                                                         <h3>{{patient_selected.address}}</h3>
                                                     </div>
                                                 </div>
@@ -312,7 +312,7 @@
                             </div>
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title ">Appointemt Pendings</h4>
+                                    <h4 class="card-title ">Citas Pendientes</h4>
                                 </div>
                                 <div class="card-body p-0 table-dash">
                                     <div class="table-responsive scrooldiv2">
@@ -323,7 +323,7 @@
                                                     <th mat-sort-header="date">Date</th>
                                                     <th mat-sort-header="doctor">Doctor</th>
                                                     <th mat-sort-header="status">Status</th>
-                                                    <th mat-sort-header="statuspayment">Status Payment</th>
+                                                    <th mat-sort-header="statuspayment">Status Pago</th>
                                                     <th mat-sort-header="charges">Monto ($)</th>
                                                     <th></th>
                                                 </tr>

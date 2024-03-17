@@ -117,9 +117,7 @@ export class LoginComponent implements OnInit {
       if(this.user.roles == 'SUPERADMIN' ){
         this.router.navigate([routes.adminDashboard]);
       }
-      if(this.user.roles == 'PATIENT' ){
-        this.router.navigate([routes.patientDashboard]);
-      }
+      
       if(this.user.roles == 'LABORATORIO' ){
         this.router.navigate([routes.laboratoryList]);
       }
@@ -138,9 +136,6 @@ export class LoginComponent implements OnInit {
       }
       if(this.user.roles == 'ENFERMERA' ){
         this.router.navigate([routes.doctorDashboard]);
-      }
-      if(this.user.roles == 'PATIENT' ){
-        this.router.navigate([routes.patientDashboard]);
       }
       if(this.user.roles == 'RECEPCIÓN' ){
         this.router.navigate([routes.adminDashboard]);

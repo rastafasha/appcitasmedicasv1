@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { DataService } from 'src/app/shared/data/data.service';
@@ -108,5 +108,32 @@ export class SidebarComponent {
   logout(){
     this.authService.logout();
   }
+
+
+
+
+//boton install pwa
+
+  public promptEvent;
+
+@HostListener('window:beforeinstallprompt', ['$event'])
+onbeforeinstallprompt(e) {
+  e.preventDefault();
+  this.promptEvent = e;
+}
+
+public installPWA() {
+  this.promptEvent.prompt();
+}
+
+public shouldInstall(): boolean {
+  return !this.isRunningStandalone() && this.promptEvent;
+}
+
+public isRunningStandalone(): boolean {
+  return (window.matchMedia('(display-mode: standalone)').matches);
+}
+
+  
 
 }
