@@ -6,6 +6,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { CalendarAppointmentService } from '../sevice/calendar-appointment.service';
 import { AppoitmentPayService } from '../../appointment-pay/service/appoitment-pay.service';
 import { DoctorService } from '../../doctors/service/doctor.service';
+import { RolesService } from '../../roles/service/roles.service';
 
 @Component({
   selector: 'app-appointment-calendar',
@@ -23,10 +24,13 @@ export class AppointmentCalendarComponent {
   public specialities:any = [];
   public speciality_id:number= 0;
 
+  public user:any;
+
   constructor(
     public calendarAppointmentService: CalendarAppointmentService,
     public appointmentpayService : AppoitmentPayService,
     public doctorService : DoctorService,
+    public roleService: RolesService,
     
     ) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -58,7 +62,19 @@ export class AppointmentCalendarComponent {
     this.doctorService.closeMenuSidebar();
     this.getSpecialities();
     this.getCalendar();
+    this.user = this.roleService.authService.user;
   }
+
+  isPermission(permission:string){
+    if(this.user.roles.includes('SUPERADMIN')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
+  }
+
 
   getSpecialities(){
     this.appointmentpayService.listConfig().subscribe((resp:any)=>{

@@ -7,6 +7,7 @@ import jspdf from 'jspdf';
 import { DoctorService } from '../../doctors/service/doctor.service';
 import { AppointmentService } from '../../appointment/service/appointment.service';
 import { LaboratoryService } from '../service/laboratory.service';
+import { RolesService } from '../../roles/service/roles.service';
 declare var $:any;
 @Component({
   selector: 'app-list-laboratory',
@@ -45,12 +46,14 @@ export class ListLaboratoryComponent {
   hours:any;
 
   confimation:any= null;
+  public user:any;
 
   constructor(
     public appointmentService: AppointmentService,
     public doctorService: DoctorService,
     public laboratoryService: LaboratoryService,
-    private fileSaver: FileSaverService
+    private fileSaver: FileSaverService,
+    public roleService: RolesService,
     ){
 
   }
@@ -59,12 +62,23 @@ export class ListLaboratoryComponent {
     this.doctorService.closeMenuSidebar();
     this.getTableData();
     this.getSpecialities();
+    this.user = this.roleService.authService.user;
   }
 
   getSpecialities(){
     this.appointmentService.listConfig().subscribe((resp:any)=>{
       this.specialities = resp.specialities;
     })
+  }
+
+  isPermission(permission:string){
+    if(this.user.roles.includes('SUPERADMIN')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
   }
 
   private getTableData(page=1): void {

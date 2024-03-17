@@ -6,6 +6,7 @@ import { FileSaverService } from 'ngx-filesaver';
 import { DoctorService } from '../../doctors/service/doctor.service';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
+import { RolesService } from '../../roles/service/roles.service';
 
 declare var $:any;  
 @Component({
@@ -37,10 +38,12 @@ export class ListPatientMComponent {
   public patient_id:any;
   public patient_selected:any;
   public text_validation:any;
+  public user:any;
 
   constructor(
     public patientService: PatientMService,
     public doctorService: DoctorService,
+    public roleService: RolesService,
     private fileSaver: FileSaverService
     ){
 
@@ -49,6 +52,17 @@ export class ListPatientMComponent {
     window.scrollTo(0, 0);
     this.doctorService.closeMenuSidebar();
     this.getTableData();
+    this.user = this.roleService.authService.user;
+  }
+
+  isPermission(permission:string){
+    if(this.user.roles.includes('SUPERADMIN')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
   }
 
   private getTableData(page=1): void {

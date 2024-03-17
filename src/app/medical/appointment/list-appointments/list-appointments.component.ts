@@ -6,6 +6,7 @@ import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
 import { DoctorService } from '../../doctors/service/doctor.service';
+import { RolesService } from '../../roles/service/roles.service';
 
 declare var $:any;
 @Component({
@@ -44,11 +45,13 @@ export class ListAppointmentsComponent {
   hours:any;
 
   confimation:any= null;
+  public user:any;
 
   constructor(
     public appointmentService: AppointmentService,
     public doctorService: DoctorService,
-    private fileSaver: FileSaverService
+    private fileSaver: FileSaverService,
+    public roleService: RolesService,
     ){
 
   }
@@ -57,7 +60,19 @@ export class ListAppointmentsComponent {
     this.doctorService.closeMenuSidebar();
     this.getTableData();
     this.getSpecialities();
+    this.user = this.roleService.authService.user;
   }
+
+  isPermission(permission:string){
+    if(this.user.roles.includes('SUPERADMIN')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
+  }
+
 
   getSpecialities(){
     this.appointmentService.listConfig().subscribe((resp:any)=>{
