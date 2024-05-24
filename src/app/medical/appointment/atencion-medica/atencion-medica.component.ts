@@ -35,6 +35,8 @@ export class AtencionMedicaComponent {
   appointment_selected:any;
   appointment_atention_selected:any;
   antecedent_alerg:any;
+  user:any;
+  roles:any;
 
 
   constructor(
@@ -48,6 +50,11 @@ export class AtencionMedicaComponent {
   ngOnInit(): void {
     
     window.scrollTo(0, 0);
+    let USER = localStorage.getItem("user");
+    this.user = JSON.parse(USER ? USER: '');
+    // this.doctor_id = this.user.id;
+    this.roles = this.user.roles[0];
+
     this.ativatedRoute.params.subscribe((resp:any)=>{
       this.appointment_id = resp.id;
       console.log(this.appointment_id);

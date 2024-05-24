@@ -247,7 +247,8 @@
             <div class="col-12 col-lg-12 col-xl-5 d-flex">
                 <div class="card flex-fill comman-shadow">
                     <div class="card-header">
-                        <h4 class="card-title d-inline-block">Citas Recientes</h4> <a [routerLink]="routes.appointmentList" class="patient-views float-end">Show all</a>
+                        <!-- <h4 class="card-title d-inline-block">Citas Recientes</h4> <a [routerLink]="routes.appointmentList" class="patient-views float-end">Show all</a> -->
+                        <h4 class="card-title d-inline-block">Citas Recientes</h4> <a [routerLink]="['/appointments/list/doctor/', doctor_id]" class="patient-views float-end">Mostrar Todo</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive scrooldiv2">
