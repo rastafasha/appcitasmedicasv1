@@ -27,6 +27,7 @@ export class ListAppoimentPayComponent {
   public appointmentList: any = [];
   dataSource!: MatTableDataSource<any>;
 
+  public isLoading = false;
   public showFilter = false;
   public lastIndex = 0;
   public pageSize = 10;
@@ -82,11 +83,12 @@ export class ListAppoimentPayComponent {
   private getTableData(page=1): void {
     this.appointmentList = [];
     this.serialNumberArray = [];
-
+    this.isLoading = true;
     this.appointmentpayService.listAppointmentPays(page, this.searchDataDoctor, this.searchDataValue, 
       this.speciality_id, this.date_start,this.date_end).subscribe((resp:any)=>{
       // console.log(resp);
-
+        this.isLoading = false;
+        
       this.totalDataPatient = resp.total;
       this.appointmentList = resp.appointmentpays.data;
       // this.getTableDataGeneral();

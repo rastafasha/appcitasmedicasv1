@@ -22,6 +22,7 @@ export class ListLaboratoryComponent {
   public appointmentList: any = [];
   dataSource!: MatTableDataSource<any>;
 
+  public isLoading = false;
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
@@ -85,10 +86,10 @@ export class ListLaboratoryComponent {
   private getTableData(page=1): void {
     this.appointmentList = [];
     this.serialNumberArray = [];
-
+    this.isLoading = true;
     this.laboratoryService.listAppointments(page, this.searchDataValue, this.speciality_id, this.date).subscribe((resp:any)=>{
       // console.log(resp);
-
+      this.isLoading = false;
       this.totalDataPatient = resp.total;
       this.appointmentList = resp.appointments.data;
       this.appointment_id = resp.appointments.id;

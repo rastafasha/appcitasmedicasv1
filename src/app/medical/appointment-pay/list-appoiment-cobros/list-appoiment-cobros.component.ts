@@ -4,7 +4,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { FileSaverService } from 'ngx-filesaver';
 import { routes } from 'src/app/shared/routes/routes';
 import { DoctorService } from '../../doctors/service/doctor.service';
-import { PatientMService } from '../../patient-m/service/patient-m.service';
 import { PaymentService } from '../service/payment.service';
 import Swal from 'sweetalert2';
 
@@ -22,6 +21,7 @@ export class ListAppoimentCobrosComponent {
   public payments: any ;
   dataSource!: MatTableDataSource<any>;
 
+  public isLoading = false;
   public showFilter = false;
   public searchDataValue = '';
   public searchReferencia = '';
@@ -57,8 +57,9 @@ export class ListAppoimentCobrosComponent {
   private getTableData(page=1): void {
     this.paymentList = [];
     this.serialNumberArray = [];
-
+    this.isLoading = true;
     this.paymentService.getAll(page, this.searchReferencia).subscribe((resp:any)=>{
+      this.isLoading = false;
       // console.log(resp.payments.data);
       this.paymentList = resp.payments.data;
 

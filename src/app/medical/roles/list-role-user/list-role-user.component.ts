@@ -19,6 +19,7 @@ export class ListRoleUserComponent {
   public rolesList: any = [];
   dataSource!: MatTableDataSource<any>;
 
+  public isLoading = false;
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
@@ -53,8 +54,9 @@ export class ListRoleUserComponent {
   private getTableData(): void {
     this.rolesList = [];
     this.serialNumberArray = [];
-
+    this.isLoading = true;
     this.rolesService.listRoles().subscribe((resp:any)=>{
+      this.isLoading = false;
       
       // console.log(resp);
 
@@ -95,7 +97,7 @@ export class ListRoleUserComponent {
         this.text_validation = resp.message_text;
       }else{
 
-        let INDEX = this.rolesList.findIndex((item:any)=> item.id == this.role_selected.id);
+        const INDEX = this.rolesList.findIndex((item:any)=> item.id == this.role_selected.id);
       if(INDEX !=-1){
         this.rolesList.splice(INDEX,1);
 

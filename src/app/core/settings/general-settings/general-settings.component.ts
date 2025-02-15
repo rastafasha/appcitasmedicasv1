@@ -13,6 +13,7 @@ interface data {
 })
 export class GeneralSettingsComponent {
   public routes = routes;
+  public isLoading = false;
   public deleteIcon1 = true;
   public deleteIcon2  = true;
   public selectedValue! : string ;
@@ -63,8 +64,10 @@ export class GeneralSettingsComponent {
   }
 
   getSettings(){
+    this.isLoading = true;
     this.settingService.getAllSettings().subscribe((resp:any)=>{
-      console.log(resp);
+      // console.log(resp);
+      this.isLoading  = false;
       this.settings= resp.settings.data;
       this.setting_selectedId= resp.settings.data[0].id;
     })
@@ -120,27 +123,66 @@ save(){
   }
 
   if(this.setting_selectedId){
+
     this.settingService.updateSetting(formData, this.setting_selectedId).subscribe((resp:any)=>{
-      console.log(resp);
-      Swal.fire('Actualizado', `Informacion Actualizada!`, 'success');
-        this.ngOnInit();
+      // console.log(resp);
         // location.reload();
+
+        if(resp.message == 403){
+                // Swal.fire('Actualizado', this.text_validation, 'success');
+                this.text_validation = resp.message_text;
+                Swal.fire({
+                  position: "top-end",
+                        icon: "warning",
+                        title: this.text_validation,
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                    }else{
+                      // Swal.fire('Actualizado', this.text_success, 'success' );
+                        this.text_success = 'Informacíon actualizada'
+                      // this.text_success = 'actualizado correctamente';
+                      Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: this.text_success,
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                      this.ngOnInit();
+                  }
     })
+
   }else{
     this.settingService.createSetting(formData).subscribe((resp:any)=>{
-      // console.log(resp);
-      this.getSettings();
-       this.name= '';
-       this.address= '';
-       this.phone= '';
-       this.city= '';
-      this.state= '';
-      this.zip= '';
-       this.country = '';
-       this.ngOnInit();
-      //  location.reload();
+
+      if(resp.message == 403){
+        // Swal.fire('Actualizado', this.text_validation, 'success');
+        this.text_validation = resp.message_text;
+        Swal.fire({
+          position: "top-end",
+                icon: "warning",
+                title: this.text_validation,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }else{
+              // Swal.fire('Actualizado', this.text_success, 'success' );
+                this.text_success = 'Informacíon actualizada'
+              // this.text_success = 'actualizado correctamente';
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: this.text_success,
+                showConfirmButton: false,
+                timer: 1500
+              });
+              this.ngOnInit();
+              this.getSettings();
+          }
     })
   }
+  
 
   
 }

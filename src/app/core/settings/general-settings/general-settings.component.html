@@ -16,8 +16,10 @@
             </div>
         </div>
         <!-- /Page Header -->
+        <app-skeleton-loader *ngIf="isLoading" [rows]="2" [columns]="2"></app-skeleton-loader>
+        
 
-        <div class="settings-menu-links">
+        <div class="settings-menu-links" *ngIf="!isLoading">
             <ul class="nav nav-tabs menu-tabs">
                 <li class="nav-item active">
                     <a class="nav-link" [routerLink]="routes.settings">Configuración General</a>
@@ -52,7 +54,7 @@
             </ul>
         </div>
         
-        <div class="row">
+        <div class="row" *ngIf="!isLoading">
             
             <div class="col-xs-12 col-sm-6 ">
                 <div class="card">
