@@ -11,6 +11,7 @@
                         <li class="breadcrumb-item active"> Especilidad Lista</li>
                     </ul>
                 </div>
+                <app-back-bottn></app-back-bottn>
             </div>
         </div>
         <!-- /Page Header -->
@@ -69,7 +70,7 @@
                                         <td>{{data.price}}</td>
                                         <td>
                                           <button [ngClass]="{'status-green' : data.state === 1, 'status-pink' : data.state === 2}" class="custom-badge">
-                                            {{data.state == 1 ? 'Activo' : 'Inactivo' }}
+                                            {{data.state === 1 ? 'Activo' : 'Inactivo' }}
                                           </button>
                                         </td>
                                         <td>{{data.created_at}}</td>

@@ -17,25 +17,25 @@ export class GeneralSettingsComponent {
   public deleteIcon2  = true;
   public selectedValue! : string ;
 
-  public name: any;
-  public address: any;
+  public name: string;
+  public address: string;
   public phone: any;
-  public city: any;
-  public state: any;
-  public zip: any;
-  public country: any;
-  public setting: any;
-  public settings: any;
-  public setting_selectedId: any;
+  public city: string;
+  public state: string;
+  public zip: string;
+  public country: string;
+  public setting: string;
+  public settings: string;
+  public setting_selectedId: number;
 
   public FILE_AVATAR:any;
   public IMAGE_PREVISUALIZA:any = 'assets/img/user-06.jpg';
 
-  valid_form:boolean = false;
-  valid_form_success:boolean = false;
+  valid_form = false;
+  valid_form_success = false;
 
-  public text_success:string = '';
-  public text_validation:string = '';
+  public text_success = '';
+  public text_validation = '';
 
   constructor(
     public settingService: SettignService,
@@ -77,7 +77,7 @@ loadFile($event:any){
   }
   this.text_validation = '';
   this.FILE_AVATAR = $event.target.files[0];
-  let reader = new FileReader();
+  const reader = new FileReader();
   reader.readAsDataURL(this.FILE_AVATAR);
   reader.onloadend = ()=> this.IMAGE_PREVISUALIZA = reader.result;
 }
@@ -95,7 +95,7 @@ save(){
   //   country: this.country
   // }
 
-  let formData = new FormData();
+  const formData = new FormData();
 
   if(this.name){
     formData.append('name', this.name);
@@ -145,7 +145,7 @@ save(){
   
 }
 
-deleteTipoPago(setting:any){debugger
+deleteTipoPago(setting:any){
 
   this.settingService.deleteSetting(setting.id).subscribe(
     (resp:any) =>{

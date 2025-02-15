@@ -11,6 +11,7 @@
                         <li class="breadcrumb-item active">Edit/ Add: Laboratory </li>
                     </ul>
                 </div>
+                <app-back-bottn></app-back-bottn>
             </div>
         </div>
         <!-- /Page Header -->
@@ -69,7 +70,7 @@
                                         <div _ngcontent-rhp-c92="" class="card-header d-flex justify-content-between align-items-center">
                                             <h5 _ngcontent-rhp-c92="" class="card-title">Laboratorio?</h5>
                                             <div _ngcontent-rhp-c92="" class="status-toggle d-flex justify-content-between align-items-center">
-                                                <input _ngcontent-rhp-c92="" type="checkbox" id="laboratory" disabled  class="check" name="laboratory" [checked]="laboratory == true" [ngModelOptions]="{standalone: true}" [(ngModel)]="laboratory">
+                                                <input _ngcontent-rhp-c92="" type="checkbox" id="laboratory" disabled  class="check" name="laboratory" [checked]="laboratory === true" [ngModelOptions]="{standalone: true}" [(ngModel)]="laboratory">
                                                 <label _ngcontent-rhp-c92="" for="laboratory" class="checktoggle" value="true">checkbox</label>
                                             </div>
                                         </div>
@@ -262,11 +263,18 @@
                                                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
+                                                                        <a href="javascript:void(0);"  class="btn btn-white me-1" data-bs-dismiss="modal">Cerrar</a>
                                                                         <h5 class="modal-title" id="exampleModalLabel">{{FILE.name_file}}</h5>
-                                                                        <a href="javascript:void(0);" (click)="closeReload()" class="btn btn-white me-1" data-bs-dismiss="modal">Close</a>
                                                                       </div>
+
                                                                     <div class="modal-body text-center">
-                                                                        <embed [src]="getDocumentIframe(FILE.file)"  class="pdf-content"/>
+                                                                        <!-- *ngIf="FILE.type === 'png' || FILE.type === 'jpg'" -->
+                                                                        <span >
+                                                                            <img [src]="FILE.file" style="width: 100%;" alt="">
+                                                                        </span>
+                                                                        <!-- <span *ngIf="file_selected.type === 'pdf'">
+                                                                            <embed [src]="getDocumentIframe(FILE.file)"  class="pdf-content"/>
+                                                                        </span> -->
                                                                         
                                                                     </div>
                                                                 </div>

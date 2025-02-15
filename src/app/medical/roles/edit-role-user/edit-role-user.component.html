@@ -10,6 +10,7 @@
                         <li class="breadcrumb-item active">Editar {{name}}</li>
                     </ul>
                 </div>
+                <app-back-bottn></app-back-bottn>
             </div>
         </div>
         <!-- /Page Header -->
@@ -91,7 +92,7 @@
                                                     </ng-container>
                                                     
                                                 </div> 
-                                                <div class="" *ngIf="side.subMenus && side.subMenus.length == 0">
+                                                <div class="" *ngIf="side.subMenus && side.subMenus.length === 0">
                                                     <div class="checkbox">
                                                         <label>
                                                             <input type="checkbox" [checked]="permissions.includes(side.permision)" name="checkbox" (click)="addPermission(side)">{{side.menuValue}} 

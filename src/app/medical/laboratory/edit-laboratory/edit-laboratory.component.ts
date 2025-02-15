@@ -5,7 +5,7 @@ import { AppointmentService } from '../../appointment/service/appointment.servic
 import Swal from 'sweetalert2';
 import { LaboratoryService } from '../service/laboratory.service';
 import { DomSanitizer } from '@angular/platform-browser';
-declare var $:any;  
+declare let $:any;  
 @Component({
   selector: 'app-edit-laboratory',
   templateUrl: './edit-laboratory.component.html',
@@ -15,20 +15,20 @@ export class EditLaboratoryComponent {
 
   public routes = routes;
 
-  valid_form_success: boolean = false;
-  public text_validation:string = '';
-  public text_success:string = '';
+  valid_form_success = false;
+  public text_validation = '';
+  public text_success = '';
 
   
-  name:string = '';
-  surname:string = '';
-  n_doc:number = 0;
-  phone:string = '';
-  name_companion:string = '';
-  surname_companion:string = '';
+  name = '';
+  surname = '';
+  n_doc = 0;
+  phone = '';
+  name_companion = '';
+  surname_companion = '';
 
-  laboratory:boolean = false;
-  laboratory_number:number = 1;
+  laboratory = false;
+  laboratory_number = 1;
 
   public medical:any = [];
   description:any;
@@ -136,12 +136,14 @@ export class EditLaboratoryComponent {
   }
 
   getDocumentIframe(url) {
-    var document, results;
+    let document, results;
 
     if (url === null) {
         return '';
     }
+    // eslint-disable-next-line prefer-const
     results = url.match('[\\?&]v=([^&#]*)');
+    // eslint-disable-next-line prefer-const
     document   = (results === null) ? url : results[1];
 
     return this._sanitizer.bypassSecurityTrustResourceUrl(document);
@@ -181,7 +183,7 @@ closeModalDoc(){
 
     
 
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('appointment_id', this.appointment_id);
 
     this.FILES.forEach((file:any, index:number)=>{
