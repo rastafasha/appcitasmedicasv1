@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
 import { AppointmentService } from '../service/appointment.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-atencion-medica',
@@ -10,21 +11,24 @@ import { AppointmentService } from '../service/appointment.service';
 })
 export class AtencionMedicaComponent {
   public routes = routes;
+  isLoading = false;
 
-  valid_form_success: boolean = false;
-  public text_validation:string = '';
-  public text_success:string = '';
+  valid_form_success = false;
+  public text_validation = '';
+  public text_success = '';
 
   
-  name:string = '';
-  surname:string = '';
-  n_doc:number = 0;
-  phone:string = '';
-  name_companion:string = '';
-  surname_companion:string = '';
 
-  laboratory:boolean = false;
-  laboratory_number:number = 1;
+  
+  name = '';
+  surname = '';
+  n_doc = 0;
+  phone = '';
+  name_companion = '';
+  surname_companion = '';
+
+  laboratory = false;
+  laboratory_number = 1;
 
   public medical:any = [];
   description:any;
@@ -50,7 +54,7 @@ export class AtencionMedicaComponent {
   ngOnInit(): void {
     
     window.scrollTo(0, 0);
-    let USER = localStorage.getItem("user");
+    const USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
     // this.doctor_id = this.user.id;
     this.roles = this.user.roles[0];
@@ -124,7 +128,7 @@ export class AtencionMedicaComponent {
       this.laboratory_number = 1
     }
 
-    let data ={
+    const data ={
       appointment_id: this.appointment_id,
       description: this.description,
       medical: this.medical,
@@ -134,7 +138,30 @@ export class AtencionMedicaComponent {
 
     this.appointmentService.registerAttention(data).subscribe((resp:any)=>{
       // console.log(resp);
-      this.text_success = 'Se guardó la informacion de la cita médica'
+      // Swal.fire('Actualizado', this.text_success, 'success');
+      if(resp.message == 403){
+                    // Swal.fire('Actualizado', this.text_validation, 'success');
+                    this.text_validation = resp.message_text;
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "warning",
+                      title: this.text_validation,
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                  }else{
+                    // Swal.fire('Actualizado', this.text_success, 'success' );
+                    // this.text_success = 'La Cita medica se ha creado, favor espere la verificacion de  el pago';
+                    this.text_success = 'Se guardó la informacion de la cita médica'
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: this.text_success,
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                    this.router.navigate(['/appointments/list']);
+                }
     })
 
   }

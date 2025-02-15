@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
 import { AppointmentService } from '../service/appointment.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-appointments',
@@ -12,9 +13,9 @@ export class EditAppointmentsComponent {
   public routes = routes;
   public selectedValue!: string;
 
-  valid_form_success: boolean = false;
-  public text_validation:string = '';
-  public text_success:string = '';
+  valid_form_success = false;
+  public text_validation = '';
+  public text_success = '';
 
   hours:any;
   hour:any;
@@ -22,16 +23,16 @@ export class EditAppointmentsComponent {
   speciality_id:any;
   date_appointment:any;
   
-  name:string = '';
-  surname:string = '';
-  n_doc:number = 0;
-  phone:string = '';
-  name_companion:string = '';
-  surname_companion:string = '';
+  name = '';
+  surname = '';
+  n_doc = 0;
+  phone = '';
+  name_companion = '';
+  surname_companion = '';
   
-  amount:number = 0;
-  amount_add:number = 0;
-  method_payment:string = '';
+  amount = 0;
+  amount_add = 0;
+  method_payment = '';
 
   DOCTORS:any = [];
   DOCTOR:any = [];
@@ -89,7 +90,7 @@ export class EditAppointmentsComponent {
   }
   
   filtro(){
-    let data = {
+    const data = {
       date_appointment:this.date_appointment,
       hour:this.hour,
       speciality_id:this.speciality_id
@@ -100,7 +101,7 @@ export class EditAppointmentsComponent {
 
       this.DOCTORS.forEach((doctor:any) => {
         if(doctor.doctor.id == this.appointment_selected.doctor_id){
-          let INDEX = doctor.segments.findIndex((item:any)=> item.id == this.appointment_selected.doctor_schedule_join_hour_id);
+          const INDEX = doctor.segments.findIndex((item:any)=> item.id == this.appointment_selected.doctor_schedule_join_hour_id);
           if(INDEX != -1){
             this.showSegment(doctor);
           }
@@ -185,7 +186,7 @@ export class EditAppointmentsComponent {
 
     // || !this.selected_segment_hour 
 
-    let data ={
+    const data ={
       "doctor_id": this.DOCTOR_SELECTED.doctor.id,
         "date_appointment": this.date_appointment,
         "speciality_id": this.speciality_id,
@@ -195,13 +196,30 @@ export class EditAppointmentsComponent {
 
     this.appointmentService.editAppointment(data, this.appointment_id).subscribe((resp:any)=>{
       // console.log(resp);
-      if(resp.message == 403){
-        this.text_validation = resp.message_text;
-      }else{
-        this.text_success = "La Cita medica se ha actualizado";
-        this.ngOnInit();
 
-      }
+      if(resp.message == 403){
+              // Swal.fire('Actualizado', this.text_validation, 'success');
+              this.text_validation = resp.message_text;
+              Swal.fire({
+                position: "top-end",
+                icon: "warning",
+                title: this.text_validation,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }else{
+              // Swal.fire('Actualizado', this.text_success, 'success' );
+              this.text_success = "La Cita medica se ha actualizado";
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: this.text_success,
+                showConfirmButton: false,
+                timer: 1500
+              });
+              this.ngOnInit();
+              }
+     
     })
   }
 }

@@ -6,6 +6,7 @@ import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
 import { DoctorService } from '../../doctors/service/doctor.service';
+import Swal from 'sweetalert2';
 
 declare var $:any;
 
@@ -45,18 +46,18 @@ export class ListAppoimentPayComponent {
 
   public payment_selected:any;
 
-  public speciality_id:number= 0;
+  public speciality_id= 0;
   public specialities:any = [];
   
   public picker1:any;
   public picker2:any;
   public date_start:any;
   public date_end:any;
-  public method_payment:string = '';
-  public amount_add:number = 0;
+  public method_payment = '';
+  public amount_add = 0;
 
-  public text_success:string = '';
-  public text_validation:string = '';
+  public text_success = '';
+  public text_validation = '';
 
   constructor(
     public appointmentpayService : AppoitmentPayService,
@@ -102,7 +103,7 @@ export class ListAppoimentPayComponent {
       this.text_validation = "Se Requiere todos los campos"
       return;
     }
-    let dataD ={
+    const dataD ={
       appointment_id: data.id,
       appointment_total: data.amount,
       amount: this.amount_add,
@@ -111,11 +112,13 @@ export class ListAppoimentPayComponent {
     this.appointmentpayService.storeAppointmentPay(dataD).subscribe((resp:any)=>{
       if(resp.message == 403){
         this.text_validation = resp.message_text;
+        Swal.fire('Actualizado', this.text_validation, 'warning');
       }else{
+        Swal.fire('Actualizado', this.text_success, 'success');
         this.text_success = "El Pago se registró correctamente";
         data.payment.push(resp.appoimentpay);
 
-        let INDEX = this.appointmentList.findIndex((appo:any)=>appo.id == data.id);
+        const INDEX = this.appointmentList.findIndex((appo:any)=>appo.id == data.id);
         if(INDEX != -1){
           this.appointmentList[INDEX].status_pay = !resp.appoimentpay.is_total_payment ? 2: 1;
         }
@@ -159,7 +162,7 @@ export class ListAppoimentPayComponent {
       this.text_validation = "Se Requiere todos los campos"
       return;
     }
-    let dataD ={
+    const dataD ={
       appointment_id: data.id,
       appointment_total: data.amount,
       amount: this.amount_add,
@@ -170,11 +173,11 @@ export class ListAppoimentPayComponent {
         this.text_validation = resp.message_text;
       }else{
         this.text_success = "El Pago se Actualizó correctamente";
-        let index = data.payments.findIndex((pay:any)=>pay.id == resp.appoimentpay.id);
+        const index = data.payments.findIndex((pay:any)=>pay.id == resp.appoimentpay.id);
         if(index != -1){
           data.payment[index] = resp.appoimentpay;
         }
-        let INDEX = this.appointmentList.findIndex((appo:any)=>appo.id == data.id);
+        const INDEX = this.appointmentList.findIndex((appo:any)=>appo.id == data.id);
         if(INDEX != -1){
           this.appointmentList[INDEX].status_pay = !resp.appoimentpay.is_total_payment ? 2: 1;
         }
@@ -203,9 +206,9 @@ export class ListAppoimentPayComponent {
         this.text_validation = resp.message_text;
       }else{
 
-        let INDEX = data.payments.findIndex((item:any)=> item.id == this.payment_selected.id);
+        const INDEX = data.payments.findIndex((item:any)=> item.id == this.payment_selected.id);
 
-        let INDEX2 = this.appointmentList.findIndex((appo:any)=>appo.id == data.id);
+        const INDEX2 = this.appointmentList.findIndex((appo:any)=>appo.id == data.id);
         if(INDEX2 != -1){
           this.appointmentList[INDEX2].status_pay = 2;
         }

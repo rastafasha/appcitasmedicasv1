@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class LoaderAnimComponent {
 
-  // public cargando: boolean = true;
+  public isLoading = true;
+  public cargando = true;
 
 }

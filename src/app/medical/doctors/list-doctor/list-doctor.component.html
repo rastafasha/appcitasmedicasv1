@@ -16,7 +16,9 @@
         </div>
         <!-- /Page Header -->
         
-        <div class="row">
+        <app-skeleton-loader *ngIf="isLoading" [rows]="5" [columns]="4"></app-skeleton-loader>
+        
+        <div class="row"*ngIf="!isLoading" >
             <div class="col-sm-12">
             
                 <div class="card card-table show-entire">

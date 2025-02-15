@@ -21,6 +21,7 @@ export class ListDoctorComponent {
   public doctorList: any = [];
   dataSource!: MatTableDataSource<any>;
 
+  public isLoading = false;
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
@@ -68,9 +69,9 @@ export class ListDoctorComponent {
   private getTableData(): void {
     this.doctorList = [];
     this.serialNumberArray = [];
-
+    this.isLoading = true;
     this.doctorService.listDoctors().subscribe((resp:any)=>{
-      
+      this.isLoading = false;
       // console.log(resp);
 
       this.totalDatadoctor = resp.users.data.length;
@@ -86,6 +87,7 @@ export class ListDoctorComponent {
     this.serialNumberArray = [];
     
     this.doctor_generals.map((res: any, index: number) => {
+      
       const serialNumber = index + 1;
       if (index >= this.skip && serialNumber <= this.limit) {
        
@@ -108,7 +110,7 @@ export class ListDoctorComponent {
         this.text_validation = resp.message_text;
       }else{
 
-        let INDEX = this.doctorList.findIndex((item:any)=> item.id == this.doctor_selected.id);
+        const INDEX = this.doctorList.findIndex((item:any)=> item.id == this.doctor_selected.id);
       if(INDEX !=-1){
         this.doctorList.splice(INDEX,1);
 

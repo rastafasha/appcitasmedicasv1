@@ -6,6 +6,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import { DoctorService } from '../../doctors/service/doctor.service';
 import { PatientMService } from '../../patient-m/service/patient-m.service';
 import { PaymentService } from '../service/payment.service';
+import Swal from 'sweetalert2';
 
 declare var $:any;  
 @Component({
@@ -261,13 +262,14 @@ export class ListAppoimentCobrosComponent {
   }
 
   cambiarStatus(data:any){
-    let VALUE = data.status;
+    const VALUE = data.status;
     console.log(VALUE);
     
     this.paymentService.updateStatus(data, data.id).subscribe(
       resp =>{
+
         console.log(resp);
-        // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
+        Swal.fire('Actualizado', `actualizado correctamente`, 'success');
         // this.toaster.open({
         //   text:'Producto Actualizado!',
         //   caption:'Mensaje de Validación',

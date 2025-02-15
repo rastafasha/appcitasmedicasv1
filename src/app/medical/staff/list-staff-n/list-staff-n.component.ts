@@ -22,6 +22,7 @@ export class ListStaffNComponent {
   public staffList: any = [];
   dataSource!: MatTableDataSource<any>;
 
+  public isLoading = false;
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
@@ -58,8 +59,9 @@ export class ListStaffNComponent {
     this.staffList = [];
     this.serialNumberArray = [];
 
+    this.isLoading = true;
     this.staffService.listUsers().subscribe((resp:any)=>{
-      
+      this.isLoading = false;
       // console.log(resp);
 
       this.totalDataStaff = resp.users.data.length;
@@ -98,7 +100,7 @@ export class ListStaffNComponent {
         this.text_validation = resp.message_text;
       }else{
 
-        let INDEX = this.staffList.findIndex((item:any)=> item.id == this.staff_selected.id);
+        const INDEX = this.staffList.findIndex((item:any)=> item.id == this.staff_selected.id);
       if(INDEX !=-1){
         this.staffList.splice(INDEX,1);
 

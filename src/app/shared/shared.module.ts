@@ -17,12 +17,16 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../common-component/header/header.component';
 import { SidebarComponent } from '../common-component/sidebar/sidebar.component';
 import { BackButtnComponent } from '../reusables/backButtn/backButtn.component';
+import { SkeletonLoaderComponent } from '../reusables/skeleton-loader/skeleton-loader.component';
+import { LoaderAnimComponent } from '../reusables/loader-anim/loader-anim.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    BackButtnComponent
+    BackButtnComponent,
+    SkeletonLoaderComponent,
+    LoaderAnimComponent
   ],
   imports: [
     CommonModule,
@@ -73,7 +77,9 @@ import { BackButtnComponent } from '../reusables/backButtn/backButtn.component';
     RouterModule,
     HeaderComponent,
     SidebarComponent,
-    BackButtnComponent
+    BackButtnComponent,
+    SkeletonLoaderComponent,
+    LoaderAnimComponent
   ],
   providers: [
     DataService,

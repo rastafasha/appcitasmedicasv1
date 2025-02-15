@@ -20,6 +20,9 @@ export class ListPatientMComponent {
   public patientList: any = [];
   dataSource!: MatTableDataSource<any>;
 
+  public isLoading = false;
+  public cargando = false;
+
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
@@ -68,8 +71,9 @@ export class ListPatientMComponent {
   private getTableData(page=1): void {
     this.patientList = [];
     this.serialNumberArray = [];
-
+    this.isLoading = true;
     this.patientService.listPatients(page, this.searchDataValue).subscribe((resp:any)=>{
+      this.isLoading = false;
       // console.log(resp);
 
       this.totalDataPatient = resp.total;
@@ -108,7 +112,7 @@ export class ListPatientMComponent {
         this.text_validation = resp.message_text;
       }else{
 
-        let INDEX = this.patientList.findIndex((item:any)=> item.id == this.patient_selected.id);
+        const INDEX = this.patientList.findIndex((item:any)=> item.id == this.patient_selected.id);
       if(INDEX !=-1){
         this.patientList.splice(INDEX,1);
 

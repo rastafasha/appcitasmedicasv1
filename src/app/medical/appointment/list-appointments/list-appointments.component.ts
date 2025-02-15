@@ -7,6 +7,7 @@ import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
 import { DoctorService } from '../../doctors/service/doctor.service';
 import { RolesService } from '../../roles/service/roles.service';
+import Swal from 'sweetalert2';
 
 declare var $:any;
 @Component({
@@ -16,6 +17,9 @@ declare var $:any;
 })
 export class ListAppointmentsComponent {
   public routes = routes;
+
+  public isLoading = false;
+  public cargando = false;
 
   public appointmentList: any = [];
   dataSource!: MatTableDataSource<any>;
@@ -39,7 +43,7 @@ export class ListAppointmentsComponent {
   public appointment:any;
   public appointment_selected:any;
   public text_validation:any;
-  public speciality_id:number= 0;
+  public speciality_id= 0;
   public date = null;
   specialities:any = [];
   hours:any;
@@ -58,7 +62,9 @@ export class ListAppointmentsComponent {
   ngOnInit() {
     window.scrollTo(0, 0);
     this.doctorService.closeMenuSidebar();
+    this.isLoading = true;
     this.getTableData();
+    
     this.getSpecialities();
     this.user = this.roleService.authService.user;
   }
@@ -84,8 +90,12 @@ export class ListAppointmentsComponent {
     this.appointmentList = [];
     this.serialNumberArray = [];
 
+    this.isLoading = true;
+    
+
     this.appointmentService.listAppointments(page, this.searchDataValue, this.speciality_id, this.date).subscribe((resp:any)=>{
       // console.log(resp);
+      this.isLoading = false;
 
       this.totalDataPatient = resp.total;
       this.appointmentList = resp.appointments.data;
@@ -123,7 +133,7 @@ export class ListAppointmentsComponent {
         this.text_validation = resp.message_text;
       }else{
 
-        let INDEX = this.appointmentList.findIndex((item:any)=> item.id == this.appointment_selected.id);
+        const INDEX = this.appointmentList.findIndex((item:any)=> item.id == this.appointment_selected.id);
       if(INDEX !=-1){
         this.appointmentList.splice(INDEX,1);
 
@@ -314,20 +324,36 @@ export class ListAppointmentsComponent {
   }
 
   cambiarStatus(data:any){
-    let VALUE = data.confimation;
+    const VALUE = data.confimation;
     console.log(VALUE);
-    
-    this.appointmentService.updateConfirmation(data, data.id).subscribe(
-      resp =>{
-        console.log(resp);
-        // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
-        // this.toaster.open({
-        //   text:'Producto Actualizado!',
-        //   caption:'Mensaje de Validación',
-        //   type:'success',
-        // })
+    this.cargando = true;
+    this.appointmentService.updateConfirmation(data, data.id).subscribe((resp:any)=>{
+      this.cargando = false;
+      if(resp.message == 403){
+        // Swal.fire('Actualizado', this.text_validation, 'success');
+        this.text_validation = resp.message_text;
+        Swal.fire({
+          position: "top-end",
+          icon: "warning",
+          title: this.text_validation,
+          showConfirmButton: false,
+          timer: 1500
+        });
+      }else{
+        // Swal.fire('Actualizado', this.text_success, 'success' );
+        // this.text_success = 'actualizado correctamente';
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "actualizado correctamente",
+          showConfirmButton: false,
+          timer: 1500
+        });
         this.getTableData();
+    }
+      
       }
+       
     )
   }
 

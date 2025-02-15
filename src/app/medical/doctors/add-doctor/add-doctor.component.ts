@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
 import { StaffService } from '../../staff/service/staff.service';
 import { DoctorService } from '../service/doctor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-doctor',
@@ -14,27 +15,27 @@ export class AddDoctorComponent {
   public selectedValue!: string;
   public selectedValueLocation!: string;
 
-  public name: string = '';
-  public surname: string = '';
+  public name = '';
+  public surname = '';
   public mobile: any;
-  public email: string = '';
-  public password: string = '';
-  public password_confirmation: string = '';
-  public birth_date: string = '';
-  public gender: number = 1;
-  public education: string = '';
-  public designation: string = '';
-  public address: string = '';
+  public email = '';
+  public password = '';
+  public password_confirmation = '';
+  public birth_date = '';
+  public gender = 1;
+  public education = '';
+  public designation = '';
+  public address = '';
 
   public roles:any = [];
   public FILE_AVATAR:any;
   public IMAGE_PREVISUALIZA:any = 'assets/img/user-06.jpg';
 
-  valid_form:boolean = false;
-  valid_form_success:boolean = false;
+  valid_form = false;
+  valid_form_success = false;
 
-  public text_success:string = '';
-  public text_validation:string = '';
+  public text_success = '';
+  public text_validation = '';
 
   public speciality_id:any;
   public specialities:any = [];
@@ -97,7 +98,7 @@ export class AddDoctorComponent {
     }
     this.text_validation = '';
     this.FILE_AVATAR = $event.target.files[0];
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL(this.FILE_AVATAR);
     reader.onloadend = ()=> this.IMAGE_PREVISUALIZA = reader.result;
   }
@@ -120,7 +121,7 @@ export class AddDoctorComponent {
 
     console.log(this.selectedValue);
 
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('name', this.name);
     formData.append('surname', this.surname);
     formData.append('mobile', this.mobile);
@@ -135,10 +136,10 @@ export class AddDoctorComponent {
     formData.append('speciality_id', this.speciality_id);
     formData.append('imagen', this.FILE_AVATAR);
     formData.append('location_id', this.selectedValueLocation);
-    let HOUR_SCHEDULES:any = [];
+    const HOUR_SCHEDULES:any = [];
 
     this.days_week.forEach((day:any) => {
-      let DAYS_HOURS = this.hours_selecteds.filter((hour_select:any) => hour_select.day_name == day.day);
+      const DAYS_HOURS = this.hours_selecteds.filter((hour_select:any) => hour_select.day_name == day.day);
       HOUR_SCHEDULES.push({
         day_name: day.day,
         children: DAYS_HOURS,
@@ -149,11 +150,26 @@ export class AddDoctorComponent {
 
     this.doctorService.storeDoctor(formData).subscribe((resp:any)=>{
       // console.log(resp);
-      
       if(resp.message == 403){
+        // Swal.fire('Actualizado', this.text_validation, 'success');
         this.text_validation = resp.message_text;
+        Swal.fire({
+          position: "top-end",
+          icon: "warning",
+          title: this.text_validation,
+          showConfirmButton: false,
+          timer: 1500
+        });
       }else{
-        // this.text_success = 'El usuario ha sido registrado correctamente';
+        // Swal.fire('Actualizado', this.text_success, 'success' );
+        this.text_success = 'El usuario ha sido registrado correctamente';
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: this.text_success,
+          showConfirmButton: false,
+          timer: 1500
+        });
 
 
         // this.name = '';
@@ -175,7 +191,7 @@ export class AddDoctorComponent {
   }
 
   addHourItem(hours_day:any,day:any,item:any){
-    let INDEX = this.hours_selecteds.findIndex(
+    const INDEX = this.hours_selecteds.findIndex(
                   (hour:any) => hour.day_name == day.day //saber si se encuentra en el mismodia
                     && hour.hour == hours_day.hour 
                     && hour.item.hour_start == item.hour_start 
@@ -197,18 +213,18 @@ export class AddDoctorComponent {
   }
 
   addHourAll(hours_day:any,day:any){
-    let INDEX = this.hours_selecteds.findIndex(
+    const INDEX = this.hours_selecteds.findIndex(
       (hour:any) => hour.day_name == day.day 
         && hour.hour == hours_day.hour 
         && hour.grupo == "all");
 
-    let COUNT_SELECTED = this.hours_selecteds.filter(
+    const COUNT_SELECTED = this.hours_selecteds.filter(
           (hour:any) => hour.day_name == day.day 
             && hour.hour == hours_day.hour).length;
 
     if(INDEX != -1 && COUNT_SELECTED == hours_day.items.length){
       hours_day.items.forEach((item:any) => {
-        let INDEX = this.hours_selecteds.findIndex(
+        const INDEX = this.hours_selecteds.findIndex(
           (hour:any) => hour.day_name == day.day //saber si se encuentra en el mismodia
             && hour.hour == hours_day.hour 
             && hour.item.hour_start == item.hour_start 
@@ -221,7 +237,7 @@ export class AddDoctorComponent {
       
     }else{
       hours_day.items.forEach((item:any) => {
-        let INDEX = this.hours_selecteds.findIndex(
+        const INDEX = this.hours_selecteds.findIndex(
           (hour:any) => hour.day_name == day.day //saber si se encuentra en el mismodia
             && hour.hour == hours_day.hour 
             && hour.item.hour_start == item.hour_start 
@@ -247,12 +263,12 @@ export class AddDoctorComponent {
   
 
     addHourAllDay($event:any,hours_day:any){
-      let INDEX = this.hours_selecteds.findIndex((hour:any) => hour.hour == hours_day.hour);
+      const INDEX = this.hours_selecteds.findIndex((hour:any) => hour.hour == hours_day.hour);
       
       if(INDEX != -1 && !$event.currentTarget.checked){
         this.days_week.forEach((day) => {
           hours_day.items.forEach((item:any) => { 
-            let INDEX = this.hours_selecteds.findIndex((hour:any) => hour.day_name == day.day 
+            const INDEX = this.hours_selecteds.findIndex((hour:any) => hour.day_name == day.day 
                                     && hour.hour == hours_day.hour 
                                     && hour.item.hour_start == item.hour_start && hour.item.hour_end == item.hour_end);
             if(INDEX != -1){
@@ -263,7 +279,7 @@ export class AddDoctorComponent {
       }else{
         this.days_week.forEach((day) => {
           hours_day.items.forEach((item:any) => { 
-            let INDEX = this.hours_selecteds.findIndex((hour:any) => hour.day_name == day.day 
+            const INDEX = this.hours_selecteds.findIndex((hour:any) => hour.day_name == day.day 
                                     && hour.hour == hours_day.hour 
                                     && hour.item.hour_start == item.hour_start && hour.item.hour_end == item.hour_end);
             if(INDEX != -1){
@@ -281,12 +297,12 @@ export class AddDoctorComponent {
     }
 
     isCheckedHourAll(hours_day:any,day:any){
-      let INDEX = this.hours_selecteds.findIndex(
+      const INDEX = this.hours_selecteds.findIndex(
         (hour:any) => hour.day_name == day.day 
           && hour.hour == hours_day.hour 
           && hour.grupo == "all");
   
-      let COUNT_SELECTED = this.hours_selecteds.filter(
+      const COUNT_SELECTED = this.hours_selecteds.filter(
             (hour:any) => hour.day_name == day.day 
               && hour.hour == hours_day.hour).length;
   
@@ -299,7 +315,7 @@ export class AddDoctorComponent {
 
 
       isCheckedHour(hours_day:any,day:any,item:any){
-        let INDEX = this.hours_selecteds.findIndex(
+        const INDEX = this.hours_selecteds.findIndex(
           (hour:any) => hour.day_name == day.day //saber si se encuentra en el mismodia
             && hour.hour == hours_day.hour 
             && hour.item.hour_start == item.hour_start 

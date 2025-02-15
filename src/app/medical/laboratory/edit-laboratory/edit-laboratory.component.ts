@@ -192,8 +192,31 @@ closeModalDoc(){
 
     this.laboratoryService.storeLaboratory(formData).subscribe((resp:any)=>{
       // console.log(resp);
-      this.text_success = 'Se guardó la informacion de la cita médica'
-      this.getAppointment();
+      // this.getAppointment();
+      
+      if(resp.message == 403){
+        // Swal.fire('Actualizado', this.text_validation, 'success');
+        this.text_validation = resp.message_text;
+        Swal.fire({
+          position: "top-end",
+                icon: "warning",
+                title: this.text_validation,
+                showConfirmButton: false,
+                timer: 1500
+              });
+            }else{
+              // Swal.fire('Actualizado', this.text_success, 'success' );
+                this.text_success = 'Se guardó la informacion del Laboratorio con la cita'
+              // this.text_success = 'actualizado correctamente';
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: this.text_success,
+                showConfirmButton: false,
+                timer: 1500
+              });
+              this.getAppointment();
+          }
     })
 
   }

@@ -12,11 +12,18 @@
                     </ul>
                 </div>
                 <app-back-bottn></app-back-bottn>
+                <div class="col-2 d-flex ">
+                  <app-loader-anim *ngIf="cargando" ></app-loader-anim>
+
+                </div>
             </div>
         </div>
         <!-- /Page Header -->
+
+        <app-skeleton-loader *ngIf="isLoading" [rows]="5" [columns]="4"></app-skeleton-loader>
         
-        <div class="row">
+        
+        <div class="row" *ngIf="!isLoading ">
             <div class="col-sm-12">
             
                 <div class="card card-table show-entire">

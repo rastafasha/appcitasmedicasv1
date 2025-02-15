@@ -3,6 +3,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import { StaffService } from '../service/staff.service';
 import { Router } from '@angular/router';
 import { DoctorService } from '../../doctors/service/doctor.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-staff-n',
@@ -13,25 +14,25 @@ export class AddStaffNComponent {
   public routes = routes;
   public selectedValue!: string;
 
-  public name: string = '';
-  public surname: string = '';
-  public mobile: string = '';
-  public email: string = '';
-  public password: string = '';
-  public password_confirmation: string = '';
-  public birth_date: string = '';
-  public gender: number = 1;
-  public education: string = '';
-  public designation: string = '';
-  public address: string = '';
+  public name = '';
+  public surname = '';
+  public mobile = '';
+  public email = '';
+  public password = '';
+  public password_confirmation = '';
+  public birth_date = '';
+  public gender = 1;
+  public education = '';
+  public designation = '';
+  public address = '';
 
   public roles:any = [];
   public FILE_AVATAR:any;
   public IMAGE_PREVISUALIZA:any = 'assets/img/user-06.jpg';
 
-  valid_form:boolean = false;
-  public text_success:string = '';
-  public text_validation:string = '';
+  valid_form = false;
+  public text_success = '';
+  public text_validation = '';
 
   public addClass = false;
 
@@ -64,7 +65,7 @@ export class AddStaffNComponent {
     }
     this.text_validation = '';
     this.FILE_AVATAR = $event.target.files[0];
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL(this.FILE_AVATAR);
     reader.onloadend = ()=> this.IMAGE_PREVISUALIZA = reader.result;
   }
@@ -83,7 +84,7 @@ export class AddStaffNComponent {
 
     this.valid_form = false;
     // console.log(this.selectedValue);
-    let formData = new FormData();
+    const formData = new FormData();
 
     formData.append('name', this.name);
     formData.append('surname', this.surname);
@@ -103,23 +104,29 @@ export class AddStaffNComponent {
 
     this.staffService.createUser(formData).subscribe((resp:any)=>{
       // console.log(resp);
-      if(resp.message == 403){
-        this.text_validation = resp.message_text;
-      }else{
 
-        this.name = '';
-        this.surname = '';
-        this.mobile = '';
-        this.email = '';
-        this.password = '';
-        this.birth_date = '';
-        this.education = '';
-        this.designation = '';
-        this.address = '';
-        this.selectedValue = '';
-        // this.text_success = 'El Usuario se ha editado correctamente';
-        this.router.navigate(['/staffs/list']);
-      }
+       if (resp.message == 403) {
+              // Swal.fire('Actualizado', this.text_validation, 'success');
+              this.text_validation = resp.message_text;
+              Swal.fire({
+                position: "top-end",
+                icon: "warning",
+                title: this.text_validation,
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            } else {
+              // Swal.fire('Actualizado', this.text_success, 'success' );
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Personal Creado",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              this.router.navigate(["/staffs/list"]);
+            }
+      
     })
 
 

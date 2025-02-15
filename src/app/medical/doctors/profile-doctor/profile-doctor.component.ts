@@ -14,26 +14,26 @@ import { RolesService } from '../../roles/service/roles.service';
 export class ProfileDoctorComponent {
   public routes = routes;
 public doctorProfile: any[];
-option_selected:number = 1;
+option_selected = 1;
 public doctor_id: any;
 
-public num_appointment: number = 0;
-public money_of_appointments: number = 0;
-public num_appointment_pendings: number = 0;
+public num_appointment = 0;
+public money_of_appointments = 0;
+public num_appointment_pendings = 0;
 public doctor_selected: any;
 public user: any;
 public appointment_pendings: any =[];
 public appointments: any =[];
-name:string='';
-surname:string='';
-mobile:string='';
-email:string='';
-address:string='';
-password:string='';
-password_repeat:string='';
+name='';
+surname='';
+mobile='';
+email='';
+address='';
+password='';
+password_repeat='';
 
-public text_success:string = '';
-public text_validation:string = '';
+public text_success = '';
+public text_validation = '';
 
 
 constructor(
@@ -103,7 +103,7 @@ getDoctor(){
       }
     }
 
-    let data:any ={
+    const data:any ={
       name: this.name,
       surname: this.surname,
       mobile: this.mobile,
