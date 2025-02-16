@@ -70,9 +70,27 @@
                                     <tr *ngFor="let data of rolesList">
                                         
                                         <td>{{data.name}}</td>
-                                        <td>
+                                        <!-- <td>
                                           <ul class="persmisoslista">
                                             <li>{{data.permision_pluck.length > 0 ? data.permision_pluck: 'TODOS LOS PERMISOS' }}</li>
+                                          </ul>
+                                        </td> -->
+                                        <td>
+                                          <ul
+                                            *ngIf="!data.permision_pluck.length"
+                                            class="persmisoslista"
+                                          >
+                                            <li>No Permissions</li>
+                                          </ul>
+                                          <ul
+                                            *ngIf="data.permision_pluck.length"
+                                            class="persmisoslista"
+                                          >
+                                            <!-- <li *ngFor="let permiso of data.permision_pluck"> -->
+                                            <li >
+                                              <!-- {{ permiso }} -->
+                                              Have Permission
+                                            </li>
                                           </ul>
                                         </td>
                                         <td>{{data.created_at}}</td>

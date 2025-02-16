@@ -19,7 +19,13 @@ const routes: Routes = [
       path:'list/edit/:id', component:EditPatientMComponent
     },
     {
+      path:'list/edit-nuevo/:n_doc', component:EditPatientMComponent
+    },
+    {
       path:'profile/:id', component:ProfilePatientMComponent
+    },
+    {
+      path:'profile/:n_doc', component:ProfilePatientMComponent
     },
     
   ]

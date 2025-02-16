@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { routes } from "src/app/shared/routes/routes";
 import { StaffService } from "../../staff/service/staff.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { PatientMService } from "../service/patient-m.service";
 import { DoctorService } from "../../doctors/service/doctor.service";
 import Swal from "sweetalert2";
@@ -53,16 +53,23 @@ export class AddPatientMComponent {
   public peso = 0;
   public current_desease = "";
 
+  patient_selected:any;
+
   constructor(
     public patientService: PatientMService,
     public doctorService: DoctorService,
-    public router: Router
+    public router: Router,
+    public ativatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
     this.doctorService.closeMenuSidebar();
+
+    
   }
+
+  
 
   loadFile($event: any) {
     if ($event.target.files[0].type.indexOf("image")) {

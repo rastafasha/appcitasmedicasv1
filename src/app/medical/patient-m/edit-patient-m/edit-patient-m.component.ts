@@ -63,9 +63,32 @@ export class EditPatientMComponent {
     window.scrollTo(0, 0);
     this.ativatedRoute.params.subscribe((resp: any) => {
       this.patient_id = resp.id;
+      this.showUser();
     });
-    this.showUser();
+    
+    this.ativatedRoute.params.subscribe((resp: any) => {
+      this.n_doc = resp.n_doc;
+      this.getPatientNew();
+    });
+
+
+
   }
+
+  getPatientNew(){
+    this.patientService.showPatientProfileIdentifier(this.n_doc).subscribe((resp:any)=>{
+      console.log(resp);
+      this.patient_selected = resp.patient;
+      this.name = this.patient_selected.name;
+      this.surname = this.patient_selected.surname;
+      this.phone = this.patient_selected.phone;
+      this.email = this.patient_selected.email;
+  
+  
+    })
+  }
+
+ 
 
   showUser() {
     this.patientService.getPatient(this.patient_id).subscribe((resp: any) => {

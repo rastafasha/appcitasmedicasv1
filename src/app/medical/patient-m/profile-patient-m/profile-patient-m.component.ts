@@ -17,7 +17,8 @@ export class ProfilePatientMComponent {
   imagenSerUrl = environment.url_media;
 public patientProfile: any[];
 option_selected = 1;
-public patient_id: any;
+public patient_id: number;
+public n_doc: string;
 
 public num_appointment = 0;
 public money_of_appointments = 0;
@@ -40,17 +41,24 @@ constructor(
   )
 {
 }
+
 ngOnInit(): void {
   window.scrollTo(0, 0);
   this.doctorService.closeMenuSidebar();
   this.activatedRoute.params.subscribe((resp:any)=>{
     // console.log(resp);
     this.patient_id = resp.id;
+    // this.n_doc = resp.id;
   });
-  this.getDoctor();
+
+ 
+  this.getPatientServer();
+  
+  
 }
 
-getDoctor(){
+
+getPatientServer(){
   this.isLoading = true;
   this.patientService.showPatientProfile(this.patient_id).subscribe((resp:any)=>{
     // console.log(resp);
