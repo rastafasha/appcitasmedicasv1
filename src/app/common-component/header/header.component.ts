@@ -40,7 +40,7 @@ export class HeaderComponent {
         this.miniSidebar = false;
       }
     });
-    let USER = localStorage.getItem("user");
+    const USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
     // this.user = this.authService.user;
     // console.log(this.user);
@@ -135,5 +135,28 @@ export class HeaderComponent {
 
     logout(){
       this.authService.logout();
+    }
+
+    darkMode(dark: string) {
+      const element = document.body;
+  
+      const classExists = document.getElementsByClassName('darkmode').length > 0;
+  
+      var dayNight = document.getElementsByClassName('site');
+      for (var i = 0; i < dayNight.length; i++) {
+        // dayNight[i].classList.toggle("darkmode");
+        element.classList.toggle('darkmode');
+      }
+      // localStorage.setItem('dark', dark);
+  
+      if (classExists) {
+        localStorage.removeItem('darkmode');
+        // console.log('✅ class exists on page, removido');
+      } else {
+        localStorage.setItem('darkmode', dark);
+        // console.log('⛔️ class does NOT exist on page, agregado');
+      }
+      // console.log('Pulsado');
+      // location.reload();
     }
   }

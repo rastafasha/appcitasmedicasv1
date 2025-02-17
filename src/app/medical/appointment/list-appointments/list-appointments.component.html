@@ -101,7 +101,10 @@
                                         
                                         <td>{{data.doctor.full_name}}</td>
                                         <td>
-                                          <a [routerLink]="['/patients/profile/', data.patient.id]">
+                                          <a [routerLink]="['/patients/profile/', data.patient.id]" *ngIf="isPermission('view_patient')">
+                                            {{data.patient.full_name}}
+                                          </a>
+                                          <a *ngIf="!isPermission('view_patient')">
                                             {{data.patient.full_name}}
                                           </a>
 

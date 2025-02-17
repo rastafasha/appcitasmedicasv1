@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
 
   getLocalStorage(){
     if(localStorage.getItem('token') && localStorage.getItem('user')){
-      let USER = localStorage.getItem('user');
+      const USER = localStorage.getItem('user');
       this.user = JSON.parse(USER ? USER: '');
       console.log(this.user);
       this.getuserRol();
@@ -137,10 +137,41 @@ export class LoginComponent implements OnInit {
       if(this.user.roles == 'ENFERMERA' ){
         this.router.navigate([routes.doctorDashboard]);
       }
-      if(this.user.roles == 'RECEPCIÓN' ){
+      if(this.user.roles == 'RECEPCION' ){
         this.router.navigate([routes.adminDashboard]);
       }
    }
+
+  //  getUserRol() {
+  //   const mainRole = this.user?.roles?.[0];
+  //   if (!mainRole) {
+  //     return;
+  //   }
+
+  //   switch (mainRole) {
+  //     case 'SUPERADMIN':
+  //       this.router.navigate([AppRoutes.dashboard.admin]);
+  //       break;
+  //       // solo tiene una locacion pero se comporta como superadmin
+  //       case 'ADMIN':
+  //         this.router.navigate([AppRoutes.location.list]);
+  //         break;
+  //         // solo tiene una locacion 
+  //     case 'MANAGER':
+  //       // this.router.navigate([AppRoutes.dashboard.admin]);
+  //       this.router.navigate([AppRoutes.location.view, this.user.location_id]);
+  //       break;
+  //     //roles secundarios son multilocation
+  //     case 'BCBA':
+  //       this.router.navigate([AppRoutes.doctors.profile, this.user.id]);
+  //       break;
+  //     case 'RBT':
+  //       this.router.navigate([AppRoutes.doctors.profile, this.user.id]);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
  
     getuserPermisos(){
       if(this.user.permissions === 'admin_dashboard'){
