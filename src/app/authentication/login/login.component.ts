@@ -111,22 +111,8 @@ export class LoginComponent implements OnInit {
 
     getuserRol(){
       
-      if(this.user.roles == 'DOCTOR' ){
-        this.router.navigate([routes.doctorDashboard]);
-      }
       if(this.user.roles == 'SUPERADMIN' ){
         this.router.navigate([routes.adminDashboard]);
-      }
-      
-      if(this.user.roles == 'LABORATORIO' ){
-        this.router.navigate([routes.laboratoryList]);
-      }
-      //roles secundarios
-      if(this.user.roles == 'DOCTOR ESPECIALISTA' ){
-        this.router.navigate([routes.doctorDashboard]);
-      }
-      if(this.user.roles == 'DOCTOR ASISTENTE' ){
-        this.router.navigate([routes.doctorDashboard]);
       }
       if(this.user.roles == 'CONTADOR' ){
         this.router.navigate([routes.adminDashboard]);
@@ -134,11 +120,23 @@ export class LoginComponent implements OnInit {
       if(this.user.roles == 'ADMIN' ){
         this.router.navigate([routes.adminDashboard]);
       }
-      if(this.user.roles == 'ENFERMERA' ){
-        this.router.navigate([routes.doctorDashboard]);
-      }
       if(this.user.roles == 'RECEPCION' ){
         this.router.navigate([routes.adminDashboard]);
+      }
+
+      if(this.user.roles == 'LABORATORIO' ){
+        this.router.navigate([routes.laboratoryList]);
+      }
+      if(this.user.roles == 'DOCTOR' ){
+        this.router.navigate([routes.doctorDashboard]);
+      }
+      //roles secundarios
+      
+      if(this.user.roles == 'ASISTENTE' ){
+        this.router.navigate([routes.doctorDashboard]);
+      }
+      if(this.user.roles == 'ENFERMERA' ){
+        this.router.navigate([routes.doctorDashboard]);
       }
    }
 

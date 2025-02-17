@@ -12,6 +12,12 @@ export const environment = {
     url_frontend: 'https://clinica.health-connect.me/',
     url_media: 'https://clinica.health-connect.me/backend-api-citas/storage/app/public/',
 
+    //remoto cliente aramayrangel
+    // url_backend: 'https://aramayrangel..health-connect.me/backend-api-citas/',
+    // url_servicios: 'https://aramayrangel..health-connect.me/backend-api-citas/public/api',
+    // url_frontend: 'https://aramayrangel..health-connect.me/',
+    // url_media: 'https://aramayrangel..health-connect.me/backend-api-citas/storage/app/public/',
+    
     //remoto cliente Clinica Santiago de leon
     // url_backend: 'https://csdleondeccs.health-connect.me/backend-api-citas/',
     // url_servicios: 'https://csdleondeccs.health-connect.me/backend-api-citas/public/api',
