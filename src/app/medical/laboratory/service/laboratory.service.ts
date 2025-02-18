@@ -16,8 +16,8 @@ export class LaboratoryService {
 
   
 
-  listAppointments(page:number=1, search:string='', speciality_id:number=0,date:string= ''){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+  listAppointments(page=1, search='', speciality_id=0,date= ''){
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let LINK = "";
     if(search){
       LINK+="&search="+search;
@@ -28,39 +28,39 @@ export class LaboratoryService {
     if(date){
       LINK+="&date="+date;
     }
-    let URL = url_servicios+'/laboratory?page='+page+LINK;
+    const URL = url_servicios+'/laboratory?page='+page+LINK;
     return this.http.get(URL, {headers:headers});
   }
 
   getLaboratorys(){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/laboratory";
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/laboratory";
     return this.http.get(URL, {headers:headers});
   }
   
   storeLaboratory(data:any){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/laboratory/store";
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/laboratory/store";
     return this.http.post(URL,data, {headers:headers});
   }
 
   getLaboratoryByAppointment(appointment_id:any){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/laboratory/showByAppointment/"+appointment_id;
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/laboratory/showByAppointment/"+appointment_id;
     return this.http.get(URL,{headers:headers});
   }
 
   editLaboratory(data:any, laboratory_id:any){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/laboratory/update/"+laboratory_id;
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/laboratory/update/"+laboratory_id;
     return this.http.post(URL,data,{headers:headers});
   }
 
   
   
   deleteLaboratory(laboratory_id:any){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/laboratory/destroy/"+laboratory_id;
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/laboratory/destroy/"+laboratory_id;
     return this.http.delete(URL, {headers:headers});
   }
 

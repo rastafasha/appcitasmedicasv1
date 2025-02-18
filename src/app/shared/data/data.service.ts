@@ -641,6 +641,17 @@ export class DataService {
           show_nav: true,
           subMenus: [],
         },
+        {
+          menuValue: 'Presupuestos',
+          route: routes.presupuestoList,
+          base: routes.presupuestoList,
+          hasSubRoute: false,
+          showSubRoute: false,
+          img: 'assets/img/icons/menu-icon-16.svg',
+          permision: 'presupuesto',
+          show_nav: true,
+          subMenus: [],
+        },
       ],
     },
   ];

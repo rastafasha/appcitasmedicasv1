@@ -433,4 +433,13 @@ export class routes {
   public static get laboratoryEdit(): string {
     return this.baseUrl + '/laboratory/edit';
   }
+  public static get presupuestoList(): string {
+    return this.baseUrl + '/presupuesto/list';
+  }
+  public static get presupuestoEdit(): string {
+    return this.baseUrl + '/presupuesto/edit';
+  }
+  public static get presupuestoCrear(): string {
+    return this.baseUrl + '/presupuesto/crear';
+  }
 }
