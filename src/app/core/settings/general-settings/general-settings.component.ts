@@ -57,11 +57,7 @@ export class GeneralSettingsComponent {
     
   }
 
-  getSetting(){
-    this.settingService.getSettingById({}).subscribe((resp:any)=>{
-      console.log(resp);
-    })
-  }
+  
 
   getSettings(){
     this.isLoading = true;
@@ -69,8 +65,33 @@ export class GeneralSettingsComponent {
       // console.log(resp);
       this.isLoading  = false;
       this.settings= resp.settings.data;
+      this.setting= resp.settings.data[0];
       this.setting_selectedId= resp.settings.data[0].id;
+      console.log(this.setting);
+
+      // this.getSetting();
+      // this.name = this.setting[0].name;
+      // this.address = this.setting[0].address;
+      // this.phone = this.setting[0].phone;
+      // this.city = this.setting[0].city;
+      // this.zip = this.setting[0].zip;
+      // this.country = this.setting[0].country;
+
+      
     })
+}
+
+getSetting(){
+  this.settingService.getSettingById(this.setting_selectedId).subscribe((resp:any)=>{
+    console.log(resp);
+    this.setting= resp.data;
+    // this.name = this.setting.name;
+    //   this.address = this.setting.address;
+    //   this.phone = this.setting.phone;
+    //   this.city = this.setting.city;
+    //   this.zip = this.setting.zip;
+    //   this.country = this.setting.country;
+  })
 }
 
 loadFile($event:any){
@@ -149,7 +170,8 @@ save(){
                         showConfirmButton: false,
                         timer: 1500
                       });
-                      this.ngOnInit();
+                      // this.ngOnInit();
+                      location.reload();
                   }
     })
 
@@ -177,8 +199,9 @@ save(){
                 showConfirmButton: false,
                 timer: 1500
               });
-              this.ngOnInit();
-              this.getSettings();
+              location.reload();
+              // this.ngOnInit();
+              // this.getSettings();
           }
     })
   }

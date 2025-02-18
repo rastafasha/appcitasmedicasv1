@@ -27,7 +27,7 @@ export class PaymentSettingsComponent {
   email:string;
   tipo:string;
 
-  new_option: string = 'INACTIVE';
+  // new_option: string = 'INACTIVE';
 
   constructor(
     private settigService: SettignService,
@@ -58,7 +58,7 @@ export class PaymentSettingsComponent {
   }
   
   cambiarStatus(tipodepago:any){
-      let VALUE = tipodepago.status;
+      const VALUE = tipodepago.status;
       // console.log(VALUE);
       
       this.settigService.updateStatus(tipodepago, tipodepago.id).subscribe(
@@ -71,6 +71,8 @@ export class PaymentSettingsComponent {
           //   type:'success',
           // })
           this.getTiposdePago();
+
+
         }
       )
     }
@@ -79,7 +81,7 @@ export class PaymentSettingsComponent {
 
   save(){
 
-      let data = {
+      const data = {
         tipo: this.tipo,
         bankAccountType: this.bankAccountType,
         bankName: this.bankName,
@@ -90,6 +92,13 @@ export class PaymentSettingsComponent {
       }
       this.settigService.create(data).subscribe((resp:any)=>{
         // console.log(resp);
+        this.bankAccountType ='';
+          this.bankName ='';
+          this.bankAccount ='';
+          this.ciorif ='';
+          this.telefono ='';
+          this.email ='';
+          // this.tipo ='';
         this.getTiposdePago();
       })
     }
