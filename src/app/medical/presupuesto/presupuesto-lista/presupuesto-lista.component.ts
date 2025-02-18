@@ -60,15 +60,15 @@ export class PresupuestoListaComponent {
         window.scrollTo(0, 0);
         this.doctorService.closeMenuSidebar();
         this.getTableData();
-        // this.getSpecialities();
+        this.getSpecialities();
         this.user = this.roleService.authService.user;
       }
     
-      // getSpecialities(){
-      //   this.presupuestoService.listConfig().subscribe((resp:any)=>{
-      //     this.specialities = resp.specialities;
-      //   })
-      // }
+      getSpecialities(){
+        this.presupuestoService.listConfig().subscribe((resp:any)=>{
+          this.specialities = resp.specialities;
+        })
+      }
     
       isPermission(permission:string){
         if(this.user.roles.includes('SUPERADMIN')){

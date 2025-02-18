@@ -37,7 +37,8 @@ export class PresupuestoEditarComponent {
     name_medical:any;
     uso:any;
     
-    presupuesto_id:any;
+    presupuesto_id:number;
+    speciality_id:number;
     presupuesto_selected:any;
     appointment_atention_selected:any;
   
@@ -53,6 +54,7 @@ export class PresupuestoEditarComponent {
     patient:Patient [];
     doctor:Doctor [];
     speciality:Speciality [];
+    specialities:Speciality [];
   
     constructor(
       public presupuestoService:PresupuestoService,
@@ -77,6 +79,7 @@ export class PresupuestoEditarComponent {
           this.titlePage = 'Crear Presupuesto';
         }
        })
+       this.getSpecialities();
       
       
     }
@@ -90,9 +93,10 @@ export class PresupuestoEditarComponent {
         this.name = this.presupuesto_selected.patient.name;
         this.email = this.presupuesto_selected.patient.email;
         this.phone = this.presupuesto_selected.patient.phone;
+        this.description = this.presupuesto_selected.patient.description;
         this.doctor = this.presupuesto_selected.doctor.full_name;
         this.speciality = this.presupuesto_selected.speciality;
-        this.antecedent_alerg = this.presupuesto_selected.antecedent_alerg;
+        this.speciality_id = this.presupuesto_selected.speciality_id;
   
         // this.name = this.presupuesto_selected.patient.name;
         // this.surname = this.presupuesto_selected.patient.surname;
@@ -108,58 +112,11 @@ export class PresupuestoEditarComponent {
     }
   
     
-  
-  
-    processFile($event:any){
-      for (const file of $event.target.files){
-        this.FILES.push(file);
-      }
-      // console.log(this.FILES);
-    
-    }
-  
-    deleteFile(FILE:any){
-      this.FilesAdded.splice(FILE,1);
-      this.laboratoryService.deleteLaboratory(FILE.id).subscribe((resp:any)=>{
-        this.getAppointment();
+    getSpecialities(){
+      this.presupuestoService.listConfig().subscribe((resp:any)=>{
+        this.specialities = resp.specialities;
       })
     }
-  
-  
-    deleteDocument(i:any){
-      this.FILES.splice(i,1);
-    }
-  
-    selectDoc(FILE:any){
-      this.file_selected = FILE;
-    }
-  
-    getDocumentIframe(url) {
-      let document, results;
-  
-      if (url === null) {
-          return '';
-      }
-      // eslint-disable-next-line prefer-const
-      results = url.match('[\\?&]v=([^&#]*)');
-      // eslint-disable-next-line prefer-const
-      document   = (results === null) ? url : results[1];
-  
-      return this._sanitizer.bypassSecurityTrustResourceUrl(document);
-  }
-  
-  closeModalDoc(){
-  
-    $('#view-doc').hide();
-        $("#view-doc").removeClass("show");
-        $("#view-doc").css("display", "none !important");
-        $(".modal").css("display", "none !important");
-        $(".modal-backdrop").remove();
-        $("body").removeClass();
-        $("body").removeAttr("style");
-        this.file_selected = null;
-  }
-    
   
     save(){
       this.text_validation = '';
@@ -183,7 +140,7 @@ export class PresupuestoEditarComponent {
       
   
       const formData = new FormData();
-      formData.append('presupuesto_id', this.presupuesto_id);
+      formData.append('presupuesto_id', this.presupuesto_id+'');
   
       this.FILES.forEach((file:any, index:number)=>{
         formData.append("files["+index+"]", file);

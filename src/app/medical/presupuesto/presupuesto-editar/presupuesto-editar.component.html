@@ -61,6 +61,16 @@
                                         <input class="form-control" name="doctor"   [(ngModel)]="doctor" type="text"  >
                                     </div>
                                 </div>
+                                <div class="col-12 col-md-6 col-xl-4">
+                                    <div class="form-group local-forms">
+                                        <label >Especialidad<span class="login-danger">*</span></label>
+                                        <mat-select [(ngModel)]="speciality_id" [ngModelOptions]="{standalone: true}" class="form-control select"  placeholder="Select Speciality">
+                                            <mat-option *ngFor="let data of specialities" [value]="data.id">
+                                            {{data.name}}
+                                            </mat-option>
+                                        </mat-select>
+                                    </div>
+                                </div>
                                 <!-- <div class="col-xs-12 col-sm-3">
 
                                     <div class="form-group ">
@@ -73,14 +83,7 @@
                                         </div>
                                     </div>
                                 </div> -->
-                                <div class="row align-items-center" >
-                                    <div class="col-12">
-                                        <div class="form-group local-forms">
-                                            <label>Antecedentes </label>
-                                            <textarea class="form-control" name="antecedent_alerg"  [(ngModel)]="antecedent_alerg" rows="4" cols="30"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                             <!-- paciente -->
                             <div class="row align-items-center" >
