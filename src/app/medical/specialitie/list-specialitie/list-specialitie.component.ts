@@ -17,6 +17,7 @@ export class ListSpecialitieComponent {
   public specialitiesList:any = [];
   dataSource!: MatTableDataSource<any>;
 
+  titlePage = 'Lista de Especialidades';
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
@@ -85,7 +86,7 @@ export class ListSpecialitieComponent {
 
     this.specialitiesService.deleteSpecialities(this.specialitie_selected.id).subscribe((resp:any) => {
       // console.log(resp);
-      let INDEX = this.specialitiesList.findIndex((item:any) => item.id == this.specialitie_selected.id);
+      const INDEX = this.specialitiesList.findIndex((item:any) => item.id == this.specialitie_selected.id);
       if(INDEX != -1){
         this.specialitiesList.splice(INDEX,1);
 

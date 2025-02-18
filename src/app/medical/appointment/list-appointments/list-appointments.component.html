@@ -2,22 +2,8 @@
     <div class="content">
     
         <!-- Page Header -->
-        <div class="page-header">
-            <div class="row">
-                <div class="col-sm-12">
-                    <ul class="breadcrumb">
-                      <li class="breadcrumb-item"><a routerLink="/">Dashboard</a></li>
-                        <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
-                        <li class="breadcrumb-item active">Appointment List</li>
-                    </ul>
-                </div>
-                <app-back-bottn></app-back-bottn>
-                <div class="col-2 d-flex ">
-                  <app-loader-anim *ngIf="cargando" ></app-loader-anim>
-
-                </div>
-            </div>
-        </div>
+        <!-- dashboar con ruta / -->
+        <app-breadcums [titlePage]="titlePage"></app-breadcums>
         <!-- /Page Header -->
 
         <app-skeleton-loader *ngIf="isLoading" [rows]="5" [columns]="4"></app-skeleton-loader>

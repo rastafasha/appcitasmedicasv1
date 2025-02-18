@@ -16,7 +16,7 @@ declare var $:any;
 export class ListAppoimentCobrosComponent {
 
   public routes = routes;
-
+  titlePage = 'Lista de Transferencias';
   public paymentList: any = [];
   public payments: any ;
   dataSource!: MatTableDataSource<any>;

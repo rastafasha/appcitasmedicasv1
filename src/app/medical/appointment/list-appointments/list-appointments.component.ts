@@ -18,6 +18,8 @@ declare var $:any;
 export class ListAppointmentsComponent {
   public routes = routes;
 
+  titlePage = 'Listado de Citas';
+
   public isLoading = false;
   public cargando = false;
 

@@ -18,6 +18,7 @@ declare var $:any;
 export class ListLaboratoryComponent {
 
   public routes = routes;
+  titlePage = 'Laboratorios';
 
   public appointmentList: any = [];
   dataSource!: MatTableDataSource<any>;

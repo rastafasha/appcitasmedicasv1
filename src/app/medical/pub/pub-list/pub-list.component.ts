@@ -14,6 +14,7 @@ declare var $:any;
 })
 export class PubListComponent {
   public routes = routes;
+  titlePage = 'Publicidad';
 
   public publicidadList: any = [];
   public publicidads: any ;
@@ -43,8 +44,8 @@ export class PubListComponent {
   public FILE_AVATAR:any;
   public IMAGE_PREVISUALIZA:any = 'assets/img/user-06.jpg';
 
-  public text_success:string = '';
-  public text_validation:string = '';
+  public text_success = '';
+  public text_validation = '';
 
   constructor(
     public pubService: PubService,
@@ -176,7 +177,7 @@ export class PubListComponent {
 
 
   cambiarStatus(data:any){
-    let VALUE = data.status;
+    const VALUE = data.status;
     console.log(VALUE);
     
     this.pubService.updateStatus(data, data.id).subscribe(
@@ -197,7 +198,7 @@ export class PubListComponent {
 
     this.pubService.deletePub(this.publicidad_selected.id).subscribe((resp:any) => {
       // console.log(resp);
-      let INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
+      const INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
       if(INDEX != -1){
         this.publicidadList.splice(INDEX,1);
 
@@ -219,18 +220,18 @@ export class PubListComponent {
     }
     this.text_validation = '';
     this.FILE_AVATAR = $event.target.files[0];
-    let reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL(this.FILE_AVATAR);
     reader.onloadend = ()=> this.IMAGE_PREVISUALIZA = reader.result;
   }
 
   addPublicidad(){
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('imagen', this.FILE_AVATAR);
 
     this.pubService.createPub(formData).subscribe((resp:any) => {
       // console.log(resp);
-      let INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
+      const INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
       // this.text_success = "La publicidad se registró correctamente";
       if(INDEX != -1){
         this.publicidadList.splice(INDEX,1);
@@ -248,13 +249,13 @@ export class PubListComponent {
     })
   }
   editPublicidad(publicidad:any){
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('imagen', this.FILE_AVATAR);
     // formData.append('id', this.publicidad_id);
 
     this.pubService.editPub(formData, publicidad.id).subscribe((resp:any) => {
       // console.log(resp);
-      let INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
+      const INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
       // this.text_success = "La publicidad se Actualizó correctamente";
       if(INDEX != -1){
         this.publicidadList.splice(INDEX,1);

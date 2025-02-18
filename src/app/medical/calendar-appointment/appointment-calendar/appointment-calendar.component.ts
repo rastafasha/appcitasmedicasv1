@@ -23,6 +23,7 @@ export class AppointmentCalendarComponent {
   public search_patient = '';
   public specialities:any = [];
   public speciality_id= 0;
+  titlePage = 'Calendario';
 
   public user:any;
 

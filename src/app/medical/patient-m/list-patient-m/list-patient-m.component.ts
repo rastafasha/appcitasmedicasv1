@@ -16,6 +16,7 @@ declare var $:any;
 })
 export class ListPatientMComponent {
   public routes = routes;
+  titlePage = 'Listado de Pacientes';
 
   public patientList: any = [];
   dataSource!: MatTableDataSource<any>;

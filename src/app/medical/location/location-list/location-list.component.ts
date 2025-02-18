@@ -14,7 +14,7 @@ declare var $:any;
 })
 export class LocationListComponent {
   public routes = routes;
-
+  titlePage = 'Lista de Locaciones';
   public locationList: any = [];
   dataSource!: MatTableDataSource<any>;
 
@@ -93,7 +93,7 @@ export class LocationListComponent {
         this.text_validation = resp.message_text;
       }else{
 
-        let INDEX = this.locationList.findIndex((item:any)=> item.id == this.location_selected.id);
+        const INDEX = this.locationList.findIndex((item:any)=> item.id == this.location_selected.id);
       if(INDEX !=-1){
         this.locationList.splice(INDEX,1);
 

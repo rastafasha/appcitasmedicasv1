@@ -19,6 +19,7 @@ export class ListAppoimentPayComponent {
 
   @ViewChild('closebutton') closebutton:any;
 
+  titlePage = 'Pagos';
   public routes = routes;
   public selectedValue !: string  ;
   public searchDataValue = '';

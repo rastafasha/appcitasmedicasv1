@@ -16,6 +16,7 @@ declare var $:any;
 export class ListRoleUserComponent {
   public routes = routes;
 
+  titlePage = 'Listar Roles';
   public rolesList: any = [];
   dataSource!: MatTableDataSource<any>;
 

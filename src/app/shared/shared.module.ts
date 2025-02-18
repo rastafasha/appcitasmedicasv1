@@ -19,6 +19,7 @@ import { SidebarComponent } from '../common-component/sidebar/sidebar.component'
 import { BackButtnComponent } from '../reusables/backButtn/backButtn.component';
 import { SkeletonLoaderComponent } from '../reusables/skeleton-loader/skeleton-loader.component';
 import { LoaderAnimComponent } from '../reusables/loader-anim/loader-anim.component';
+import { BreadcumsComponent } from '../reusables/breadcums/breadcums.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { LoaderAnimComponent } from '../reusables/loader-anim/loader-anim.compon
     SidebarComponent,
     BackButtnComponent,
     SkeletonLoaderComponent,
-    LoaderAnimComponent
+    LoaderAnimComponent,
+    BreadcumsComponent
   ],
   imports: [
     CommonModule,
@@ -79,7 +81,8 @@ import { LoaderAnimComponent } from '../reusables/loader-anim/loader-anim.compon
     SidebarComponent,
     BackButtnComponent,
     SkeletonLoaderComponent,
-    LoaderAnimComponent
+    LoaderAnimComponent,
+    BreadcumsComponent
   ],
   providers: [
     DataService,
