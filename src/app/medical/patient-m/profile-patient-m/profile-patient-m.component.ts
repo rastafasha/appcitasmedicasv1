@@ -7,6 +7,7 @@ import { routes } from 'src/app/shared/routes/routes';
 import { PatientMService } from '../service/patient-m.service';
 import { DoctorService } from '../../doctors/service/doctor.service';
 import { environment } from 'src/environments/environment';
+import { RolesService } from '../../roles/service/roles.service';
 @Component({
   selector: 'app-profile-patient-m',
   templateUrl: './profile-patient-m.component.html',
@@ -19,6 +20,7 @@ public patientProfile: any[];
 option_selected = 1;
 public patient_id: number;
 public n_doc: string;
+public user: any;
 
 public num_appointment = 0;
 public money_of_appointments = 0;
@@ -38,12 +40,14 @@ constructor(
   public patientService : PatientMService,
   public activatedRoute: ActivatedRoute,
   public doctorService: DoctorService,
+  public roleService: RolesService,
   )
 {
 }
 
 ngOnInit(): void {
   window.scrollTo(0, 0);
+  this.user = this.roleService.authService.user;
   this.doctorService.closeMenuSidebar();
   this.activatedRoute.params.subscribe((resp:any)=>{
     // console.log(resp);
@@ -55,6 +59,16 @@ ngOnInit(): void {
   this.getPatientServer();
   
   
+}
+
+isPermission(permission:string){
+  if(this.user.roles.includes('SUPERADMIN')){
+    return true;
+  }
+  if(this.user.permissions.includes(permission)){
+    return true;
+  }
+  return false;
 }
 
 

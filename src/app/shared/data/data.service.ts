@@ -377,6 +377,13 @@ export class DataService {
               permision: 'list_patient',
               show_nav: true,
             },
+            {
+              menuValue: 'Ver Paciente',
+              route: '',
+              base: '',
+              permision: 'view_patient',
+              show_nav: false,
+            },
             // {
             //   menuValue: 'Patients Profile',
             //   route: routes.patientProfile,

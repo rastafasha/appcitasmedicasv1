@@ -52,7 +52,7 @@
                                                     <h5>Citas</h5>
                                                     <h4>{{num_appointment}}</h4>
                                                 </div>
-                                                <div class="doctor-follows">
+                                                <div class="doctor-follows"  *ngIf="user.roles[0] === 'ADMIN' || user.roles[0] === 'CONTADOR' || user.roles[0] === 'SUPERADMIN'">
                                                     <h5>Ganancia</h5>
                                                     <h4>{{money_of_appointments|currency}}</h4>
                                                 </div>
@@ -144,7 +144,7 @@
                                                 <a href="#" onclick="return false;" [ngClass]="{'active': option_selected === 1}" (click)="optionSelected(1)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-02.svg" alt=""></span>Citas Realizadas </a>
                                             </li>
                                             <li>
-                                                <a href="#" onclick="return false;" [ngClass]="{'active': option_selected === 2}" (click)="optionSelected(2)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-16.svg" alt=""></span>Configuración</a>
+                                                <a href="#" *ngIf="isPermission('edit_doctor')" onclick="return false;" [ngClass]="{'active': option_selected === 2}" (click)="optionSelected(2)"><span class="set-about-icon me-2"><img src="assets/img/icons/menu-icon-16.svg" alt="" ></span>Configuración</a>
                                             </li>
                                         </ul>
                                     </div>

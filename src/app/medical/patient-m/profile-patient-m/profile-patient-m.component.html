@@ -49,13 +49,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 d-flex align-items-center">
+                                        <div class="col-lg-4 col-md-4 d-flex align-items-center" >
                                             <div class="follow-group">
                                                 <div class="doctor-follows">
                                                     <h5>Citas Médicas</h5>
                                                     <h4>{{num_appointment}}</h4>
                                                 </div>
-                                                <div class="doctor-follows">
+                                                <div class="doctor-follows" *ngIf="user.roles[0] === 'ADMIN' || user.roles[0] === 'CONTADOR' || user.roles[0] === 'SUPERADMIN'">
                                                     <h5>Inversion</h5>
                                                     <h4>{{money_of_appointments|currency}}</h4>
                                                 </div>
