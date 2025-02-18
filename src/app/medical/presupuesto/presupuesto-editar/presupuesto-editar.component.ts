@@ -86,7 +86,6 @@ export class PresupuestoEditarComponent {
   
     getAppointment(){
       this.presupuestoService.getPresupuesto(this.presupuesto_id).subscribe((resp:any)=>{
-        console.log(resp);
         this.presupuesto_selected = resp.presupuesto;
         this.patient = this.presupuesto_selected.patient;
         this.n_doc = this.presupuesto_selected.patient.n_doc;
@@ -95,16 +94,7 @@ export class PresupuestoEditarComponent {
         this.phone = this.presupuesto_selected.patient.phone;
         this.description = this.presupuesto_selected.patient.description;
         this.doctor = this.presupuesto_selected.doctor.full_name;
-        this.speciality = this.presupuesto_selected.speciality;
         this.speciality_id = this.presupuesto_selected.speciality_id;
-  
-        // this.name = this.presupuesto_selected.patient.name;
-        // this.surname = this.presupuesto_selected.patient.surname;
-        // this.n_doc = this.presupuesto_selected.patient.n_doc;  
-        // this.phone = this.presupuesto_selected.patient.phone; 
-        // this.name_companion = this.presupuesto_selected.patient.name_companion;
-        // this.surname_companion = this.presupuesto_selected.patient.surname_companion;
-        // this.antecedent_alerg = this.presupuesto_selected.patient.antecedent_alerg;
   
       });
       
@@ -118,7 +108,8 @@ export class PresupuestoEditarComponent {
       })
     }
   
-    save(){
+    // eslint-disable-next-line no-debugger
+    save(){debugger
       this.text_validation = '';
       // if(!this.name_laboratory){
       //   this.text_validation = 'Es requerido ingresar un nombre';
@@ -126,54 +117,86 @@ export class PresupuestoEditarComponent {
       // }
   
   
-      if(this.FILES.length === 0){
-        this.text_validation = 'Necesitas subir un recurso'
-        // this.toaster.open({
-        //   text:'Necesitas subir un recurso de la clase',
-        //   caption:'VALIDACIÓN',
-        //   type:'danger'
-        // });
-        return;
+      // if(this.FILES.length === 0){
+      //   this.text_validation = 'Necesitas subir un recurso'
+      //   // this.toaster.open({
+      //   //   text:'Necesitas subir un recurso de la clase',
+      //   //   caption:'VALIDACIÓN',
+      //   //   type:'danger'
+      //   // });
+      //   return;
   
-      }
+      // }
   
       
   
       const formData = new FormData();
-      formData.append('presupuesto_id', this.presupuesto_id+'');
+      if(this.presupuesto_id){
+
+        formData.append('presupuesto_id', this.presupuesto_selected.id+'');
+      }
   
-      this.FILES.forEach((file:any, index:number)=>{
-        formData.append("files["+index+"]", file);
-      });
+      formData.append('speciality_id', this.speciality_id+'');
+      formData.append('description', this.description+'');
+      formData.append('patient_id', this.patient+'');
+      formData.append('n_doc', this.n_doc+'');
+      formData.append('name', this.name+'');
+      formData.append('email', this.email+'');
+      formData.append('phone', this.phone+'');
+      // formData.append('doctor_id', this.doctor_id+'');
+      // formData.append('address', this.address+'');
+      // formData.append('date', this.date+'');
   
-      this.laboratoryService.storeLaboratory(formData).subscribe((resp:any)=>{
-        // console.log(resp);
-        // this.getAppointment();
-        
-        if(resp.message == 403){
-          // Swal.fire('Actualizado', this.text_validation, 'success');
-          this.text_validation = resp.message_text;
-          Swal.fire({
-            position: "top-end",
-                  icon: "warning",
-                  title: this.text_validation,
-                  showConfirmButton: false,
-                  timer: 1500
-                });
-              }else{
-                // Swal.fire('Actualizado', this.text_success, 'success' );
-                  this.text_success = 'Se guardó la informacion del Laboratorio con la cita'
-                // this.text_success = 'actualizado correctamente';
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: this.text_success,
-                  showConfirmButton: false,
-                  timer: 1500
-                });
-                this.getAppointment();
-            }
-      })
+      if(this.presupuesto_id){
+        //editamos
+
+        this.presupuestoService.editPresupuesto(formData, this.presupuesto_id).subscribe((resp:any)=>{
+          if(resp.message == 403){
+            this.text_validation = resp.message_text;
+            Swal.fire({
+              position: "top-end",
+                    icon: "warning",
+                    title: this.text_validation,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }else{
+                    this.text_success = 'Se guardó la informacion del Laboratorio con la cita'
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: this.text_success,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  this.getAppointment();
+              }
+        })
+      }else {
+        //creamos
+        this.laboratoryService.storeLaboratory(formData).subscribe((resp:any)=>{
+          if(resp.message == 403){
+            this.text_validation = resp.message_text;
+            Swal.fire({
+              position: "top-end",
+                    icon: "warning",
+                    title: this.text_validation,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }else{
+                    this.text_success = 'Se guardó la informacion del Laboratorio con la cita'
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: this.text_success,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  this.getAppointment();
+              }
+        })
+      }
   
     }
 

@@ -15,7 +15,7 @@ declare var $:any;
 export class PresupuestoListaComponent {
 
   public routes = routes;
-    titlePage = 'Laboratorios';
+    titlePage = 'Presupuestos';
   
    
     dataSource!: MatTableDataSource<any>;
@@ -41,8 +41,8 @@ export class PresupuestoListaComponent {
     public appointment_generals:any = [];
     public appointment_selected:any;
     public text_validation:any;
-  public speciality_id= 0;
-  public date = null;
+    public speciality_id= 0;
+    public date = null;
 
     specialities:any = [];
     public user:any;
