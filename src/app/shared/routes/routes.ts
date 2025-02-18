@@ -439,4 +439,7 @@ export class routes {
   public static get presupuestoEdit(): string {
     return this.baseUrl + '/presupuesto/edit';
   }
+  public static get presupuestoCrear(): string {
+    return this.baseUrl + '/presupuesto/crear';
+  }
 }
