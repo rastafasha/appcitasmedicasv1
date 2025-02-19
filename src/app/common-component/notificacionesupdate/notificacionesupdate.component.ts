@@ -25,8 +25,11 @@ export class NotificacionesupdateComponent implements OnInit {
     public paymentService: PaymentService,
   ) {}
   ngOnInit(): void {
+   setTimeout(() => {
     this.getAppointmentRecientes();
     this.getTrastransferenciasRecientes();
+   }
+   , 3000);
   }
   getAppointmentRecientes() {
     this.appointmentService.pendings().subscribe(
