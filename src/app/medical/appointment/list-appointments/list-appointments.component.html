@@ -85,16 +85,22 @@
                                 <tbody>
                                     <tr *ngFor="let data of appointmentList">
                                         
-                                        <td>{{data.doctor.full_name}}</td>
-                                        <!-- *ngIf="isPermission('view_patient')" -->
                                         <td>
-                                          <a [routerLink]="['/patients/profile/', data.patient.id]" >
+                                          <a [routerLink]="['/doctors/profile/', data.doctor.id]" *ngIf="isPermission('profile_patient')">
+                                            {{data.doctor.full_name}}
+                                          </a>
+                                          <span *ngIf="!isPermission('profile_patient')">
+                                            {{data.doctor.full_name}}
+                                          </span>
+                                        </td>
+                                        
+                                        <td>
+                                          <a [routerLink]="['/patients/profile/', data.patient.id]" *ngIf="isPermission('profile_patient')">
                                             {{data.patient.full_name}}
                                           </a>
-                                          <!-- <a *ngIf="!isPermission('view_patient')">
+                                          <span *ngIf="!isPermission('profile_patient')">
                                             {{data.patient.full_name}}
-                                          </a> -->
-
+                                          </span>
                                         </td>
                                         <td>{{data.date_appointment_format}}</td>
                                         <td>{{data.segment_hour.format_segment.format_hour_start + ' - ' + data.segment_hour.format_segment.format_hour_end}}</td>

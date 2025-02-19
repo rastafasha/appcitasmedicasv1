@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { LaboratoryService } from '../../laboratory/service/laboratory.service';
 import { PresupuestoService } from '../service/presupuesto.service';
 import { Doctor, Patient, Speciality } from '../presupuesto-model';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 declare let $:any;  
 
 @Component({
@@ -27,7 +28,7 @@ export class PresupuestoEditarComponent {
     n_doc = 0;
     phone = '';
     email = '';
-    surname_companion = '';
+    amount = 0;
   
     laboratory = false;
     laboratory_number = 1;
@@ -37,31 +38,32 @@ export class PresupuestoEditarComponent {
     name_medical:any;
     uso:any;
     
-    presupuesto_id:any;
+    presupuesto_id:number;
+    speciality_id:number;
     presupuesto_selected:any;
-    appointment_atention_selected:any;
+    appointment_atention_selected:string;
   
-    FILES:any = [];
-    FilesAdded:any = [];
-    name_laboratory:any;
     antecedent_alerg:any;
   
     public file_selected:any;
     public doc:any;
-    public FILE:any;
+    public user:any;
 
     patient:Patient [];
+    patient_id:Patient;
     doctor:Doctor [];
+    doctor_id:Doctor;
     speciality:Speciality [];
+    specialities:Speciality [];
   
     constructor(
       public presupuestoService:PresupuestoService,
       public laboratoryService:LaboratoryService,
-      private _sanitizer: DomSanitizer,
+      public authService:AuthService,
       public router: Router,
       public ativatedRoute: ActivatedRoute
     ){
-  
+      this.user = this.authService.user;
     }
   
     ngOnInit(): void {
@@ -77,30 +79,27 @@ export class PresupuestoEditarComponent {
           this.titlePage = 'Crear Presupuesto';
         }
        })
+       this.getSpecialities();
+
       
       
     }
   
     getAppointment(){
       this.presupuestoService.getPresupuesto(this.presupuesto_id).subscribe((resp:any)=>{
-        console.log(resp);
         this.presupuesto_selected = resp.presupuesto;
         this.patient = this.presupuesto_selected.patient;
+        this.patient_id = this.presupuesto_selected.patient.id;
         this.n_doc = this.presupuesto_selected.patient.n_doc;
         this.name = this.presupuesto_selected.patient.name;
+        this.surname = this.presupuesto_selected.patient.surname;
         this.email = this.presupuesto_selected.patient.email;
+        this.patient = this.presupuesto_selected.patient.patient;
         this.phone = this.presupuesto_selected.patient.phone;
+        this.description = this.presupuesto_selected.description;
         this.doctor = this.presupuesto_selected.doctor.full_name;
-        this.speciality = this.presupuesto_selected.speciality;
-        this.antecedent_alerg = this.presupuesto_selected.antecedent_alerg;
-  
-        // this.name = this.presupuesto_selected.patient.name;
-        // this.surname = this.presupuesto_selected.patient.surname;
-        // this.n_doc = this.presupuesto_selected.patient.n_doc;  
-        // this.phone = this.presupuesto_selected.patient.phone; 
-        // this.name_companion = this.presupuesto_selected.patient.name_companion;
-        // this.surname_companion = this.presupuesto_selected.patient.surname_companion;
-        // this.antecedent_alerg = this.presupuesto_selected.patient.antecedent_alerg;
+        this.speciality_id = this.presupuesto_selected.speciality_id;
+        this.amount = this.presupuesto_selected.amount;
   
       });
       
@@ -108,59 +107,13 @@ export class PresupuestoEditarComponent {
     }
   
     
-  
-  
-    processFile($event:any){
-      for (const file of $event.target.files){
-        this.FILES.push(file);
-      }
-      // console.log(this.FILES);
-    
-    }
-  
-    deleteFile(FILE:any){
-      this.FilesAdded.splice(FILE,1);
-      this.laboratoryService.deleteLaboratory(FILE.id).subscribe((resp:any)=>{
-        this.getAppointment();
+    getSpecialities(){
+      this.presupuestoService.listConfig().subscribe((resp:any)=>{
+        this.specialities = resp.specialities;
       })
     }
   
-  
-    deleteDocument(i:any){
-      this.FILES.splice(i,1);
-    }
-  
-    selectDoc(FILE:any){
-      this.file_selected = FILE;
-    }
-  
-    getDocumentIframe(url) {
-      let document, results;
-  
-      if (url === null) {
-          return '';
-      }
-      // eslint-disable-next-line prefer-const
-      results = url.match('[\\?&]v=([^&#]*)');
-      // eslint-disable-next-line prefer-const
-      document   = (results === null) ? url : results[1];
-  
-      return this._sanitizer.bypassSecurityTrustResourceUrl(document);
-  }
-  
-  closeModalDoc(){
-  
-    $('#view-doc').hide();
-        $("#view-doc").removeClass("show");
-        $("#view-doc").css("display", "none !important");
-        $(".modal").css("display", "none !important");
-        $(".modal-backdrop").remove();
-        $("body").removeClass();
-        $("body").removeAttr("style");
-        this.file_selected = null;
-  }
     
-  
     save(){
       this.text_validation = '';
       // if(!this.name_laboratory){
@@ -169,54 +122,89 @@ export class PresupuestoEditarComponent {
       // }
   
   
-      if(this.FILES.length === 0){
-        this.text_validation = 'Necesitas subir un recurso'
-        // this.toaster.open({
-        //   text:'Necesitas subir un recurso de la clase',
-        //   caption:'VALIDACIÓN',
-        //   type:'danger'
-        // });
-        return;
+      // if(this.FILES.length === 0){
+      //   this.text_validation = 'Necesitas subir un recurso'
+      //   // this.toaster.open({
+      //   //   text:'Necesitas subir un recurso de la clase',
+      //   //   caption:'VALIDACIÓN',
+      //   //   type:'danger'
+      //   // });
+      //   return;
   
-      }
+      // }
   
       
   
       const formData = new FormData();
-      formData.append('presupuesto_id', this.presupuesto_id);
+      if(this.presupuesto_id){
+
+        formData.append('presupuesto_id', this.presupuesto_selected.id+'');
+      }
   
-      this.FILES.forEach((file:any, index:number)=>{
-        formData.append("files["+index+"]", file);
-      });
+      formData.append('speciality_id', this.speciality_id+'');
+      formData.append('description', this.description+'');
+      formData.append('patient_id', this.patient_id+'');
+      formData.append('patient', this.patient+'');
+      formData.append('n_doc', this.n_doc+'');
+      formData.append('name', this.name+'');
+      formData.append('surname', this.surname+'');
+      formData.append('email', this.email+'');
+      formData.append('phone', this.phone+'');
+      formData.append('amount', this.amount+'');
+      formData.append('doctor_id', this.user.id+'');
+      // formData.append('doctor_id', this.doctor+'');
+      formData.append('user_id', this.user.id+'');
   
-      this.laboratoryService.storeLaboratory(formData).subscribe((resp:any)=>{
-        // console.log(resp);
-        // this.getAppointment();
-        
-        if(resp.message == 403){
-          // Swal.fire('Actualizado', this.text_validation, 'success');
-          this.text_validation = resp.message_text;
-          Swal.fire({
-            position: "top-end",
-                  icon: "warning",
-                  title: this.text_validation,
-                  showConfirmButton: false,
-                  timer: 1500
-                });
-              }else{
-                // Swal.fire('Actualizado', this.text_success, 'success' );
-                  this.text_success = 'Se guardó la informacion del Laboratorio con la cita'
-                // this.text_success = 'actualizado correctamente';
-                Swal.fire({
-                  position: "top-end",
-                  icon: "success",
-                  title: this.text_success,
-                  showConfirmButton: false,
-                  timer: 1500
-                });
-                this.getAppointment();
-            }
-      })
+      if(this.presupuesto_id){
+        //editamos
+
+        this.presupuestoService.editPresupuesto(formData, this.presupuesto_id).subscribe((resp:any)=>{
+          if(resp.message == 403){
+            this.text_validation = resp.message_text;
+            Swal.fire({
+              position: "top-end",
+                    icon: "warning",
+                    title: this.text_validation,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }else{
+                    this.text_success = 'Se guardó la informacion del Laboratorio con la cita'
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: this.text_success,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  this.getAppointment();
+              }
+        })
+      }else {
+        //creamos
+        this.presupuestoService.createPresupuesto(formData).subscribe((resp:any)=>{
+          if(resp.message == 403){
+            this.text_validation = resp.message_text;
+            Swal.fire({
+              position: "top-end",
+                    icon: "warning",
+                    title: this.text_validation,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }else{
+                    this.text_success = 'Se guardó la informacion del Laboratorio con la cita'
+                  Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: this.text_success,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                  this.getAppointment();
+              }
+        })
+      }
   
     }
 

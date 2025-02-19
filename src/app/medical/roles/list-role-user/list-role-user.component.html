@@ -30,7 +30,7 @@
                                                     <a class="btn"><img src="assets/img/icons/search-normal.svg" alt=""></a>
                                             </div>
                                             <div class="add-group">
-                                                <a routerLink="/roles/register" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
+                                                <a routerLink="/roles/register" *ngIf="isPermission('register_rol')" class="btn btn-primary add-pluss ms-2"><img src="assets/img/icons/plus.svg" alt=""></a>
                                                 <a href="javascript:;" (click)="PageSize()" class="btn btn-primary doctor-refresh ms-2"><img src="assets/img/icons/re-fresh.svg" alt=""></a>
                                             </div>
                                         </div>
@@ -72,17 +72,17 @@
                                             *ngIf="!data.permision_pluck.length"
                                             class="persmisoslista"
                                           >
-                                            <li>No Permissions</li>
+                                            <li>No Tiene Permisos</li>
                                           </ul>
                                           <ul
                                             *ngIf="data.permision_pluck.length"
                                             class="persmisoslista"
                                           >
-                                            <!-- <li *ngFor="let permiso of data.permision_pluck"> -->
-                                            <li >
-                                              <!-- {{ permiso }} -->
-                                              Have Permission
-                                            </li>
+                                            
+                                          <li>Tiene Permisos</li>
+                                            <!-- <li *ngFor="let permiso of data.permision_pluck">
+                                              {{ permiso }}
+                                            </li> -->
                                           </ul>
                                         </td>
                                         <td>{{data.created_at}}</td>
@@ -91,8 +91,8 @@
                                             <div class="dropdown dropdown-action" *ngIf="data.id !==1">
                                                 <a href="javascript:void(0);" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" [routerLink]="['/roles/list/edit/', data.id]"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);" (click)="selectRol(data)" 
+                                                    <a class="dropdown-item" [routerLink]="['/roles/list/edit/', data.id]" *ngIf="isPermission('edit_rol')"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
+                                                    <a class="dropdown-item" href="javascript:void(0);" *ngIf="isPermission('delete_rol')" (click)="selectRol(data)" 
                                                     data-bs-toggle="modal" 
                                                     [attr.data-bs-target]="'#delete_patient-'+data.id"
                                                     >

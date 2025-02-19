@@ -39,11 +39,13 @@ export class ListRoleUserComponent {
   public role_id:any;
   public role_selected:any;
   public text_validation:any;
+  public user:any;
 
   constructor(
     public rolesService: RolesService,
     public doctorService: DoctorService,
-    private fileSaver: FileSaverService
+    private fileSaver: FileSaverService,
+    public roleService: RolesService,
     ){
 
   }
@@ -51,6 +53,7 @@ export class ListRoleUserComponent {
     window.scrollTo(0, 0);
     this.doctorService.closeMenuSidebar();
     this.getTableData();
+    this.user = this.roleService.authService.user;
   }
   private getTableData(): void {
     this.rolesList = [];
@@ -67,6 +70,16 @@ export class ListRoleUserComponent {
      this.getTableDataGeneral();
     })
 
+  }
+
+  isPermission(permission:string){
+    if(this.user.roles.includes('SUPERADMIN')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
   }
 
   getTableDataGeneral(){

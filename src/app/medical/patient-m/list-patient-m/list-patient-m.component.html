@@ -62,9 +62,12 @@
                                     <tr *ngFor="let data of patientList">
                                         
                                         <td>
-                                          <a [routerLink]="['/patients/profile/', data.id]">
+                                          <a [routerLink]="['/patients/profile/', data.id]" *ngIf="isPermission('profile_patient')">
                                             {{data.name + ' ' + (data.surname ? data.surname: '')}}
                                           </a>
+                                          <span *ngIf="!isPermission('profile_patient')">
+                                            {{data.name + ' ' + (data.surname ? data.surname: '')}}
+                                          </span>
                                         </td>
                                         <td>{{data.email}}</td>
                                         <td>{{data.education}}</td>
@@ -77,7 +80,7 @@
                                                 <a href="javascript:void(0);" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                   <a class="dropdown-item" [routerLink]="['/patients/list/edit/', data.id]" *ngIf="isPermission('edit_patient')"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
-                                                  <a class="dropdown-item" [routerLink]="['/patients/profile/', data.id]"><i class="fa-solid fa-eye m-r-5"></i> View</a>
+                                                  <a class="dropdown-item" [routerLink]="['/patients/profile/', data.id]" *ngIf="isPermission('profile_patient')"><i class="fa-solid fa-eye m-r-5"></i> View</a>
                                                   
                                                     <a class="dropdown-item" href="javascript:void(0);" (click)="selectUser(data)" 
                                                     data-bs-toggle="modal" *ngIf="isPermission('delete_patient')"

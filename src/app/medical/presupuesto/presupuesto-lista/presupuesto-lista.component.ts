@@ -15,7 +15,7 @@ declare var $:any;
 export class PresupuestoListaComponent {
 
   public routes = routes;
-    titlePage = 'Laboratorios';
+    titlePage = 'Presupuestos';
   
    
     dataSource!: MatTableDataSource<any>;
@@ -41,8 +41,8 @@ export class PresupuestoListaComponent {
     public appointment_generals:any = [];
     public appointment_selected:any;
     public text_validation:any;
-  public speciality_id= 0;
-  public date = null;
+    public speciality_id= 0;
+    public date = null;
 
     specialities:any = [];
     public user:any;
@@ -60,15 +60,15 @@ export class PresupuestoListaComponent {
         window.scrollTo(0, 0);
         this.doctorService.closeMenuSidebar();
         this.getTableData();
-        // this.getSpecialities();
+        this.getSpecialities();
         this.user = this.roleService.authService.user;
       }
     
-      // getSpecialities(){
-      //   this.presupuestoService.listConfig().subscribe((resp:any)=>{
-      //     this.specialities = resp.specialities;
-      //   })
-      // }
+      getSpecialities(){
+        this.presupuestoService.listConfig().subscribe((resp:any)=>{
+          this.specialities = resp.specialities;
+        })
+      }
     
       isPermission(permission:string){
         if(this.user.roles.includes('SUPERADMIN')){

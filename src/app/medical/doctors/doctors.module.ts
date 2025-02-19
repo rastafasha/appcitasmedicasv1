@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.component';
+import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
 @NgModule({
@@ -35,7 +36,9 @@ import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.componen
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    PipesModule
+    
   ]
 })
 export class DoctorsModule { }

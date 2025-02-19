@@ -35,6 +35,12 @@ export class PresupuestoService {
     return this.http.get(URL, {headers:headers});
   }
   
+
+  listConfig(){
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+    const URL = url_servicios+'/presupuesto/config';
+    return this.http.get(URL, {headers:headers});
+  }
   getPresupuesto(presupuesto_id:any){
     const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
     const URL = url_servicios+'/presupuesto/show/'+presupuesto_id;
@@ -48,7 +54,7 @@ export class PresupuestoService {
   editPresupuesto( data:any, presupuesto_id:any,){
     const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
     const URL = url_servicios+'/presupuesto/update/'+presupuesto_id;
-    return this.http.post(URL,data,{headers:headers});
+    return this.http.put(URL,data,{headers:headers});
   }
   deletePresupuesto(presupuesto_id:any){
     const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
