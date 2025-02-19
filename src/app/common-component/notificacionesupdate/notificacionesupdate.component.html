@@ -1,7 +1,7 @@
 <ul class="nav user-menu float-end" >
         <li class="nav-item dropdown d-none d-sm-block" *ngIf="isPermission('show_payment_cobros')" >
             <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                <img src="assets/img/icons/note-icon-02.svg" alt=""><span class="pulse" *ngIf="transferencias?.length > 0 || appointments.length > 0"></span> 
+                <img src="assets/img/icons/note-icon-02.svg" alt=""><span class="pulse" *ngIf="payments?.length > 0 || appointments.length > 0"></span> 
             </a>
             <div class="dropdown-menu notifications">
                 <div class="topnav-dropdown-header">
@@ -9,7 +9,7 @@
                 </div>
                 <div class="drop-scroll">
                     <ul class="notification-list">
-                        <li class="notification-message" *ngIf="transferencias?.length > 0">
+                        <li class="notification-message" *ngIf="payments?.length > 0">
                             <a [routerLink]="routes.transferenciaList">
                                 <div class="media">
                                     <span class="avatar">
@@ -19,7 +19,7 @@
                                         <p class="noti-details"><span class="noti-title">
                                             <a [routerLink]="routes.transferenciaList">Verificación Transferencia</a>
                                         </span> Nueva transferencia por confirmar </p>
-                                        <p class="noti-time"><span class="notification-time">Tiene {{total}} pendientes</span></p>
+                                        <p class="noti-time"><span class="notification-time">Tiene {{payments?.length}} pendientes</span></p>
                                     </div>
                                 </div>
                             </a>

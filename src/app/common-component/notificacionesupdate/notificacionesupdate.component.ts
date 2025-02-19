@@ -17,7 +17,7 @@ export class NotificacionesupdateComponent implements OnInit {
   @Input() logout;
 
   appointments: any = [];
-  transferencias: any = [];
+  payments: any = [];
   total: any = 0;
   totalT: any = 0;
   constructor(
@@ -61,9 +61,9 @@ export class NotificacionesupdateComponent implements OnInit {
   getTrastransferenciasRecientes() {
     this.paymentService.pendings().subscribe(
         (response:any) => {
-            console.log(response);
-            this.transferencias = response.payments;
-            this.totalT = response.total;
+          this.payments = response.payments.data;
+          this.totalT = response.total;
+          console.log(this.payments);
             },
             (error) => {
                 console.log(error);
