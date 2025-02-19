@@ -31,6 +31,7 @@ export class NotificacionesupdateComponent implements OnInit {
    }
    , 3000);
   }
+  //obtiene las citas pendientes por atender
   getAppointmentRecientes() {
     this.appointmentService.pendings().subscribe(
       (response:any) => {
@@ -56,7 +57,7 @@ export class NotificacionesupdateComponent implements OnInit {
     return false;
   }
   
-
+//obtiene las transferencias pendientes por atender
   getTrastransferenciasRecientes() {
     this.paymentService.pendings().subscribe(
         (response:any) => {
