@@ -378,10 +378,17 @@ export class DataService {
               show_nav: true,
             },
             {
-              menuValue: 'Ver Paciente',
+              menuValue: 'Perfil Paciente',
               route: '',
               base: '',
-              permision: 'view_patient',
+              permision: 'profile_patient',
+              show_nav: false,
+            },
+            {
+              menuValue: 'Delete Paciente',
+              route: '',
+              base: '',
+              permision: 'delete_patient',
               show_nav: false,
             },
             // {
