@@ -95,10 +95,11 @@ export class PresupuestoEditarComponent {
         this.patient_id = this.presupuesto_selected.patient.id;
         this.n_doc = this.presupuesto_selected.patient.n_doc;
         this.name = this.presupuesto_selected.patient.name;
+        this.surname = this.presupuesto_selected.patient.surname;
         this.email = this.presupuesto_selected.patient.email;
         this.patient = this.presupuesto_selected.patient.patient;
         this.phone = this.presupuesto_selected.patient.phone;
-        this.description = this.presupuesto_selected.patient.description;
+        this.description = this.presupuesto_selected.description;
         this.doctor = this.presupuesto_selected.doctor.full_name;
         this.speciality_id = this.presupuesto_selected.speciality_id;
         this.amount = this.presupuesto_selected.amount;
