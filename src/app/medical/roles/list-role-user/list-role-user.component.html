@@ -72,17 +72,17 @@
                                             *ngIf="!data.permision_pluck.length"
                                             class="persmisoslista"
                                           >
-                                            <li>No Permissions</li>
+                                            <li>No Tiene Permisos</li>
                                           </ul>
                                           <ul
                                             *ngIf="data.permision_pluck.length"
                                             class="persmisoslista"
                                           >
-                                            <!-- <li *ngFor="let permiso of data.permision_pluck"> -->
-                                            <li >
-                                              <!-- {{ permiso }} -->
-                                              Have Permission
-                                            </li>
+                                            
+                                          <li>Tiene Permisos</li>
+                                            <!-- <li *ngFor="let permiso of data.permision_pluck">
+                                              {{ permiso }}
+                                            </li> -->
                                           </ul>
                                         </td>
                                         <td>{{data.created_at}}</td>
