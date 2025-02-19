@@ -20,9 +20,11 @@ import { BackButtnComponent } from '../reusables/backButtn/backButtn.component';
 import { SkeletonLoaderComponent } from '../reusables/skeleton-loader/skeleton-loader.component';
 import { LoaderAnimComponent } from '../reusables/loader-anim/loader-anim.component';
 import { BreadcumsComponent } from '../reusables/breadcums/breadcums.component';
+import { NotificacionesupdateComponent } from '../common-component/notificacionesupdate/notificacionesupdate.component';
 
 @NgModule({
   declarations: [
+    NotificacionesupdateComponent,
     HeaderComponent,
     SidebarComponent,
     BackButtnComponent,
@@ -82,7 +84,8 @@ import { BreadcumsComponent } from '../reusables/breadcums/breadcums.component';
     BackButtnComponent,
     SkeletonLoaderComponent,
     LoaderAnimComponent,
-    BreadcumsComponent
+    BreadcumsComponent,
+    NotificacionesupdateComponent,
   ],
   providers: [
     DataService,

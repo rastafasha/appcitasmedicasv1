@@ -182,7 +182,7 @@ export class PubListComponent {
     
     this.pubService.updateStatus(data, data.id).subscribe(
       resp =>{
-        console.log(resp);
+        // console.log(resp);
         // Swal.fire('Actualizado', `actualizado correctamente`, 'success');
         // this.toaster.open({
         //   text:'Producto Actualizado!',
@@ -237,16 +237,17 @@ export class PubListComponent {
         this.publicidadList.splice(INDEX,1);
 
 
+        
         $('#add_publicidad').hide();
         $("#add_publicidad").removeClass("show");
         $(".modal-backdrop").remove();
         $("body").removeClass();
         $("body").removeAttr("style");
-
-        this.publicidad_selected = null;
-        this.getTableData();
       }
     })
+    this.publicidad_selected = null;
+    this.text_success = "La publicidad se Creo correctamente";
+    this.closeReload();
   }
   editPublicidad(publicidad:any){
     const formData = new FormData();
@@ -256,7 +257,6 @@ export class PubListComponent {
     this.pubService.editPub(formData, publicidad.id).subscribe((resp:any) => {
       // console.log(resp);
       const INDEX = this.publicidadList.findIndex((item:any) => item.id == this.publicidad_selected.id);
-      // this.text_success = "La publicidad se Actualizó correctamente";
       if(INDEX != -1){
         this.publicidadList.splice(INDEX,1);
         
@@ -265,8 +265,9 @@ export class PubListComponent {
         $(".modal-backdrop").remove();
         $("body").removeClass();
         $("body").removeAttr("style");
-
+        
         this.publicidad_selected = null;
+        this.text_success = "La publicidad se Actualizó correctamente";
         this.FILE_AVATAR = null;
         this.IMAGE_PREVISUALIZA = null;
         this.getTableData();
@@ -275,6 +276,9 @@ export class PubListComponent {
   }
 
   closeReload(){
+    this.publicidad_selected = null;
+    this.FILE_AVATAR = null;
+        this.IMAGE_PREVISUALIZA = null;
     this.getTableData();
   }
 

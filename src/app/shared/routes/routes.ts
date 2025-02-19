@@ -436,6 +436,9 @@ export class routes {
   public static get presupuestoList(): string {
     return this.baseUrl + '/presupuesto/list';
   }
+  public static get transferenciaList(): string {
+    return this.baseUrl + '/appointment-pay/list-pagos';
+  }
   public static get presupuestoEdit(): string {
     return this.baseUrl + '/presupuesto/edit';
   }
