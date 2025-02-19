@@ -41,11 +41,8 @@ export class PresupuestoEditarComponent {
     presupuesto_id:number;
     speciality_id:number;
     presupuesto_selected:any;
-    appointment_atention_selected:any;
+    appointment_atention_selected:string;
   
-    FILES:any = [];
-    FilesAdded:any = [];
-    name_laboratory:any;
     antecedent_alerg:any;
   
     public file_selected:any;
