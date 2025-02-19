@@ -43,6 +43,17 @@ export class NotificacionesupdateComponent implements OnInit {
     );
   }
 
+  isPermission(permission:string){
+    if(this.user.roles.includes('SUPERADMIN')){
+      return true;
+    }
+    if(this.user.permissions.includes(permission)){
+      return true;
+    }
+    return false;
+  }
+  
+
   getTrastransferenciasRecientes() {
     this.paymentService.pendings().subscribe(
         (response:any) => {
