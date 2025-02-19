@@ -36,8 +36,14 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">  
                                     <div class="form-group local-forms">
-                                        <label >Paciente <span class="login-danger">*</span></label>
+                                        <label >Nombre Paciente <span class="login-danger">*</span></label>
                                         <input class="form-control" name="name"   [(ngModel)]="name" type="text"  >
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-xl-4">  
+                                    <div class="form-group local-forms">
+                                        <label >Apellido Paciente <span class="login-danger">*</span></label>
+                                        <input class="form-control" name="surname"   [(ngModel)]="surname" type="text"  >
                                     </div>
                                 </div>
                                 
@@ -89,9 +95,15 @@
                             <div class="row align-items-center" >
                                 <div class="col-xs-12">
                                     <div class="form-group local-forms">
-                                        <label>Diagnostico/Revisión <span class="login-danger">*</span></label>
+                                        <label>Descripción <span class="login-danger">*</span></label>
                                         <textarea class="form-control" name="description"  [(ngModel)]="description" rows="4" cols="30"></textarea>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6 col-xl-4">  
+                                <div class="form-group local-forms">
+                                    <label >Monto <span class="login-danger">*</span></label>
+                                    <input class="form-control" name="amount"   [(ngModel)]="amount" type="text"  >
                                 </div>
                             </div>
                             

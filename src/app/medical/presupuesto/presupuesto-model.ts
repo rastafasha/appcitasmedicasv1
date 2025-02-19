@@ -34,9 +34,10 @@ export class Speciality {
 export class Patient {
     id:number;
         patient_id:number;
-        amount:number;
         n_doc:number;
         full_name:string;
+        name:string;
+        surname:string;
         email:string;
         antecedent_alerg:string;
 

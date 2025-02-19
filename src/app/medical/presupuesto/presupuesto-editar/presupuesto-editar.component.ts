@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { LaboratoryService } from '../../laboratory/service/laboratory.service';
 import { PresupuestoService } from '../service/presupuesto.service';
 import { Doctor, Patient, Speciality } from '../presupuesto-model';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 declare let $:any;  
 
 @Component({
@@ -27,7 +28,7 @@ export class PresupuestoEditarComponent {
     n_doc = 0;
     phone = '';
     email = '';
-    surname_companion = '';
+    amount = 0;
   
     laboratory = false;
     laboratory_number = 1;
@@ -49,21 +50,23 @@ export class PresupuestoEditarComponent {
   
     public file_selected:any;
     public doc:any;
-    public FILE:any;
+    public user:any;
 
     patient:Patient [];
+    patient_id:Patient;
     doctor:Doctor [];
+    doctor_id:Doctor;
     speciality:Speciality [];
     specialities:Speciality [];
   
     constructor(
       public presupuestoService:PresupuestoService,
       public laboratoryService:LaboratoryService,
-      private _sanitizer: DomSanitizer,
+      public authService:AuthService,
       public router: Router,
       public ativatedRoute: ActivatedRoute
     ){
-  
+      this.user = this.authService.user;
     }
   
     ngOnInit(): void {
@@ -80,6 +83,7 @@ export class PresupuestoEditarComponent {
         }
        })
        this.getSpecialities();
+
       
       
     }
@@ -88,13 +92,16 @@ export class PresupuestoEditarComponent {
       this.presupuestoService.getPresupuesto(this.presupuesto_id).subscribe((resp:any)=>{
         this.presupuesto_selected = resp.presupuesto;
         this.patient = this.presupuesto_selected.patient;
+        this.patient_id = this.presupuesto_selected.patient.id;
         this.n_doc = this.presupuesto_selected.patient.n_doc;
         this.name = this.presupuesto_selected.patient.name;
         this.email = this.presupuesto_selected.patient.email;
+        this.patient = this.presupuesto_selected.patient.patient;
         this.phone = this.presupuesto_selected.patient.phone;
         this.description = this.presupuesto_selected.patient.description;
         this.doctor = this.presupuesto_selected.doctor.full_name;
         this.speciality_id = this.presupuesto_selected.speciality_id;
+        this.amount = this.presupuesto_selected.amount;
   
       });
       
@@ -108,8 +115,8 @@ export class PresupuestoEditarComponent {
       })
     }
   
-    // eslint-disable-next-line no-debugger
-    save(){debugger
+    
+    save(){
       this.text_validation = '';
       // if(!this.name_laboratory){
       //   this.text_validation = 'Es requerido ingresar un nombre';
@@ -138,14 +145,17 @@ export class PresupuestoEditarComponent {
   
       formData.append('speciality_id', this.speciality_id+'');
       formData.append('description', this.description+'');
-      formData.append('patient_id', this.patient+'');
+      formData.append('patient_id', this.patient_id+'');
+      formData.append('patient', this.patient+'');
       formData.append('n_doc', this.n_doc+'');
       formData.append('name', this.name+'');
+      formData.append('surname', this.surname+'');
       formData.append('email', this.email+'');
       formData.append('phone', this.phone+'');
-      // formData.append('doctor_id', this.doctor_id+'');
-      // formData.append('address', this.address+'');
-      // formData.append('date', this.date+'');
+      formData.append('amount', this.amount+'');
+      formData.append('doctor_id', this.user.id+'');
+      // formData.append('doctor_id', this.doctor+'');
+      formData.append('user_id', this.user.id+'');
   
       if(this.presupuesto_id){
         //editamos
@@ -174,7 +184,7 @@ export class PresupuestoEditarComponent {
         })
       }else {
         //creamos
-        this.laboratoryService.storeLaboratory(formData).subscribe((resp:any)=>{
+        this.presupuestoService.createPresupuesto(formData).subscribe((resp:any)=>{
           if(resp.message == 403){
             this.text_validation = resp.message_text;
             Swal.fire({
