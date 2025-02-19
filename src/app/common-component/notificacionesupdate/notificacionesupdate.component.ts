@@ -18,7 +18,8 @@ export class NotificacionesupdateComponent implements OnInit {
 
   appointments: any = [];
   transferencias: any = [];
-  statusPending;
+  total: any = 0;
+  totalT: any = 0;
   constructor(
     private appointmentService: AppointmentService,
     public paymentService: PaymentService,
@@ -28,19 +29,13 @@ export class NotificacionesupdateComponent implements OnInit {
     this.getTrastransferenciasRecientes();
   }
   getAppointmentRecientes() {
-    this.appointmentService.listAppointments().subscribe(
+    this.appointmentService.pendings().subscribe(
       (response:any) => {
         // console.log(response);
         //filtramos los mas recientes
         this.appointments = response.appointments.data;
+        this.total = response.total;
         console.log(this.appointments);
-        //extramos los pendientes con status 1 y contamos el total
-        // this.appointments.forEach((element: any) => {
-        //     if (element.status == 1) {
-        //         this.statusPending++;
-        //     }
-        // });
-        // console.log(this.statusPending);
       },
       (error) => {
         console.log(error);
@@ -49,11 +44,11 @@ export class NotificacionesupdateComponent implements OnInit {
   }
 
   getTrastransferenciasRecientes() {
-    this.paymentService.getAll().subscribe(
+    this.paymentService.pendings().subscribe(
         (response:any) => {
             console.log(response);
             this.transferencias = response.payments;
-            
+            this.totalT = response.total;
             },
             (error) => {
                 console.log(error);

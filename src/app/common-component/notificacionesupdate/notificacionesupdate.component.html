@@ -1,7 +1,7 @@
 <ul class="nav user-menu float-end">
         <li class="nav-item dropdown d-none d-sm-block">
             <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                <img src="assets/img/icons/note-icon-02.svg" alt=""><span class="pulse" *ngIf="transferencias?.length > 0 || appointments?.length > 0"></span> 
+                <img src="assets/img/icons/note-icon-02.svg" alt=""><span class="pulse" *ngIf="transferencias?.length > 0 || appointments.length > 0"></span> 
             </a>
             <div class="dropdown-menu notifications">
                 <div class="topnav-dropdown-header">
@@ -16,19 +16,26 @@
                                         <img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
                                     </span>
                                     <div class="media-body">
-                                        <p class="noti-details"><span class="noti-title">Verificación Transferencia</span> Nueva transferencia </p>
-                                        <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+                                        <p class="noti-details"><span class="noti-title">
+                                            <a [routerLink]="routes.transferenciaList">Verificación Transferencia</a>
+                                        </span> Nueva transferencia </p>
+                                        <p class="noti-time"><span class="notification-time">Tiene {{total}} pendientes</span></p>
                                     </div>
                                 </div>
                             </a>
                         </li>
-                        <li class="notification-message" *ngIf="appointments?.length > 0 ">
+                        <li class="notification-message" *ngIf="appointments.length > 0">
                             <a [routerLink]="routes.appointmentList">
                                 <div class="media">
                                     <span class="avatar">V</span>
                                     <div class="media-body">
-                                        <p class="noti-details"><span class="noti-title">Verificación Cita</span> verifique las nuevas citas </p>
-                                        <p class="noti-time"><span class="notification-time">Tiene {{statusPending}} citas pendientes</span></p>
+                                        <p class="noti-details"><span class="noti-title">
+                                            <a [routerLink]="routes.appointmentList">
+
+                                                Verificación Cita
+                                            </a>
+                                        </span> verifique las nuevas citas </p>
+                                        <p class="noti-time"><span class="notification-time">Tiene {{total}} pendientes</span></p>
                                     </div>
                                 </div>
                             </a>

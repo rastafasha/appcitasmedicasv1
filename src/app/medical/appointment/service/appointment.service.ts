@@ -28,7 +28,7 @@ export class AppointmentService {
   }
   pendings(){
     const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    const URL = url_servicios+"/appointment/pending";
+    const URL = url_servicios+"/appointment/pendientes/";
     return this.http.get(URL, {headers:headers});
   }
 
