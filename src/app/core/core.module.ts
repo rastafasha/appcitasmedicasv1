@@ -9,6 +9,7 @@ import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
+    
     CoreComponent,
     // HeaderComponent,
     // SidebarComponent,
