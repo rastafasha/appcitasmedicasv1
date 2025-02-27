@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AtencionMedicaComponent } from './atencion-medica/atencion-medica.component';
 import { ListDocComponent } from './list-doc/list-doc.component';
+import { ReusablesModule } from 'src/app/reusables/reusables.module';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ListDocComponent } from './list-doc/list-doc.component';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ReusablesModule
   ]
 })
 export class AppointmentModule { }

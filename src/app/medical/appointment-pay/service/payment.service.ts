@@ -80,5 +80,11 @@ export class PaymentService {
     const URL = url_servicios+"/payment/pendientes";
     return this.http.get(URL, {headers:headers});
   }
+
+  pendingsbyDoctor(doctor_id:number){
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/payment/pendientesbydoctor/"+doctor_id;
+    return this.http.get(URL, {headers:headers});
+  }
  
 }

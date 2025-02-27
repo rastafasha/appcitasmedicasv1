@@ -2,18 +2,8 @@
     <div class="content">
     
         <!-- Page Header -->
-        <div class="page-header">
-            <div class="row">
-              <app-back-bottn style="width:50px;"></app-back-bottn>
-                <div class="col-sm-10">
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a routerLink="/">Dashboard </a></li>
-                        <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
-                        <li class="breadcrumb-item active">Personal</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <!-- dashboar con ruta / -->
+        <app-breadcums [titlePage]="titlePage"></app-breadcums>
         <!-- /Page Header -->
 
         <app-skeleton-loader *ngIf="isLoading" [rows]="5" [columns]="4"></app-skeleton-loader>
@@ -30,7 +20,7 @@
                             <div class="row align-items-center">
                                 <div class="col">
                                     <div class="doctor-table-blk">
-                                        <h3>Personal</h3>
+                                        <h3>{{titlePage}}</h3>
                                         <div class="doctor-search-blk">
                                             <div class="top-nav-search table-search-blk">
                                                     <input  class="form-control" placeholder="Search here" [(ngModel)]="searchDataValue"
@@ -44,13 +34,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-auto text-end float-end ms-auto download-grp">
-                                    <!-- <a type="button" (click)="pdfExport()" class=" me-2"><img src="assets/img/icons/pdf-icon-01.svg"   alt="Export to Pdf"  title="Export to Pdf"></a> -->
-                                    <a type="button" (click)="txtExport()" class=" me-2"><img src="assets/img/icons/pdf-icon-02.svg"   alt="Export to TXT" title="Export to TXT"></a>
-                                    <a type="button" (click)="csvExport()" class=" me-2"><img src="assets/img/icons/pdf-icon-03.svg"    alt="Export to CSV" title="Export to CSV"></a>
-                                    <a type="button" (click)="excelExport()" ><img src="assets/img/icons/pdf-icon-04.svg"   alt="Export to XLS" title="Export to XLS"></a>
-                                    
-                                </div>
+                                <app-export-lists></app-export-lists>
                             </div>
                         </div>
                         <!-- /Table Header -->

@@ -18,6 +18,7 @@ export class ListStaffNComponent {
   public routes = routes;
   @ViewChild('content') content:ElementRef;
   
+  titlePage= 'Personal'
 
   public staffList: any = [];
   dataSource!: MatTableDataSource<any>;

@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { ReusablesModule } from 'src/app/reusables/reusables.module';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     HttpClientModule,
     RouterModule,
     SharedModule,
-    PipesModule
+    PipesModule,
+    ReusablesModule
     
   ]
 })

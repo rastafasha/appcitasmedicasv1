@@ -1,41 +1,81 @@
 <ul class="nav user-menu float-end" >
-        <li class="nav-item dropdown d-none d-sm-block" *ngIf="isPermission('show_payment_cobros')" >
-            <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+        <li class="nav-item dropdown d-none d-sm-block" *ngIf="isPermission('view_notification')" >
+            <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" *ngIf="user.roles[0]=== 'SUPERADMIN'">
                 <img src="assets/img/icons/note-icon-02.svg" alt=""><span class="pulse" *ngIf="payments?.length > 0 || appointments.length > 0"></span> 
+            </a>
+            <a href="javascript:void(0);" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" *ngIf="user.roles[0]=== 'DOCTOR'">
+                <img src="assets/img/icons/note-icon-02.svg" alt=""><span class="pulse" *ngIf="payments_doctors?.length > 0 || appointments_doctors.length > 0"></span> 
             </a>
             <div class="dropdown-menu notifications">
                 <div class="topnav-dropdown-header">
                     <span>Notifications</span>
                 </div>
-                <div class="drop-scroll">
+                <!-- user.roles[0] === 'DOCTOR' -->
+                <div class="drop-scroll" *ngIf="user.roles[0] === 'DOCTOR'">
                     <ul class="notification-list">
-                        <li class="notification-message" *ngIf="payments?.length > 0">
-                            <a [routerLink]="routes.transferenciaList">
+                        <li class="notification-message" *ngIf="payments_doctors?.length > 0 && isPermission('view_notification_pagos')">
+                            <a [routerLink]="[routes.trasfereciasListDoctor, user.id]">
                                 <div class="media">
                                     <span class="avatar">
                                         <img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
                                     </span>
                                     <div class="media-body">
                                         <p class="noti-details"><span class="noti-title">
-                                            <a [routerLink]="routes.transferenciaList">Verificación Transferencia</a>
+                                            <a [routerLink]="[routes.trasfereciasListDoctor, user.id]">Verificación Transferencia</a>
                                         </span> Nueva transferencia por confirmar </p>
-                                        <p class="noti-time"><span class="notification-time">Tiene {{payments?.length}} pendientes</span></p>
+                                        <p class="noti-time"><span class="notification-time">Tiene {{totalT}} pendientes</span></p>
                                     </div>
                                 </div>
                             </a>
                         </li>
-                        <li class="notification-message" *ngIf="appointments.length > 0">
-                            <a [routerLink]="routes.appointmentList">
+                        <li class="notification-message" *ngIf="appointments_doctors.length > 0 && isPermission('view_notification_appointment')">
+                            <a [routerLink]="[routes.appointmentListDoct, user.id]">
                                 <div class="media">
                                     <span class="avatar">V</span>
                                     <div class="media-body">
                                         <p class="noti-details"><span class="noti-title">
-                                            <a [routerLink]="routes.appointmentList">
+                                            <a [routerLink]="[routes.appointmentListDoct, user.id]">
 
                                                 Verificación Cita
                                             </a>
                                         </span> verifique las nuevas citas por atender </p>
                                         <p class="noti-time"><span class="notification-time">Tiene {{total}} pendientes </span></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                <div class="drop-scroll" *ngIf="user.roles[0] === 'SUPERADMIN'">
+                    <ul class="notification-list">
+                        <li class="notification-message" *ngIf="payments?.length > 0 || payments?.length > 0 && isPermission('view_notification_pagos')">
+                            <a [routerLink]="[routes.transferenciaList]">
+                                <div class="media">
+                                    <span class="avatar">
+                                        <img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
+                                    </span>
+                                    <div class="media-body">
+                                        <p class="noti-details"><span class="noti-title">
+                                            <a [routerLink]="[routes.transferenciaList]">Verificación Transferencia</a>
+                                        </span> Nueva transferencia por confirmar </p>
+                                        <p class="noti-time"><span class="notification-time">Tiene {{totalTTr}} pendientes</span></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="notification-message" *ngIf="appointments.length > 0 && isPermission('view_notification_appointment')">
+                            <a [routerLink]="[routes.appointmentList]">
+                                <div class="media">
+                                    <span class="avatar">V</span>
+                                    <div class="media-body">
+                                        <p class="noti-details"><span class="noti-title">
+                                            <a [routerLink]="[routes.appointmentList]">
+
+                                                Verificación Cita
+                                            </a>
+                                        </span> verifique las nuevas citas por atender </p>
+                                        <p class="noti-time"><span class="notification-time">Tiene {{totalTApp}} pendientes </span></p>
                                     </div>
                                 </div>
                             </a>
@@ -82,8 +122,9 @@
             <div class="dropdown-menu">
                 <a *ngIf="isPermission('profile_doctor')" class="dropdown-item" [routerLink]="['/doctors/profile/', user.id]">Mi Perfil</a>
                 <a *ngIf="isPermission('edit_doctor')" class="dropdown-item" [routerLink]="['/doctors/list/edit/', user.id]">Editar Perfil</a>
+                <a *ngIf="isPermission('edit_staff')" class="dropdown-item" [routerLink]="['/staffs/list/edit/', user.id]">Editar Perfil</a>
                 <!-- <a class="dropdown-item" [routerLink]="routes.settings">Configuracion</a> -->
-                <a class="dropdown-item" style="cursor: pointer;"(click)="logout()">Salir</a>
+                <a class="dropdown-item" style="cursor: pointer;"(click)="onLogout()">Salir</a>
                 <!-- [routerLink]="routes.login" -->
             </div>
         </li>

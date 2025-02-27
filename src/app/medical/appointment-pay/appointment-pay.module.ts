@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ListAppoimentCobrosComponent } from './list-appoiment-cobros/list-appoiment-cobros.component';
+import { ReusablesModule } from 'src/app/reusables/reusables.module';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ListAppoimentCobrosComponent } from './list-appoiment-cobros/list-appoi
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ReusablesModule
   ]
 })
 export class AppointmentPayModule { }

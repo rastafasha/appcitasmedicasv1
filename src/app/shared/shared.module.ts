@@ -16,10 +16,6 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from '../common-component/header/header.component';
 import { SidebarComponent } from '../common-component/sidebar/sidebar.component';
-import { BackButtnComponent } from '../reusables/backButtn/backButtn.component';
-import { SkeletonLoaderComponent } from '../reusables/skeleton-loader/skeleton-loader.component';
-import { LoaderAnimComponent } from '../reusables/loader-anim/loader-anim.component';
-import { BreadcumsComponent } from '../reusables/breadcums/breadcums.component';
 import { NotificacionesupdateComponent } from '../common-component/notificacionesupdate/notificacionesupdate.component';
 
 @NgModule({
@@ -27,10 +23,6 @@ import { NotificacionesupdateComponent } from '../common-component/notificacione
     NotificacionesupdateComponent,
     HeaderComponent,
     SidebarComponent,
-    BackButtnComponent,
-    SkeletonLoaderComponent,
-    LoaderAnimComponent,
-    BreadcumsComponent
   ],
   imports: [
     CommonModule,
@@ -81,10 +73,6 @@ import { NotificacionesupdateComponent } from '../common-component/notificacione
     RouterModule,
     HeaderComponent,
     SidebarComponent,
-    BackButtnComponent,
-    SkeletonLoaderComponent,
-    LoaderAnimComponent,
-    BreadcumsComponent,
     NotificacionesupdateComponent,
   ],
   providers: [

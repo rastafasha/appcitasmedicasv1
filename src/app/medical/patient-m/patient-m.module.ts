@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfilePatientMComponent } from './profile-patient-m/profile-patient-m.component';
+import { ReusablesModule } from 'src/app/reusables/reusables.module';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ProfilePatientMComponent } from './profile-patient-m/profile-patient-m.
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ReusablesModule
   ]
 })
 export class PatientMModule { }

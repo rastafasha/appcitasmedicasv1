@@ -8,6 +8,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PresupuestoRoutingModule } from './presupuesto-routing.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
+import { PresupuestoDoctorListComponent } from './presupuesto-doctor-list/presupuesto-doctor-list.component';
+import { ReusablesModule } from 'src/app/reusables/reusables.module';
 
 
 
@@ -15,7 +18,8 @@ import { PresupuestoRoutingModule } from './presupuesto-routing.module';
   declarations: [
     PresupuestoComponent,
     PresupuestoListaComponent,
-    PresupuestoEditarComponent
+    PresupuestoEditarComponent,
+    PresupuestoDoctorListComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +28,9 @@ import { PresupuestoRoutingModule } from './presupuesto-routing.module';
         ReactiveFormsModule,
         HttpClientModule,
         RouterModule,
-        SharedModule
+        SharedModule,
+        ReusablesModule,
+        PipesModule
   ]
 })
 export class PresupuestoModule { }
