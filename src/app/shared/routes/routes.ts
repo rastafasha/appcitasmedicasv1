@@ -168,11 +168,15 @@ export class routes {
   public static get addDoctor(): string {
     return this.baseUrl + '/doctors/add';
   }
-  public static get doctorProfile(): string {
-    return this.baseUrl + '/doctor/doctor-profile';
-  }
+  // public static get doctorProfile(): string {
+  //   return this.baseUrl + '/doctor/doctor-profile';
+  // }
   public static get doctorSetting(): string {
     return this.baseUrl + '/doctor/doctor-setting';
+  }
+
+  public static get doctorProfile(): string {
+    return this.baseUrl + '/doctors/profile/';
   }
   // public static get doctorsList(): string {
   //   return this.baseUrl + '/doctor/doctors-list';

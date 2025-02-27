@@ -40,9 +40,7 @@ export class HeaderComponent {
         this.miniSidebar = false;
       }
     });
-    const USER = localStorage.getItem("user");
-    this.user = JSON.parse(USER ? USER: '');
-    // this.user = this.authService.user;
+    this.user = this.authService.user;
     // console.log(this.user);
   }
 

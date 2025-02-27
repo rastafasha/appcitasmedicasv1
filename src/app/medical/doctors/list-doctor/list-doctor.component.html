@@ -2,13 +2,20 @@
     <div class="content">
     
         <!-- Page Header -->
-        <!-- dashboar con ruta / -->
-        <app-breadcums [titlePage]="titlePage"></app-breadcums>
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="breadcrumb">
+                      <li class="breadcrumb-item"><a routerLink="/">Dashboard</a></li>
+                        <li class="breadcrumb-item"><i class="feather icon-chevron-right"></i></li>
+                        <li class="breadcrumb-item active">Doctor List</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!-- /Page Header -->
         
-        <app-skeleton-loader *ngIf="isLoading" [rows]="5" [columns]="4"></app-skeleton-loader>
-        
-        <div class="row"*ngIf="!isLoading" >
+        <div class="row">
             <div class="col-sm-12">
             
                 <div class="card card-table show-entire">
@@ -48,6 +55,8 @@
                                         <th mat-sort-header="especializacion">Especialización</th>
                                         <th mat-sort-header="telefono">Teléfono</th>
                                         <th mat-sort-header="role">Role</th>
+                                        <th mat-sort-header="status">Status</th>
+                                        <th mat-sort-header="op">Options</th>
                                         <th mat-sort-header="created">Creación</th>
                                          <th ></th> <!--acciones -->
                                     </tr>
@@ -56,19 +65,40 @@
                                     <tr *ngFor="let data of doctorList">
                                         
                                         <td>
-                                          <a [routerLink]="['/doctors/profile/', data.id]" *ngIf="isPermission('profile_doctor')" >
+                                          <a [routerLink]="['/doctors/profile/', data.id]">
                                             {{data.name + ' ' + (data.surname ? data.surname: '')}}
                                           </a>
-                                         
-                                          <span *ngIf="!isPermission('profile_doctor')" >
-                                            {{data.name + ' ' + (data.surname ? data.surname: '')}}
-                                          </span>
-                                         
                                         </td>
                                         <td>{{data.email}}</td>
                                         <td>{{data.education}}</td>
                                         <td>{{data.mobile}}</td>
                                         <td>{{data.roles.name}}</td>
+                                        <td>
+                                          <span class="badge bg-danger"
+                                              *ngIf="data.status === 1">Inactive</span>
+                                          <span class="badge bg-success"
+                                              *ngIf="data.status === 2">Active</span>
+                                          <span class="badge bg-primary"
+                                              *ngIf="data.status === 3">Incoming</span>
+                                          <span class="badge bg-primary"
+                                              *ngIf="data.status === 4">Free Time</span>
+                                          <span class="badge bg-dark"
+                                              *ngIf="data.status === 5">Black list</span>
+
+                                      </td>
+                                      <td>
+                                        <select
+                                        class="form-control form-select-solid fw-bolder"
+                                        name="state" [(ngModel)]="data.status" (change)="cambiarStatus(data)"
+                                        placeholder="state">
+                                        <option>-- Select --</option>
+                                        <option value="1">Inactive</option>
+                                          <option value="2">Active</option>
+                                          <option value="3">Incoming</option>
+                                          <option value="4">Free time</option>
+                                          <option value="5">Black list</option>
+                                          </select>
+                                      </td>
                                         <!-- <td>{{data.permision_pluck.length > 0 ? data.permision_pluck: 'TODOS LOS PERMISOS' }}</td> -->
                                         <td>{{data.created_at | date }}</td>
                                         
@@ -76,8 +106,9 @@
                                             <div class="dropdown dropdown-action" *ngIf="data.id !==1">
                                                 <a href="javascript:void(0);" class="action-icon dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                                                 <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" [routerLink]="['/settings/payment-settings/doctor/', data.id]" *ngIf="isPermission('settings')"><i class="fa-solid fa-pen-to-square m-r-5"></i> Conf. Pagos</a>
                                                     <a class="dropdown-item" [routerLink]="['/doctors/list/edit/', data.id]" *ngIf="isPermission('edit_doctor')"><i class="fa-solid fa-pen-to-square m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" [routerLink]="['/doctors/profile/', data.id]" *ngIf="isPermission('profile_doctor')"><i class="fa-solid fa-eye m-r-5"></i> View</a>
+                                                    <a class="dropdown-item" [routerLink]="['/doctors/profile/', data.id]"><i class="fa-solid fa-eye m-r-5"></i> View</a>
                                                   
                                                     <a class="dropdown-item" href="javascript:void(0);" (click)="selectUser(data)" 
                                                     data-bs-toggle="modal"  *ngIf="isPermission('delete_doctor')"

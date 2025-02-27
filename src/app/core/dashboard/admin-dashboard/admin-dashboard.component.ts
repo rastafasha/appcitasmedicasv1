@@ -23,6 +23,7 @@ import { recentPatients, upcomingAppointments } from 'src/app/shared/models/mode
 import { DashboardService } from '../service/dashboard.service';
 import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
 import { AppointmentService } from 'src/app/medical/appointment/service/appointment.service';
+import { AuthService } from 'src/app/shared/auth/auth.service';
 export type ChartOptions = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   series: ApexAxisChartSeries | any;
@@ -106,6 +107,7 @@ export class AdminDashboardComponent {
     public data : DataService,
     public dashboardService : DashboardService,
     public doctorService : DoctorService,
+    public authService : AuthService,
     public appointmentService : AppointmentService,
     
     ) {
@@ -260,7 +262,7 @@ export class AdminDashboardComponent {
       };
       this.recentPatients = this.data.recentPatients;
       this.upcomingAppointments = this.data.upcomingAppointments;
-  
+      this.user = this.authService.user;
   }
 
   ngOnInit(){
@@ -268,9 +270,8 @@ export class AdminDashboardComponent {
     window.scrollTo(0, 0);
     this.getDashboardAdmin();
     this.getDashboardAdminYear();
-    // this.getAppointmentPending();
-    const USER = localStorage.getItem("user");
-    this.user = JSON.parse(USER ? USER: '');
+
+    this.user = this.authService.user;
   }
 
   getAppointmentPending(){

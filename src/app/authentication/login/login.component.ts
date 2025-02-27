@@ -130,6 +130,9 @@ export class LoginComponent implements OnInit {
       if(this.user.roles == 'DOCTOR' ){
         this.router.navigate([routes.doctorDashboard]);
       }
+      // if(this.user.roles == 'DOCTOR' ){
+      //   this.router.navigate([routes.doctorProfile, this.user.id]);
+      // }
       //roles secundarios
       
       if(this.user.roles == 'ASISTENTE' ){
@@ -137,6 +140,10 @@ export class LoginComponent implements OnInit {
       }
       if(this.user.roles == 'ENFERMERA' ){
         this.router.navigate([routes.doctorDashboard]);
+      }
+
+      if(this.user.roles == 'GUEST' ){
+        this.router.navigate([routes.doctorProfile, this.user.id]);
       }
    }
 

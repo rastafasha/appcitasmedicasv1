@@ -17,12 +17,10 @@ declare var $:any;
 export class ListDoctorComponent {
 
   public routes = routes;
-  titlePage = 'Listado de Doctores';
 
   public doctorList: any = [];
   dataSource!: MatTableDataSource<any>;
 
-  public isLoading = false;
   public showFilter = false;
   public searchDataValue = '';
   public lastIndex = 0;
@@ -70,9 +68,9 @@ export class ListDoctorComponent {
   private getTableData(): void {
     this.doctorList = [];
     this.serialNumberArray = [];
-    this.isLoading = true;
+
     this.doctorService.listDoctors().subscribe((resp:any)=>{
-      this.isLoading = false;
+      
       // console.log(resp);
 
       this.totalDatadoctor = resp.users.data.length;
@@ -88,7 +86,6 @@ export class ListDoctorComponent {
     this.serialNumberArray = [];
     
     this.doctor_generals.map((res: any, index: number) => {
-      
       const serialNumber = index + 1;
       if (index >= this.skip && serialNumber <= this.limit) {
        
@@ -293,6 +290,18 @@ export class ListDoctorComponent {
     //   }
     // });
 
+  }
+
+  cambiarStatus(data:any){
+    const VALUE = data.status;
+    console.log(VALUE);
+    
+    this.doctorService.updateStatus(data, data.id).subscribe(
+      resp =>{
+        // console.log(resp);
+        this.getTableData();
+      }
+    )
   }
 
 }
