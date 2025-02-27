@@ -391,13 +391,13 @@ export class DataService {
               permision: 'delete_patient',
               show_nav: false,
             },
-            // {
-            //   menuValue: 'Patients Profile',
-            //   route: routes.patientProfile,
-            //   base: routes.patientProfile,
-            //   permision: 'profile_patient',
-            //   show_nav: false,
-            // },
+            {
+              menuValue: 'Patients Profile',
+              route: routes.patientProfile,
+              base: routes.patientProfile,
+              permision: 'profile_patient',
+              show_nav: false,
+            },
           ],
         },
        
@@ -416,11 +416,18 @@ export class DataService {
               show_nav: true,
             },
             {
-              menuValue: 'Listado',
+              menuValue: 'Listado (S)',
               route: routes.appointmentList,
               base: routes.appointmentList,
               permision: 'list_appointment',
               show_nav: true,
+            },
+            {
+              menuValue: 'Listado (D)',
+              route: routes.appointmentListDoct,
+              base: routes.appointmentListDoct,
+              permision: 'list_appointment_doctor',
+              show_nav: false,
             },
            
             {
@@ -435,6 +442,27 @@ export class DataService {
               route: '',
               base: '',
               permision: 'delete_appointment',
+              show_nav: false,
+            },
+            {
+              menuValue: 'View Appointment',
+              route: '',
+              base: '',
+              permision: 'view_appointment',
+              show_nav: false,
+            },
+            {
+              menuValue: 'Local Appointment',
+              route: '',
+              base: '',
+              permision: 'local_appointment',
+              show_nav: false,
+            },
+            {
+              menuValue: 'Agregar cita por doctor',
+              route: '',
+              base: '',
+              permision: 'add_cita_doctor',
               show_nav: false,
             },
           ],
@@ -459,6 +487,27 @@ export class DataService {
               base: routes.salary,
               permision: 'show_payment',
               show_nav: true,
+            },
+            {
+              menuValue: 'Delete Pagos',
+              route: '',
+              base: '',
+              permision: 'delete_payment',
+              show_nav: false,
+            },
+            {
+              menuValue: 'Pagos Doctor',
+              route: '',
+              base: '',
+              show_nav: false,
+              permision: 'pago_doctor',
+            },
+            {
+              menuValue: 'Transferencias Doctor',
+              route: '',
+              base: '',
+              show_nav: false,
+              permision: 'transferencia_doctor',
             },
             {
               menuValue: 'Delete Pagos',
@@ -527,41 +576,7 @@ export class DataService {
           show_nav: true,
           subMenus: [],
         },
-        // {
-        //   menuValue: 'Activities',
-        //   route: routes.activities,
-        //   hasSubRoute: false,
-        //   showSubRoute: false,
-        //   img: 'assets/img/icons/menu-icon-14.svg',
-        //   base: 'activities',
-        //   permision: 'activitie',
-        //   show_nav: true,
-        //   subMenus: [],
-        // },
         
-        // {
-        //   menuValue: 'Reports',
-        //   hasSubRoute: true,
-        //   showSubRoute: false,
-        //   base: 'reports',
-        //   img: 'assets/img/icons/menu-icon-02.svg',
-        //   subMenus: [
-        //     {
-        //       menuValue: 'Expense Report',
-        //       route: routes.expenseReports,
-        //       base: routes.expenseReports,
-        //       permision: 'expense_report',
-        //       show_nav: true,
-        //     },
-        //     {
-        //       menuValue: 'Invoice Report',
-        //       route: routes.invoiceReports,
-        //       base: routes.invoiceReports,
-        //       permision: 'invoice_report',
-        //       show_nav: true,
-        //     },
-        //   ],
-        // },
         {
           menuValue: 'Publicidad',
           route: routes.publicidad,
@@ -646,7 +661,80 @@ export class DataService {
           base: 'settings',
           permision: 'settings',
           show_nav: true,
-          subMenus: [],
+          subMenus: [
+            // notificaciones
+            {
+              menuValue: 'Configuracion Pagos',
+              route: '',
+              base: '',
+              permision: 'payment_settings',
+              show_nav: false,
+            },
+         {
+          menuValue: 'Lista pacientes por doctor',
+          route: '',
+          base: '',
+          permision: 'list_patient_doctor',
+          show_nav: false,
+        },
+     {
+          menuValue: 'Cancelar Cita',
+          route: '',
+          base: '',
+          permision: 'cancel_appointment',
+          show_nav: false,
+        },
+     {
+          menuValue: 'Ver Notificaciones',
+          route: '',
+          base: '',
+          permision: 'view_notification',
+          show_nav: false,
+        },
+     {
+          menuValue: 'Ver notificaciones Citas',
+          route: '',
+          base: '',
+          permision: 'view_notification_appointment',
+          show_nav: false,
+        },
+     {
+          menuValue: 'Ver notificaciones Pagos',
+          route: '',
+          base: '',
+          permision: 'view_notification_pagos',
+          show_nav: false,
+        },
+        {
+          menuValue: 'Exportar documento Pdf',
+          route: '',
+          base: '',
+          permision: 'export_pdf',
+          show_nav: false,
+        },
+    {
+          menuValue: 'Exportar documento Text',
+          route: '',
+          base: '',
+          permision: 'export_text',
+          show_nav: false,
+        },
+    {
+          menuValue: 'Exportar documento CSV',
+          route: '',
+          base: '',
+          permision: 'export_csv',
+          show_nav: false,
+        },
+    {
+          menuValue: 'Exportar documento Excel',
+          route: '',
+          base: '',
+          permision: 'export_xsl',
+          show_nav: false,
+        },
+
+          ],
         },
         {
           menuValue: 'Presupuestos',
@@ -664,6 +752,13 @@ export class DataService {
               base: '',
               permision: 'register_presupuesto',
               show_nav: false,
+            },
+            {
+              menuValue: 'Edit Presupuesto',
+              route: '',
+              base: '',
+              permision: 'edit_presupuesto',
+              show_nav: false,
             },{
               menuValue: 'Lista Presupuesto',
               route: '',
@@ -672,6 +767,57 @@ export class DataService {
               show_nav: false,
             },],
         },
+        {
+          menuValue: 'Mis Presupuestos',
+          route: routes.presupuestoListDoctor,
+          hasSubRoute: false,
+          showSubRoute: false,
+          img: 'assets/img/icons/menu-icon-16.svg',
+          base: 'presupuestoListDoctor',
+          permision: 'list_presupuesto_doctor',
+          show_nav: true,
+          subMenus: [
+          ],
+        },
+        
+
+
+           // {
+        //   menuValue: 'Activities',
+        //   route: routes.activities,
+        //   hasSubRoute: false,
+        //   showSubRoute: false,
+        //   img: 'assets/img/icons/menu-icon-14.svg',
+        //   base: 'activities',
+        //   permision: 'activitie',
+        //   show_nav: true,
+        //   subMenus: [],
+        // },
+        
+        // {
+        //   menuValue: 'Reports',
+        //   hasSubRoute: true,
+        //   showSubRoute: false,
+        //   base: 'reports',
+        //   img: 'assets/img/icons/menu-icon-02.svg',
+        //   subMenus: [
+        //     {
+        //       menuValue: 'Expense Report',
+        //       route: routes.expenseReports,
+        //       base: routes.expenseReports,
+        //       permision: 'expense_report',
+        //       show_nav: true,
+        //     },
+        //     {
+        //       menuValue: 'Invoice Report',
+        //       route: routes.invoiceReports,
+        //       base: routes.invoiceReports,
+        //       permision: 'invoice_report',
+        //       show_nav: true,
+        //     },
+        //   ],
+        // }, 
+
       ],
     },
   ];

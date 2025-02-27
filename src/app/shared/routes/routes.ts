@@ -77,6 +77,10 @@ export class routes {
   public static get appointmentList(): string {
     return this.baseUrl + '/appointments/list';
   }
+
+  public static get appointmentListDoct(): string {
+    return this.baseUrl + '/appointments/list/doctor/';
+  }
   // public static get editAppointment(): string {
   //   return this.baseUrl + '/appointments/edit-appointment';
   // }
@@ -164,11 +168,15 @@ export class routes {
   public static get addDoctor(): string {
     return this.baseUrl + '/doctors/add';
   }
-  public static get doctorProfile(): string {
-    return this.baseUrl + '/doctor/doctor-profile';
-  }
+  // public static get doctorProfile(): string {
+  //   return this.baseUrl + '/doctor/doctor-profile';
+  // }
   public static get doctorSetting(): string {
     return this.baseUrl + '/doctor/doctor-setting';
+  }
+
+  public static get doctorProfile(): string {
+    return this.baseUrl + '/doctors/profile/';
   }
   // public static get doctorsList(): string {
   //   return this.baseUrl + '/doctor/doctors-list';
@@ -444,5 +452,9 @@ export class routes {
   }
   public static get presupuestoCrear(): string {
     return this.baseUrl + '/presupuesto/crear';
+  }
+
+  public static get presupuestoListDoctor(): string {
+    return this.baseUrl + '/presupuesto/list/doctor';
   }
 }

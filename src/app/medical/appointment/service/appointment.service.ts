@@ -108,6 +108,12 @@ export class AppointmentService {
     return this.http.put(URL,data,{headers:headers});
   }
 
+  pendingsbyDoctor(doctor_id:number){
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/appointments/pendientesbydoctor/"+doctor_id;
+    return this.http.get(URL, {headers:headers});
+  }
+
   //cita medica
   registerAttention(data:any){
     const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});

@@ -13,6 +13,7 @@ import { CoreModule } from 'src/app/core/core.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FileSaverModule } from 'ngx-filesaver';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { ReusablesModule } from 'src/app/reusables/reusables.module';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     RouterModule,
     SharedModule,
     FileSaverModule,
-    PipesModule
+    PipesModule,
+    ReusablesModule
   ]
 })
 export class StaffModule { }

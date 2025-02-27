@@ -149,6 +149,32 @@ export class ListAppointmentsComponent {
       }
       }
     })
+    
+  }
+
+  cancelappointment(){
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Esta modificacion no puede ser devuelta!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "si, cancelar cita!"
+    }).then((result) => {
+      
+      if (result.isConfirmed) {
+        this.appointmentService.cancelAppointment(this.appointment_selected.id).subscribe((resp:any)=>{
+          // console.log(resp);
+        })
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success"
+        });
+      }
+    });
+    
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

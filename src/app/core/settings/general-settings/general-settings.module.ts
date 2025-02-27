@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ReusablesModule } from 'src/app/reusables/reusables.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+    ReusablesModule
   ]
 })
 export class GeneralSettingsModule { }
