@@ -76,6 +76,8 @@
               "assets": [
                 "src/.htaccess",
                 "src/assets",
+                "src/manifest.webmanifest",
+                "src/env/clinica/manifest.webmanifest",
                 {
                   "glob": "_redirects",
                   "input": "src",
@@ -111,6 +113,8 @@
               "assets": [
                 "src/.htaccess",
                 "src/assets",
+               "src/manifest.webmanifest",
+               "src/env/aramay/manifest.webmanifest",
                 {
                   "glob": "_redirects",
                   "input": "src",
