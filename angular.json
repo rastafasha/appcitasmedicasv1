@@ -76,13 +76,24 @@
               "assets": [
                 "src/.htaccess",
                 "src/assets",
-                "src/manifest.webmanifest",
-                "src/env/clinica/manifest.webmanifest",
+               "src/env/clinica/manifest.webmanifest",
+                "src/env/clinica/QR/**",
                 {
                   "glob": "_redirects",
                   "input": "src",
                   "output": "/"
+                },
+                {
+                  "glob": "**.*",
+                  "input": "src/env/clinica/QR",
+                  "output": "/QR/"
+                },
+                {
+                  "glob": "**.*",
+                  "input": "src/env/clinica/manifest.webmanifest",
+                  "output": "src/manifest.webmanifest"
                 }
+                
               ],
               "budgets": [
                 {
@@ -113,12 +124,23 @@
               "assets": [
                 "src/.htaccess",
                 "src/assets",
-               "src/manifest.webmanifest",
-               "src/env/aramay/manifest.webmanifest",
+                "src/manifest.webmanifest",
+                "src/env/aramay/manifest.webmanifest",
+               "src/env/aramay/QR/**",
                 {
                   "glob": "_redirects",
                   "input": "src",
                   "output": "/"
+                },
+                {
+                  "glob": "**.*",
+                  "input": "src/env/aramay/QR",
+                  "output": "/QR/"
+                },
+                {
+                  "glob": "**.*",
+                  "input": "src/env/aramay/manifest.webmanifest",
+                  "output": "src/manifest.webmanifest"
                 }
               ],
               "budgets": [
