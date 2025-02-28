@@ -1,8 +1,8 @@
 {
-  "name": "Admin Health Connect | Aramay Rangel",
-  "short_name": "Admin HC | Aramay Rangel",
+  "name": "Health Connect Clínica",
+  "short_name": "HC Clínica | Aramay Rangel",
   "theme_color": "#513081",
-  "description": "Aplición Web para la atención en Clínicas.",
+  "description": "Aplicación Web para la atención en Clínicas.",
   "background_color": "#fafafa",
   "display": "standalone",
   "category": "medical",
