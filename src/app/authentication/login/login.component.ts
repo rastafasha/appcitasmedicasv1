@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { SettignService } from 'src/app/core/settings/settigs.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { routes } from 'src/app/shared/routes/routes';
 
@@ -22,6 +23,11 @@ export class LoginComponent implements OnInit {
   remember = new FormControl();
   errors:any = null;
   loginForm: FormGroup;
+
+  public settings:any;
+  public setting_selectedId:number;
+  public avatar_setting:string;
+  public name_setting:string;
 
   //testing
   // form = new FormGroup({
@@ -48,6 +54,7 @@ export class LoginComponent implements OnInit {
     public auth: AuthService,
     public router:Router,
     private fb: FormBuilder,
+    private settingService: SettignService,
     ) {
      
     }
@@ -70,6 +77,16 @@ export class LoginComponent implements OnInit {
     // });
     this.getLocalStorage();
   }
+
+  getSettings(){
+    this.settingService.getAllSettings().subscribe((resp:any)=>{
+      // console.log(resp);
+      this.settings= resp.settings.data;
+      this.setting_selectedId= resp.settings.data[0].id;
+      this.avatar_setting= resp.settings.data[0].avatar;
+      this.name_setting= resp.settings.data[0].name;
+    })
+}
 
   getLocalStorage(){
     if(localStorage.getItem('token') && localStorage.getItem('user')){
