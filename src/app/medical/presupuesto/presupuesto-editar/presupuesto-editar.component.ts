@@ -19,7 +19,6 @@ declare let $:any;
   selector: 'app-presupuesto-editar',
   templateUrl: './presupuesto-editar.component.html',
   styleUrls: ['./presupuesto-editar.component.scss'],
-  imports: [ReusablesModule]
 })
 export class PresupuestoEditarComponent {
 
