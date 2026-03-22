@@ -12,12 +12,14 @@ import { SpecialitieService } from '../../specialitie/service/specialitie.servic
 import { RolesService } from '../../roles/service/roles.service';
 import { AppointmentService } from '../../appointment/service/appointment.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ReusablesModule } from "../../../reusables/reusables.module";
 declare let $:any;  
 
 @Component({
   selector: 'app-presupuesto-editar',
   templateUrl: './presupuesto-editar.component.html',
-  styleUrls: ['./presupuesto-editar.component.scss']
+  styleUrls: ['./presupuesto-editar.component.scss'],
+  imports: [ReusablesModule]
 })
 export class PresupuestoEditarComponent {
 

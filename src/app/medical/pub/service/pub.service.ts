@@ -14,41 +14,41 @@ export class PubService {
   ) { }
 
   listPubs(){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/pub';
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+    const URL = url_servicios+'/pub';
     return this.http.get(URL, {headers:headers});
   }
   
   getPub(pub_id:any){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/pub/show/'+pub_id;
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+    const URL = url_servicios+'/pub/show/'+pub_id;
     return this.http.get(URL, {headers:headers});
   }
   createPub(data){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/pub/store';
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+    const URL = url_servicios+'/pub/store';
     return this.http.post(URL,data, {headers:headers});
   }
   editPub( data:any, pub_id:any,){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/pub/update/'+pub_id;
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+    const URL = url_servicios+'/pub/update/'+pub_id;
     return this.http.post(URL,data,{headers:headers});
   }
   deletePub(pub_id:any){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
-    let URL = url_servicios+'/pub/destroy/'+pub_id;
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token})
+    const URL = url_servicios+'/pub/destroy/'+pub_id;
     return this.http.delete(URL, {headers:headers});
   }
 
   showPub(pub_id:any){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/pub/profile/"+pub_id;
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/pub/profile/"+pub_id;
     return this.http.get(URL,{headers:headers});
   }
 
   updateStatus(data:any, pub_id:any){
-    let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/pub/update/status/"+pub_id;
+    const headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
+    const URL = url_servicios+"/pub/update/status/"+pub_id;
     return this.http.put(URL,data,{headers:headers});
   }
 }
