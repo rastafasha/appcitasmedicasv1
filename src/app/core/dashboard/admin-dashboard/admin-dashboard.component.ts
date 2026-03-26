@@ -21,9 +21,9 @@ import { Sort } from '@angular/material/sort';
 import { DataService } from 'src/app/shared/data/data.service';
 import { recentPatients, upcomingAppointments } from 'src/app/shared/models/models';
 import { DashboardService } from '../service/dashboard.service';
-import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
-import { AppointmentService } from 'src/app/medical/appointment/service/appointment.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
+import { AppointmentService } from 'src/app/services/appointment.service';
+import { DoctorService } from 'src/app/services/doctor.service';
 export type ChartOptions = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   series: ApexAxisChartSeries | any;

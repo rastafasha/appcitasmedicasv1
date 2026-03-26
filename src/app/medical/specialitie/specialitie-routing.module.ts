@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SpecialitieComponent } from './specialitie.component';
-import { AddSpecialitieComponent } from './add-specialitie/add-specialitie.component';
 import { ListSpecialitieComponent } from './list-specialitie/list-specialitie.component';
-import { EditSpecialitieComponent } from './edit-specialitie/edit-specialitie.component';
 import { ListPatientSpecialitiesComponent } from './list-patient-specialities/list-patient-specialities.component';
+import { SpecialitieNComponent } from './specialitie-n/specialitie-n.component';
 
 const routes: Routes = [{
   path:'',
@@ -12,7 +11,7 @@ const routes: Routes = [{
   children:[
     {
       path: 'register',
-      component: AddSpecialitieComponent
+      component: SpecialitieNComponent
     },
     {
       path: 'list',
@@ -20,7 +19,7 @@ const routes: Routes = [{
     },
     {
       path: 'list/edit/:id',
-      component: EditSpecialitieComponent
+      component: SpecialitieNComponent
     },
     {
       path: 'list-specialities',

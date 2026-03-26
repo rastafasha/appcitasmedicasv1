@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { Sort } from '@angular/material/sort';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from 'src/app/shared/data/data.service';
-import { patientProfile } from 'src/app/shared/models/models';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { PatientMService } from 'src/app/services/patient-m.service';
+import { RolesService } from 'src/app/services/roles.service';
 import { routes } from 'src/app/shared/routes/routes';
-import { PatientMService } from '../service/patient-m.service';
-import { DoctorService } from '../../doctors/service/doctor.service';
 import { environment } from 'src/environments/environment';
-import { RolesService } from '../../roles/service/roles.service';
 @Component({
   selector: 'app-profile-patient-m',
   templateUrl: './profile-patient-m.component.html',

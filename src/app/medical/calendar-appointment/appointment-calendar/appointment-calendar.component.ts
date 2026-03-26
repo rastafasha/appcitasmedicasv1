@@ -3,10 +3,10 @@ import { routes } from 'src/app/shared/routes/routes';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { CalendarAppointmentService } from '../sevice/calendar-appointment.service';
-import { AppoitmentPayService } from '../../appointment-pay/service/appoitment-pay.service';
-import { DoctorService } from '../../doctors/service/doctor.service';
-import { RolesService } from '../../roles/service/roles.service';
+import { AppoitmentPayService } from 'src/app/services/appoitment-pay.service';
+import { CalendarAppointmentService } from 'src/app/services/calendar-appointment.service';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
   selector: 'app-appointment-calendar',

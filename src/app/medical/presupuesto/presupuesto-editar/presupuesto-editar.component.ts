@@ -3,16 +3,16 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
 import Swal from 'sweetalert2';
-import { LaboratoryService } from '../../laboratory/service/laboratory.service';
-import { PresupuestoService } from '../service/presupuesto.service';
 import { Doctor, Patient, Presupuesto, Speciality } from '../presupuesto-model';
 import { AuthService } from 'src/app/shared/auth/auth.service';
-import { DoctorService } from '../../doctors/service/doctor.service';
-import { SpecialitieService } from '../../specialitie/service/specialitie.service';
-import { RolesService } from '../../roles/service/roles.service';
-import { AppointmentService } from '../../appointment/service/appointment.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReusablesModule } from "../../../reusables/reusables.module";
+import { AppointmentService } from 'src/app/services/appointment.service';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { LaboratoryService } from 'src/app/services/laboratory.service';
+import { PresupuestoService } from 'src/app/services/presupuesto.service';
+import { RolesService } from 'src/app/services/roles.service';
+import { SpecialitieService } from 'src/app/services/specialitie.service';
 declare let $:any;  
 
 @Component({

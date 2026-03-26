@@ -8,8 +8,4 @@ export const environment = {
     url_media: 'https://aramayrangel.klyntic.com/backend-api-citas/storage/app/public/',
     manifestUrl: 'src/manifest.webmanifest'
     
-    
-    
-    
-    
 };

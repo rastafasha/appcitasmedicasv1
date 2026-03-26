@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { AppoitmentPayService } from "src/app/medical/appointment-pay/service/appoitment-pay.service";
-import { PaymentService } from "src/app/medical/appointment-pay/service/payment.service";
-import { AppointmentService } from "src/app/medical/appointment/service/appointment.service";
-import { RolesService } from "src/app/medical/roles/service/roles.service";
+import { AppointmentService } from "src/app/services/appointment.service";
+import { PaymentService } from "src/app/services/payment.service";
+import { RolesService } from "src/app/services/roles.service";
 import { AuthService } from "src/app/shared/auth/auth.service";
 
 @Component({
@@ -27,6 +26,7 @@ export class NotificacionesupdateComponent implements OnInit {
   totalT: any = 0;
   totalTTr: any = 0;
   roles: any = [];
+  
   constructor(
     private appointmentService: AppointmentService,
     public paymentService: PaymentService,

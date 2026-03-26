@@ -1,25 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PatientMComponent } from './patient-m.component';
-import { AddPatientMComponent } from './add-patient-m/add-patient-m.component';
 import { ListPatientMComponent } from './list-patient-m/list-patient-m.component';
-import { EditPatientMComponent } from './edit-patient-m/edit-patient-m.component';
 import { ProfilePatientMComponent } from './profile-patient-m/profile-patient-m.component';
+import { PatientFormMComponent } from './patient-form-m/patient-form-m.component';
 
 const routes: Routes = [
   {path:'', component:PatientMComponent,
   children:[
     {
-      path:'add', component:AddPatientMComponent
+      path:'add', component:PatientFormMComponent
     },
     {
       path:'list', component:ListPatientMComponent
     },
     {
-      path:'list/edit/:id', component:EditPatientMComponent
+      path:'list/edit/:id', component:PatientFormMComponent
     },
     {
-      path:'list/edit-nuevo/:n_doc', component:EditPatientMComponent
+      path:'list/edit-nuevo/:n_doc', component:PatientFormMComponent
     },
     {
       path:'profile/:id', component:ProfilePatientMComponent

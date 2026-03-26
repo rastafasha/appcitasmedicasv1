@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { SpecialitieRoutingModule } from './specialitie-routing.module';
 import { SpecialitieComponent } from './specialitie.component';
-import { AddSpecialitieComponent } from './add-specialitie/add-specialitie.component';
-import { EditSpecialitieComponent } from './edit-specialitie/edit-specialitie.component';
 import { ListSpecialitieComponent } from './list-specialitie/list-specialitie.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,13 +10,13 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ListPatientSpecialitiesComponent } from './list-patient-specialities/list-patient-specialities.component';
 import { ReusablesModule } from 'src/app/reusables/reusables.module';
+import { SpecialitieNComponent } from './specialitie-n/specialitie-n.component';
 
 
 @NgModule({
   declarations: [
     SpecialitieComponent,
-    AddSpecialitieComponent,
-    EditSpecialitieComponent,
+    SpecialitieNComponent,
     ListSpecialitieComponent,
     ListPatientSpecialitiesComponent
   ],

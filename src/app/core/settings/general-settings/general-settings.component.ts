@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { routes } from 'src/app/shared/routes/routes';
 import { SettignService } from '../settigs.service';
-import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
 import Swal from 'sweetalert2';
+import { DoctorService } from 'src/app/services/doctor.service';
 interface data {
   value: string ;
 }

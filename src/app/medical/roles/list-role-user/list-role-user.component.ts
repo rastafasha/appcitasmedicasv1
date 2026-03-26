@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { routes } from 'src/app/shared/routes/routes';
-import { RolesService } from '../service/roles.service';
 
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
-import { DoctorService } from '../../doctors/service/doctor.service';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { RolesService } from 'src/app/services/roles.service';
 declare var $:any;    
 @Component({
   selector: 'app-list-role-user',

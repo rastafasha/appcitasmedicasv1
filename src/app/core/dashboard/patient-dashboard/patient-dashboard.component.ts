@@ -23,7 +23,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { pageSelection, apiResultFormat, patientDashboard } from 'src/app/shared/models/models';
 import { DashboardService } from '../service/dashboard.service';
 import { ActivatedRoute } from '@angular/router';
-import { DoctorService } from 'src/app/medical/doctors/service/doctor.service';
+import { DoctorService } from 'src/app/services/doctor.service';
 interface data {
   value: string ;
 }
@@ -105,7 +105,7 @@ export class PatientDashboardComponent implements OnInit {
 
 
   public patientProfile: any[];
-  option_selected:number = 1;
+  option_selected = 1;
   public patient_id: any;
 
   public doctors:any = [];
@@ -113,18 +113,18 @@ export class PatientDashboardComponent implements OnInit {
 
 
   public appointments:any = []
-  public num_appointments_current:number = 0;
-  public num_appointments_before:number = 0;
-  public porcentaje_d:number = 0;
-  public num_appointments_attention_current:number = 0;
-  public num_appointments_attention_before:number = 0;
-  public porcentaje_da:number = 0;
-  public num_appointments_total_pay_current:number = 0;
-  public num_appointments_total_pay_before:number = 0;
-  public porcentaje_dtp:number = 0;
-  public num_appointments_total_pending_current:number = 0;
-  public num_appointments_total_pending_before:number = 0;
-  public porcentaje_dtpn:number = 0;
+  public num_appointments_current = 0;
+  public num_appointments_before = 0;
+  public porcentaje_d = 0;
+  public num_appointments_attention_current = 0;
+  public num_appointments_attention_before = 0;
+  public porcentaje_da = 0;
+  public num_appointments_total_pay_current = 0;
+  public num_appointments_total_pay_before = 0;
+  public porcentaje_dtp = 0;
+  public num_appointments_total_pending_current = 0;
+  public num_appointments_total_pending_before = 0;
+  public porcentaje_dtpn = 0;
 
   public query_income_year:any = [];
   public query_patient_by_genders:any = [];
@@ -134,8 +134,8 @@ export class PatientDashboardComponent implements OnInit {
   public user:any;
 
 
-  public text_success:string = '';
-  public text_validation:string = '';
+  public text_success = '';
+  public text_validation = '';
 
   constructor(
     private data: DataService,
@@ -398,7 +398,7 @@ export class PatientDashboardComponent implements OnInit {
   ngOnInit() {
     this.doctorService.closeMenuSidebar();
     this.getTableData();
-    let USER = localStorage.getItem("user");
+    const USER = localStorage.getItem("user");
     this.user = JSON.parse(USER ? USER: '');
 
     window.scrollTo(0, 0);

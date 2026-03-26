@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Sort } from '@angular/material/sort';
 import { DataService } from 'src/app/shared/data/data.service';
 import { routes } from 'src/app/shared/routes/routes';
-import { DoctorService } from '../service/doctor.service';
 import { ActivatedRoute } from '@angular/router';
-import { RolesService } from '../../roles/service/roles.service';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
   selector: 'app-profile-doctor',

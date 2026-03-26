@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { FileSaverService } from 'ngx-filesaver';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { PresupuestoService } from 'src/app/services/presupuesto.service';
+import { RolesService } from 'src/app/services/roles.service';
 import { routes } from 'src/app/shared/routes/routes';
 import Swal from 'sweetalert2';
-import { DoctorService } from '../../doctors/service/doctor.service';
-import { RolesService } from '../../roles/service/roles.service';
 import * as XLSX from 'xlsx';
-import { PresupuestoService } from '../service/presupuesto.service';
 declare var $:any;
 @Component({
   selector: 'app-presupuesto-doctor-list',

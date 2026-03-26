@@ -3,9 +3,9 @@ import * as XLSX from 'xlsx';
 import { MatTableDataSource } from '@angular/material/table';
 import { FileSaverService } from 'ngx-filesaver';
 import { routes } from 'src/app/shared/routes/routes';
-import { DoctorService } from '../../doctors/service/doctor.service';
-import { PaymentService } from '../service/payment.service';
 import Swal from 'sweetalert2';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 declare var $:any;  
 @Component({

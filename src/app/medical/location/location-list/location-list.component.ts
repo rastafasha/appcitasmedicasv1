@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { FileSaverService } from 'ngx-filesaver';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { LocationService } from 'src/app/services/location.service';
 import { routes } from 'src/app/shared/routes/routes';
 import * as XLSX from 'xlsx';
-import { DoctorService } from '../../doctors/service/doctor.service';
-import { LocationService } from '../services/location.service';
 
 declare var $:any; 
 @Component({

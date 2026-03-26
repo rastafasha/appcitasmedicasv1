@@ -1,12 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { routes } from 'src/app/shared/routes/routes';
-import { AppoitmentPayService } from '../service/appoitment-pay.service';
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
-import { DoctorService } from '../../doctors/service/doctor.service';
 import Swal from 'sweetalert2';
+import { AppoitmentPayService } from 'src/app/services/appoitment-pay.service';
+import { DoctorService } from 'src/app/services/doctor.service';
 
 declare var $:any;
 

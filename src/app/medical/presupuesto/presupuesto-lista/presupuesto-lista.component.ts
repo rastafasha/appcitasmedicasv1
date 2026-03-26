@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { FileSaverService } from 'ngx-filesaver';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { LaboratoryService } from 'src/app/services/laboratory.service';
+import { PresupuestoService } from 'src/app/services/presupuesto.service';
+import { RolesService } from 'src/app/services/roles.service';
+import { SpecialitieService } from 'src/app/services/specialitie.service';
 import { routes } from 'src/app/shared/routes/routes';
-import { DoctorService } from '../../doctors/service/doctor.service';
-import { LaboratoryService } from '../../laboratory/service/laboratory.service';
-import { RolesService } from '../../roles/service/roles.service';
-import { PresupuestoService } from '../service/presupuesto.service';
-import { SpecialitieService } from '../../specialitie/service/specialitie.service';
 import Swal from 'sweetalert2';
 declare var $:any;
 @Component({

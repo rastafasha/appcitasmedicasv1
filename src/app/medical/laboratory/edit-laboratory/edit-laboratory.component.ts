@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { routes } from 'src/app/shared/routes/routes';
-import { AppointmentService } from '../../appointment/service/appointment.service';
 import Swal from 'sweetalert2';
-import { LaboratoryService } from '../service/laboratory.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AppointmentService } from 'src/app/services/appointment.service';
+import { LaboratoryService } from 'src/app/services/laboratory.service';
 declare let $:any;  
 @Component({
   selector: 'app-edit-laboratory',

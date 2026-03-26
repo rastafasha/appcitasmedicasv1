@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { SpecialitieService } from '../service/specialitie.service';
 import { MatTableDataSource } from '@angular/material/table';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
 import { FileSaverService } from 'ngx-filesaver';
 import { routes } from 'src/app/shared/routes/routes';
-import { DoctorService } from '../../doctors/service/doctor.service';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { SpecialitieService } from 'src/app/services/specialitie.service';
 declare var $:any;    
 @Component({
   selector: 'app-list-specialitie',

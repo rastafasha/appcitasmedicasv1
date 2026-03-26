@@ -4,11 +4,11 @@ import { routes } from 'src/app/shared/routes/routes';
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
 import jspdf from 'jspdf';
-import { DoctorService } from '../../doctors/service/doctor.service';
-import { AppointmentService } from '../../appointment/service/appointment.service';
-import { LaboratoryService } from '../service/laboratory.service';
-import { RolesService } from '../../roles/service/roles.service';
 import Swal from 'sweetalert2';
+import { AppointmentService } from 'src/app/services/appointment.service';
+import { DoctorService } from 'src/app/services/doctor.service';
+import { LaboratoryService } from 'src/app/services/laboratory.service';
+import { RolesService } from 'src/app/services/roles.service';
 declare var $:any;
 @Component({
   selector: 'app-list-laboratory',

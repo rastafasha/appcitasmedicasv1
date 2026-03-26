@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { AppointmentRoutingModule } from './appointment-routing.module';
 import { AppointmentComponent } from './appointment.component';
-import { AddAppointmentsComponent } from './add-appointments/add-appointments.component';
-import { EditAppointmentsComponent } from './edit-appointments/edit-appointments.component';
 import { ListAppointmentsComponent } from './list-appointments/list-appointments.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,24 +11,23 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AtencionMedicaComponent } from './atencion-medica/atencion-medica.component';
 import { ListDocComponent } from './list-doc/list-doc.component';
 import { ReusablesModule } from 'src/app/reusables/reusables.module';
+import { AppointmentFormComponent } from './appointment-form/appointment-form.component';
 
 
 @NgModule({
   declarations: [
     AppointmentComponent,
-    AddAppointmentsComponent,
-    EditAppointmentsComponent,
     ListAppointmentsComponent,
     AtencionMedicaComponent,
-    ListDocComponent
+    ListDocComponent,
+    AppointmentFormComponent
   ],
   exports: [
     AppointmentComponent,
-    AddAppointmentsComponent,
-    EditAppointmentsComponent,
     ListAppointmentsComponent,
     AtencionMedicaComponent,
-    ListDocComponent
+    ListDocComponent,
+    AppointmentFormComponent
   ],
   imports: [
     CommonModule,
