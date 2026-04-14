@@ -84,12 +84,6 @@
                                 </div>
                                 <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
-                                        <label>Designación</label>
-                                        <input class="form-control" formControlName="designation" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 col-xl-4">
-                                    <div class="form-group local-forms">
                                         <label>Roles</label>
                                         <mat-select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}" class="form-control select" placeholder="Select Role">
                                             <mat-option *ngFor="let data of roles" [value]="data.id">
@@ -124,12 +118,12 @@
                                         <textarea class="form-control" formControlName="address" rows="3" cols="30"></textarea>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6 col-xl-4">
+                                <!-- <div class="col-12 col-md-6 col-xl-4">
                                     <div class="form-group local-forms">
                                         <label>Precio de la Cita</label>
                                         <input class="form-control" formControlName="precio_cita" type="number">
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-12 col-md-6 col-xl-6">
                                     <div class="form-group local-top-form">
                                         <label class="local-top">Avatar</label>
@@ -165,7 +159,10 @@
                                             <td>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox" (change)="addHourAllDay($event, hours_day)"> {{hours_day.format_hour}}
+                                                        <input type="checkbox" 
+                                                        [checked]="isHourRowFullySelected(hours_day)" 
+                                                        (change)="addHourAllDay($event, hours_day)">
+                                                        {{hours_day.format_hour}}
                                                     </label>
                                                 </div>
                                             </td>
@@ -173,7 +170,9 @@
                                                 <td>
                                                     <div class="checkbox">
                                                         <label>
-                                                            <input type="checkbox" [checked]="isCheckedHourAll(hours_day, day)" (click)="addHourAll(hours_day, day)"> {{hours_day.hour}}:TODOS
+                                                            <input type="checkbox" 
+                                                            [checked]="isCheckedHourAll(hours_day, day)" 
+                                                            (click)="addHourAll(hours_day, day)"> {{hours_day.hour}}:TODOS
                                                         </label>
                                                     </div>
                                                     <br>

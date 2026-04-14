@@ -25,18 +25,15 @@
                                     <h4>Doctor Profile  </h4>
                                 </div>
                                 <div class="doctor-profile-head">
-                                    <!-- <div class="profile-bg-img">
-                                        <img  src="assets/img/profile-bg.jpg"  alt="Profile">
-                                    </div> -->
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4">
                                             <div class="profile-user-box">
                                                 <div class="profile-user-img">
-                                                    <div *ngIf="!doctor_selected.avatar">
+                                                    <div *ngIf="!doctor_selected?.avatar">
                                                         <img src="./assets/img/no-image.jpg" >
                                                     </div>
-                                                    <div *ngIf="doctor_selected.avatar">
-                                                        <img  [src]="doctor_selected.avatar"  [alt]="doctor_selected.name">
+                                                    <div *ngIf="doctor_selected?.avatar">
+                                                        <img  [src]="doctor_selected?.avatar | imagenPipe:'staffs'"  [alt]="doctor_selected?.name">
                                                     </div>
                                                     
                                                 </div>
@@ -89,14 +86,6 @@
                                                 <h4>Género</h4>
                                                 <span *ngIf="doctor_selected.gender === 2">Femenino</span>
                                                 <span *ngIf="doctor_selected.gender === 1">Masculino</span>
-                                            </li>
-                                            <li>
-                                                <h4>Educación</h4>
-                                                <span>{{doctor_selected.education}}</span>
-                                            </li>
-                                            <li>
-                                                <h4>Designación</h4>
-                                                <span>{{doctor_selected.designation}}</span>
                                             </li>
                                         </ul>
                                     </div>

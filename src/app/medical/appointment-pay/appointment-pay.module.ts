@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ListAppoimentCobrosComponent } from './list-appoiment-cobros/list-appoiment-cobros.component';
 import { ReusablesModule } from 'src/app/reusables/reusables.module';
+import { ModalInstruccionesModule } from 'src/app/modales/modal-instrucciones.module';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ReusablesModule } from 'src/app/reusables/reusables.module';
     HttpClientModule,
     RouterModule,
     SharedModule,
-    ReusablesModule
+    ReusablesModule,
+    ModalInstruccionesModule
   ]
 })
 export class AppointmentPayModule { }

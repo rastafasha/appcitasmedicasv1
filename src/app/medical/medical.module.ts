@@ -6,6 +6,7 @@ import { MedicalComponent } from './medical.component';
 import { SharedModule } from '../shared/shared.module';
 import { CoreModule } from '../core/core.module';
 import { PipesModule } from '../pipes/pipes.module';
+import { ModalInstruccionesModule } from '../modales/modal-instrucciones.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PipesModule } from '../pipes/pipes.module';
     MedicalRoutingModule,
     SharedModule,
     CoreModule,
-    PipesModule
+    PipesModule,
+    ModalInstruccionesModule
   ]
 })
 export class MedicalModule { }
