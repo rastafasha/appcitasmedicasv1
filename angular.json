@@ -179,10 +179,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "health_connect_admin:build:production"
+              "buildTarget": "health_connect_admin:build:production"
             },
             "development": {
-              "browserTarget": "health_connect_admin:build:development"
+              "buildTarget": "health_connect_admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -190,7 +190,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "health_connect_admin:build"
+            "buildTarget": "health_connect_admin:build"
           }
         },
         "test": {

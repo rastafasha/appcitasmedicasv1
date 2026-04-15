@@ -14,21 +14,8 @@ const routes: Routes = [
         loadChildren: () =>
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
-      {
-        path: 'doctor',
-        loadChildren: () =>
-          import('./doctor/doctor.module').then((m) => m.DoctorModule),
-      },
-      {
-        path: 'patient',
-        loadChildren: () =>
-          import('./patient/patient.module').then((m) => m.PatientModule),
-      },
-      {
-        path: 'staff',
-        loadChildren: () =>
-          import('./staff/staff.module').then((m) => m.StaffModule),
-      },
+      
+      
       {
         path: 'appointments',
         loadChildren: () =>
@@ -36,13 +23,7 @@ const routes: Routes = [
             (m) => m.AppointmentsModule
           ),
       },
-      {
-        path: 'doctor-schedule',
-        loadChildren: () =>
-          import('./doctor-schedule/doctor-schedule.module').then(
-            (m) => m.DoctorScheduleModule
-          ),
-      },
+      
       {
         path: 'departments',
         loadChildren: () =>
@@ -97,11 +78,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./reports/reports.module').then((m) => m.ReportsModule),
       },
-      {
-        path: 'invoice',
-        loadChildren: () =>
-          import('./invoice/invoice.module').then((m) => m.InvoiceModule),
-      },
+      
       {
         path: 'settings',
         loadChildren: () =>
@@ -113,11 +90,6 @@ const routes: Routes = [
           import('./components/components.module').then(
             (m) => m.ComponentsModule
           ),
-      },
-      {
-        path: 'forms',
-        loadChildren: () =>
-          import('./forms/forms.module').then((m) => m.FormsModule),
       },
       {
         path: 'tables',
