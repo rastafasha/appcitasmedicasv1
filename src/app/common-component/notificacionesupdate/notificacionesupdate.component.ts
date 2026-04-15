@@ -6,9 +6,10 @@ import { RolesService } from "src/app/services/roles.service";
 import { AuthService } from "src/app/shared/auth/auth.service";
 
 @Component({
-  selector: "app-notificacionesupdate",
-  templateUrl: "./notificacionesupdate.component.html",
-  styleUrls: ["./notificacionesupdate.component.scss"],
+    selector: "app-notificacionesupdate",
+    templateUrl: "./notificacionesupdate.component.html",
+    styleUrls: ["./notificacionesupdate.component.scss"],
+    standalone: false
 })
 export class NotificacionesupdateComponent implements OnInit, OnDestroy {
   @Input() routes;

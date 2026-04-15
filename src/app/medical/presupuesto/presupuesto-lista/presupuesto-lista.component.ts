@@ -9,9 +9,10 @@ import { routes } from 'src/app/shared/routes/routes';
 import Swal from 'sweetalert2';
 declare var $:any;
 @Component({
-  selector: 'app-presupuesto-lista',
-  templateUrl: './presupuesto-lista.component.html',
-  styleUrls: ['./presupuesto-lista.component.scss']
+    selector: 'app-presupuesto-lista',
+    templateUrl: './presupuesto-lista.component.html',
+    styleUrls: ['./presupuesto-lista.component.scss'],
+    standalone: false
 })
 export class PresupuestoListaComponent {
 

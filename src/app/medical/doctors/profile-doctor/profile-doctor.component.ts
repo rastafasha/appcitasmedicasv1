@@ -7,9 +7,10 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
-  selector: 'app-profile-doctor',
-  templateUrl: './profile-doctor.component.html',
-  styleUrls: ['./profile-doctor.component.scss']
+    selector: 'app-profile-doctor',
+    templateUrl: './profile-doctor.component.html',
+    styleUrls: ['./profile-doctor.component.scss'],
+    standalone: false
 })
 export class ProfileDoctorComponent {
   public routes = routes;

@@ -8,9 +8,10 @@ import * as XLSX from 'xlsx';
 
 declare var $:any; 
 @Component({
-  selector: 'app-location-list',
-  templateUrl: './location-list.component.html',
-  styleUrls: ['./location-list.component.scss']
+    selector: 'app-location-list',
+    templateUrl: './location-list.component.html',
+    styleUrls: ['./location-list.component.scss'],
+    standalone: false
 })
 export class LocationListComponent {
   public routes = routes;

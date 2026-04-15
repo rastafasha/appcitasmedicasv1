@@ -11,9 +11,10 @@ import { RolesService } from 'src/app/services/roles.service';
 
 declare var $:any;
 @Component({
-  selector: 'app-list-appointments',
-  templateUrl: './list-appointments.component.html',
-  styleUrls: ['./list-appointments.component.scss']
+    selector: 'app-list-appointments',
+    templateUrl: './list-appointments.component.html',
+    styleUrls: ['./list-appointments.component.scss'],
+    standalone: false
 })
 export class ListAppointmentsComponent {
   public routes = routes;

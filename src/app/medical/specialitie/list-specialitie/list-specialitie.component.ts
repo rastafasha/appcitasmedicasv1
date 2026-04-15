@@ -8,9 +8,10 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { SpecialitieService } from 'src/app/services/specialitie.service';
 declare var $:any;    
 @Component({
-  selector: 'app-list-specialitie',
-  templateUrl: './list-specialitie.component.html',
-  styleUrls: ['./list-specialitie.component.scss']
+    selector: 'app-list-specialitie',
+    templateUrl: './list-specialitie.component.html',
+    styleUrls: ['./list-specialitie.component.scss'],
+    standalone: false
 })
 export class ListSpecialitieComponent {
   public routes = routes;

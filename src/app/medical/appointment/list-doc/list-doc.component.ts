@@ -12,9 +12,10 @@ import { RolesService } from "src/app/services/roles.service";
 
 declare var $: any;
 @Component({
-  selector: "app-list-doc",
-  templateUrl: "./list-doc.component.html",
-  styleUrls: ["./list-doc.component.scss"],
+    selector: "app-list-doc",
+    templateUrl: "./list-doc.component.html",
+    styleUrls: ["./list-doc.component.scss"],
+    standalone: false
 })
 export class ListDocComponent {
   public routes = routes;

@@ -9,9 +9,10 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
-  selector: 'app-appointment-calendar',
-  templateUrl: './appointment-calendar.component.html',
-  styleUrls: ['./appointment-calendar.component.scss']
+    selector: 'app-appointment-calendar',
+    templateUrl: './appointment-calendar.component.html',
+    styleUrls: ['./appointment-calendar.component.scss'],
+    standalone: false
 })
 export class AppointmentCalendarComponent {
   public routes = routes;

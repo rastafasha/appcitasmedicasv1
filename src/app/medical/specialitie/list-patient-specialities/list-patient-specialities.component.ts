@@ -7,9 +7,10 @@ import { routes } from 'src/app/shared/routes/routes';
 import * as XLSX from 'xlsx';
 declare var $:any;    
 @Component({
-  selector: 'app-list-patient-specialities',
-  templateUrl: './list-patient-specialities.component.html',
-  styleUrls: ['./list-patient-specialities.component.scss']
+    selector: 'app-list-patient-specialities',
+    templateUrl: './list-patient-specialities.component.html',
+    styleUrls: ['./list-patient-specialities.component.scss'],
+    standalone: false
 })
 export class ListPatientSpecialitiesComponent {
   public routes = routes;

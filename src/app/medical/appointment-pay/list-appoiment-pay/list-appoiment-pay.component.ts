@@ -11,9 +11,10 @@ import { DoctorService } from 'src/app/services/doctor.service';
 declare var $:any;
 
 @Component({
-  selector: 'app-list-appoiment-pay',
-  templateUrl: './list-appoiment-pay.component.html',
-  styleUrls: ['./list-appoiment-pay.component.scss']
+    selector: 'app-list-appoiment-pay',
+    templateUrl: './list-appoiment-pay.component.html',
+    styleUrls: ['./list-appoiment-pay.component.scss'],
+    standalone: false
 })
 export class ListAppoimentPayComponent {
 

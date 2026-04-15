@@ -4,9 +4,10 @@ import { DoctorService } from 'src/app/services/doctor.service';
 import { RolesService } from 'src/app/services/roles.service';
 
 @Component({
-  selector: 'app-export-lists',
-  templateUrl: './export-lists.component.html',
-  styleUrls: ['./export-lists.component.scss']
+    selector: 'app-export-lists',
+    templateUrl: './export-lists.component.html',
+    styleUrls: ['./export-lists.component.scss'],
+    standalone: false
 })
 export class ExportListsComponent {
 

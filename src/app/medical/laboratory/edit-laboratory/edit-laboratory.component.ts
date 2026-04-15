@@ -7,9 +7,10 @@ import { AppointmentService } from 'src/app/services/appointment.service';
 import { LaboratoryService } from 'src/app/services/laboratory.service';
 declare let $:any;  
 @Component({
-  selector: 'app-edit-laboratory',
-  templateUrl: './edit-laboratory.component.html',
-  styleUrls: ['./edit-laboratory.component.scss']
+    selector: 'app-edit-laboratory',
+    templateUrl: './edit-laboratory.component.html',
+    styleUrls: ['./edit-laboratory.component.scss'],
+    standalone: false
 })
 export class EditLaboratoryComponent {
 

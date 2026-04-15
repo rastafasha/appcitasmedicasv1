@@ -10,9 +10,10 @@ import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
 declare var $:any;
 @Component({
-  selector: 'app-presupuesto-doctor-list',
-  templateUrl: './presupuesto-doctor-list.component.html',
-  styleUrls: ['./presupuesto-doctor-list.component.scss']
+    selector: 'app-presupuesto-doctor-list',
+    templateUrl: './presupuesto-doctor-list.component.html',
+    styleUrls: ['./presupuesto-doctor-list.component.scss'],
+    standalone: false
 })
 export class PresupuestoDoctorListComponent {
 public routes = routes;

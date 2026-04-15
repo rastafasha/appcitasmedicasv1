@@ -10,9 +10,10 @@ import { StaffService } from 'src/app/services/staff.service';
 declare var $:any;  
 
 @Component({
-  selector: 'app-list-staff-n',
-  templateUrl: './list-staff-n.component.html',
-  styleUrls: ['./list-staff-n.component.scss']
+    selector: 'app-list-staff-n',
+    templateUrl: './list-staff-n.component.html',
+    styleUrls: ['./list-staff-n.component.scss'],
+    standalone: false
 })
 export class ListStaffNComponent {
   public routes = routes;
