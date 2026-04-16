@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { DoctorDashboardRoutingModule } from './doctor-dashboard-routing.module';
 import { DoctorDashboardComponent } from './doctor-dashboard.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({

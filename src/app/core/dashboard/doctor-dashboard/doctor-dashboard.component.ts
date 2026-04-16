@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-import { routes } from 'src/app/shared/routes/routes';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -19,8 +18,9 @@ import {
 } from 'ng-apexcharts';
 import { DashboardService } from '../service/dashboard.service';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/shared/auth/auth.service';
-import { DoctorService } from 'src/app/services/doctor.service';
+import { DoctorService } from '../../../services/doctor.service';
+import { AuthService } from '../../../shared/auth/auth.service';
+import { routes } from '../../../shared/routes/routes';
 interface data {
   value: string ;
 }

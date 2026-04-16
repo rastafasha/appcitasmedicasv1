@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { PubService } from 'src/app/services/pub.service';
-import { routes } from 'src/app/shared/routes/routes';
+import { DoctorService } from '../../../services/doctor.service';
+import { PubService } from '../../../services/pub.service';
+import { routes } from '../../../shared/routes/routes';
 
 declare var $:any;  
 @Component({

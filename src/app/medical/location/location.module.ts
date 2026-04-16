@@ -7,18 +7,21 @@ import { LocationListComponent } from './location-list/location-list.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { LocationViewComponent } from './location-view/location-view.component';
-import { ReusablesModule } from 'src/app/reusables/reusables.module';
 import { LocationFormComponent } from './location-form/location-form.component';
+import { ReusablesModule } from '../../reusables/reusables.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
-@NgModule({ declarations: [
+@NgModule({ 
+    declarations: [
         LocationComponent,
         LocationListComponent,
         LocationViewComponent,
         LocationFormComponent
-    ], imports: [CommonModule,
+    ], 
+    imports: [
+        CommonModule,
         LocationRoutingModule,
         FormsModule,
         ReactiveFormsModule,

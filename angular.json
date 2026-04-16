@@ -20,6 +20,11 @@
             "outputPath": {
               "base": "dist/health_connect_admin"
             },
+            "stylePreprocessorOptions": {
+              "sass": {
+                  "silenceDeprecations": ["import", "global-builtin", "color-functions", "mixed-decls"]
+                }
+            },
             "index": "src/index.html",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
@@ -30,12 +35,13 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/slick-carousel/slick/slick.scss",
-              "node_modules/slick-carousel/slick/slick-theme.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css", 
+              "node_modules/slick-carousel/slick/slick.css",
+              "node_modules/slick-carousel/slick/slick-theme.css",
               "src/assets/icons/fontawesome/css/all.min.css",
               "src/assets/icons/fontawesome/css/fontawesome.min.css",
               "src/assets/icons/feather/css/iconfont.css",
+              "src/assets/style.scss",
               "src/styles.scss"
             ],
             "scripts": [
@@ -44,12 +50,8 @@
               "node_modules/slick-carousel/slick/slick.min.js"
             ],
             "serviceWorker": "ngsw-config.json",
-            "browser": "src/main.ts",
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "."
-              ]
-            }
+            "browser": "src/main.ts"
+            
           },
           "configurations": {
             "production": {
@@ -84,8 +86,11 @@
               "assets": [
                 "src/.htaccess",
                 "src/assets",
-                "src/manifest.webmanifest",
-               "src/env/clinica/manifest.webmanifest",
+                {
+                  "glob": "manifest.webmanifest",
+                  "input": "src/env/clinica",
+                  "output": "/"
+                },
                 "src/env/clinica/QR/**",
                 {
                   "glob": "_redirects",
@@ -93,14 +98,9 @@
                   "output": "/"
                 },
                 {
-                  "glob": "**.*",
+                  "glob": "**/*",
                   "input": "src/env/clinica/QR",
                   "output": "/QR/"
-                },
-                {
-                  "glob": "**.*",
-                  "input": "src/env/clinica/manifest.webmanifest",
-                  "output": "src/manifest.webmanifest"
                 }
                 
               ],

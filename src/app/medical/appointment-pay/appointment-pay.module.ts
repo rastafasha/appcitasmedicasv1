@@ -7,10 +7,10 @@ import { ListAppoimentPayComponent } from './list-appoiment-pay/list-appoiment-p
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { ListAppoimentCobrosComponent } from './list-appoiment-cobros/list-appoiment-cobros.component';
-import { ReusablesModule } from 'src/app/reusables/reusables.module';
-import { ModalInstruccionesModule } from 'src/app/modales/modal-instrucciones.module';
+import { ModalInstruccionesModule } from '../../modales/modal-instrucciones.module';
+import { ReusablesModule } from '../../reusables/reusables.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({ declarations: [
@@ -22,12 +22,14 @@ import { ModalInstruccionesModule } from 'src/app/modales/modal-instrucciones.mo
         AppointmentPayComponent,
         ListAppoimentPayComponent,
         ListAppoimentCobrosComponent,
-    ], imports: [CommonModule,
+    ], 
+    imports: [CommonModule,
         AppointmentPayRoutingModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule,
         SharedModule,
         ReusablesModule,
-        ModalInstruccionesModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        ModalInstruccionesModule], 
+        providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppointmentPayModule { }

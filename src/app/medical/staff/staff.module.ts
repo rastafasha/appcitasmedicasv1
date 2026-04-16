@@ -7,12 +7,12 @@ import { ListStaffNComponent } from './list-staff-n/list-staff-n.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { CoreModule } from 'src/app/core/core.module';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { FileSaverModule } from 'ngx-filesaver';
-import { PipesModule } from 'src/app/pipes/pipes.module';
-import { ReusablesModule } from 'src/app/reusables/reusables.module';
 import { StaffNComponent } from './staff-n/staff-n.component';
+import { CoreModule } from '../../core/core.module';
+import { PipesModule } from '../../pipes/pipes.module';
+import { ReusablesModule } from '../../reusables/reusables.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({ declarations: [

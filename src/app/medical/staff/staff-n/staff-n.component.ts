@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { routes } from 'src/app/shared/routes/routes';
 import { StaffService } from '../../../services/staff.service';
 import { DoctorService } from '../../../services/doctor.service';
 import { RolesService } from '../../../services/roles.service';
-import { User } from 'src/app/models/user.model';
+import { routes } from '../../../shared/routes/routes';
 
 declare let $: any;
 

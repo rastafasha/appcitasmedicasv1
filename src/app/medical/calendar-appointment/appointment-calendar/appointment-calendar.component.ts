@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { routes } from 'src/app/shared/routes/routes';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import { AppoitmentPayService } from 'src/app/services/appoitment-pay.service';
-import { CalendarAppointmentService } from 'src/app/services/calendar-appointment.service';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { RolesService } from 'src/app/services/roles.service';
+import { AppoitmentPayService } from '../../../services/appoitment-pay.service';
+import { CalendarAppointmentService } from '../../../services/calendar-appointment.service';
+import { DoctorService } from '../../../services/doctor.service';
+import { RolesService } from '../../../services/roles.service';
+import { routes } from '../../../shared/routes/routes';
 
 @Component({
     selector: 'app-appointment-calendar',

@@ -1,11 +1,10 @@
 import { Component, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { routes } from 'src/app/shared/routes/routes';
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
-import jspdf from 'jspdf';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { StaffService } from 'src/app/services/staff.service';
+import { DoctorService } from '../../../services/doctor.service';
+import { StaffService } from '../../../services/staff.service';
+import { routes } from '../../../shared/routes/routes';
 
 declare var $:any;  
 

@@ -8,13 +8,13 @@ import {SwPush, SwUpdate} from '@angular/service-worker';
     standalone: false
 })
 export class AppComponent {
-  title = 'health_connect_admin';
+  title = 'klyntic_clinica_admin';
 
   constructor(private swUpdate: SwUpdate){}
 
   ngOnInit() {
     if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe( () => {
+      this.swUpdate.versionUpdates.subscribe( () => {
         if (confirm('Nueva version disponible. Cargar nueva version?')) {
           window.location.reload();
         }

@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { url_servicios } from 'src/app/config/config';
-import { AuthService } from 'src/app/shared/auth/auth.service';
+import { Inject } from '@angular/core';
+import { url_servicios } from '../config/config';
+import { AuthService } from '../shared/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class StaffService {
 
   constructor(
     public http: HttpClient,
-    public authService:AuthService
+    @Inject(AuthService) private authService: AuthService
   ) { }
 
   listUsers(){

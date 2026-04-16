@@ -7,10 +7,10 @@ import { ListSpecialitieComponent } from './list-specialitie/list-specialitie.co
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { ListPatientSpecialitiesComponent } from './list-patient-specialities/list-patient-specialities.component';
-import { ReusablesModule } from 'src/app/reusables/reusables.module';
 import { SpecialitieNComponent } from './specialitie-n/specialitie-n.component';
+import { ReusablesModule } from '../../reusables/reusables.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({ declarations: [

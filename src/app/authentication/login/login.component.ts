@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SettignService } from 'src/app/core/settings/settigs.service';
-import { AuthService } from 'src/app/shared/auth/auth.service';
-import { routes } from 'src/app/shared/routes/routes';
+import { SettignService } from '../../core/settings/settigs.service';
+import { AuthService } from '../../shared/auth/auth.service';
+import { routes } from '../../shared/routes/routes';
 
 @Component({
     selector: 'app-login',

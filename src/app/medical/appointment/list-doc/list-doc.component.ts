@@ -1,14 +1,13 @@
 import { Component } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
-import { routes } from "src/app/shared/routes/routes";
 import { FileSaverService } from "ngx-filesaver";
 import * as XLSX from "xlsx";
-import jspdf from "jspdf";
 import { ActivatedRoute } from "@angular/router";
 import Swal from "sweetalert2";
-import { AppointmentService } from "src/app/services/appointment.service";
-import { DoctorService } from "src/app/services/doctor.service";
-import { RolesService } from "src/app/services/roles.service";
+import { AppointmentService } from "../../../services/appointment.service";
+import { DoctorService } from "../../../services/doctor.service";
+import { RolesService } from "../../../services/roles.service";
+import { routes } from "../../../shared/routes/routes";
 
 declare var $: any;
 @Component({
