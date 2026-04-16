@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import {SwPush, SwUpdate} from '@angular/service-worker';
-
+import { Component, OnInit } from '@angular/core';
+import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { filter } from 'rxjs/operators';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
@@ -14,15 +14,16 @@ export class AppComponent {
 
   ngOnInit() {
     if (this.swUpdate.isEnabled) {
-      this.swUpdate.versionUpdates.subscribe( () => {
-        if (confirm('Nueva version disponible. Cargar nueva version?')) {
+      this.swUpdate.versionUpdates.pipe(
+        // Filtramos para que SOLO responda cuando la versión esté lista
+        filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY')
+      ).subscribe(() => {
+        if (confirm('Nueva versión disponible. ¿Cargar nueva versión?')) {
+          // Recarga la página para activar la nueva versión
           window.location.reload();
         }
       });
     }
-
-
   }
-
   
 }
