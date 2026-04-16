@@ -1,16 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
-import { User } from 'src/app/models/user.model';
-
-// import { BehaviorSubject } from 'rxjs';
-import { routes } from '../routes/routes';
-import { url_servicios } from 'src/app/config/config';
+import { BehaviorSubject, catchError, map, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
-import { LoginForm } from 'src/app/authentication/interfaces/login-form.interface';
-// import {tap, map, catchError, } from 'rxjs/operators';
-import { catchError, map, of } from 'rxjs';
+import { url_servicios } from '../../config/config';
+import { User } from '../../models/user.model';
+import { routes } from '../routes/routes';
 @Injectable({
   providedIn: 'root',
 })
@@ -27,32 +21,6 @@ export class AuthService {
   }
 
 
-    // get token():string{
-    //   return localStorage.getItem('token') || '';
-    // }
-
-    // get headers(){
-    //   return{
-    //     headers: {
-    //       'token': this.token
-    //     }
-    //   }
-    // }
-
-  //   getToken(){
-  //     const token = localStorage.getItem('token');
-  //     return this.token;
-  //  }
-
-    // guardarLocalStorage( auth: any='authenticated', user:any, access_token: any){
-    //   // localStorage.setItem('token', JSON.stringify(token));
-    //   localStorage.setItem("user", JSON.stringify(user));
-    //   localStorage.setItem(auth, 'true');
-    //   localStorage.setItem("token", access_token.original.access_token);
-  
-    //   return true;
-    // }
-  
   
 getLocalStorage(){
       const token = localStorage.getItem('token');
@@ -102,25 +70,6 @@ saveLocalStorage(auth: any): boolean {
   }
 
 
-
-
-
-// login(email:any, password:any){
-
-//   // return this.http.post<any>(`${this.serverUrl}/login`, {email: email, password: password}, { withCredentials: false })
-
-//   let URL = url_servicios+"/login";
-//   return this.http.post(URL, {email:email, password:password})
-//   .pipe(
-//     tap((resp: any) => {
-//       this.guardarLocalStorage(resp.auth, resp.user, resp.access_token);
-
-//     })
-//   )
-
-// }
-
-
   
 getUserRomoto(data: any) {
     const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
@@ -142,18 +91,5 @@ getUserRomoto(data: any) {
  }
 
   
-//  logout(){
-//   localStorage.removeItem("token");
-//   localStorage.removeItem('user');
-//   localStorage.removeItem('authenticated')
-//     this.logoutserver();
-//   this.router.navigate([routes.login]);
-//  }
-
-//  logoutserver(){
-//   let headers = new HttpHeaders({'Authorization': 'Bearer'+this.token})
-//     let URL = url_servicios+'/auth/logout';
-//     return this.http.get(URL, {headers:headers});
-// }
 
 }

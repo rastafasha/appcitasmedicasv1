@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppointmentService } from 'src/app/services/appointment.service';
-import { routes } from 'src/app/shared/routes/routes';
 import Swal from 'sweetalert2';
-
+import { AppointmentService } from '../../../services/appointment.service';
+import { routes } from '../../../shared/routes/routes';
 @Component({
-  selector: 'app-atencion-medica',
-  templateUrl: './atencion-medica.component.html',
-  styleUrls: ['./atencion-medica.component.scss']
+    selector: 'app-atencion-medica',
+    templateUrl: './atencion-medica.component.html',
+    styleUrls: ['./atencion-medica.component.scss'],
+    standalone: false
 })
 export class AtencionMedicaComponent {
   public routes = routes;

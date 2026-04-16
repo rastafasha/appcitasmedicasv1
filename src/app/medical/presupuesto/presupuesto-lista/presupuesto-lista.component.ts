@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { LaboratoryService } from 'src/app/services/laboratory.service';
-import { PresupuestoService } from 'src/app/services/presupuesto.service';
-import { RolesService } from 'src/app/services/roles.service';
-import { SpecialitieService } from 'src/app/services/specialitie.service';
-import { routes } from 'src/app/shared/routes/routes';
-import Swal from 'sweetalert2';
+import { DoctorService } from '../../../services/doctor.service';
+import { LaboratoryService } from '../../../services/laboratory.service';
+import { PresupuestoService } from '../../../services/presupuesto.service';
+import { RolesService } from '../../../services/roles.service';
+import { SpecialitieService } from '../../../services/specialitie.service';
+import { routes } from '../../../shared/routes/routes';
 declare var $:any;
 @Component({
-  selector: 'app-presupuesto-lista',
-  templateUrl: './presupuesto-lista.component.html',
-  styleUrls: ['./presupuesto-lista.component.scss']
+    selector: 'app-presupuesto-lista',
+    templateUrl: './presupuesto-lista.component.html',
+    styleUrls: ['./presupuesto-lista.component.scss'],
+    standalone: false
 })
 export class PresupuestoListaComponent {
 

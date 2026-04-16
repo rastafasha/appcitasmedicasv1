@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter, map } from 'rxjs';
 @Component({
-  selector: 'app-update-version',
-  templateUrl: './update-version.component.html',
-  styleUrls: ['./update-version.component.scss']
+    selector: 'app-update-version',
+    templateUrl: './update-version.component.html',
+    styleUrls: ['./update-version.component.scss'],
+    standalone: false
 })
 export class UpdateVersionComponent {
 

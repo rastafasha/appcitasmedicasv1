@@ -1,19 +1,19 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { routes } from 'src/app/shared/routes/routes';
 import { FileSaverService } from 'ngx-filesaver';
 import * as XLSX from 'xlsx';
-import jspdf from 'jspdf';
 import Swal from 'sweetalert2';
-import { AppoitmentPayService } from 'src/app/services/appoitment-pay.service';
-import { DoctorService } from 'src/app/services/doctor.service';
+import { AppoitmentPayService } from '../../../services/appoitment-pay.service';
+import { DoctorService } from '../../../services/doctor.service';
+import { routes } from '../../../shared/routes/routes';
 
 declare var $:any;
 
 @Component({
-  selector: 'app-list-appoiment-pay',
-  templateUrl: './list-appoiment-pay.component.html',
-  styleUrls: ['./list-appoiment-pay.component.scss']
+    selector: 'app-list-appoiment-pay',
+    templateUrl: './list-appoiment-pay.component.html',
+    styleUrls: ['./list-appoiment-pay.component.scss'],
+    standalone: false
 })
 export class ListAppoimentPayComponent {
 

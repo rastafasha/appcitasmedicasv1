@@ -2,24 +2,25 @@ import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { MatTableDataSource } from '@angular/material/table';
 import { FileSaverService } from 'ngx-filesaver';
-import { routes } from 'src/app/shared/routes/routes';
 import Swal from 'sweetalert2';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { PaymentService } from 'src/app/services/payment.service';
-import { Payment } from 'src/app/models/payment.model';
+import { Payment } from '../../../models/payment.model';
+import { DoctorService } from '../../../services/doctor.service';
+import { PaymentService } from '../../../services/payment.service';
+import { routes } from '../../../shared/routes/routes';
 
-declare var $:any;  
+declare var $: any;
 @Component({
   selector: 'app-list-appoiment-cobros',
   templateUrl: './list-appoiment-cobros.component.html',
-  styleUrls: ['./list-appoiment-cobros.component.scss']
+  styleUrls: ['./list-appoiment-cobros.component.scss'],
+  standalone: false
 })
 export class ListAppoimentCobrosComponent {
 
   public routes = routes;
   titlePage = 'Lista de Transferencias';
   public paymentList: any = [];
-  public payments: any ;
+  public payments: any;
   dataSource!: MatTableDataSource<any>;
 
   public isLoading = false;
@@ -38,18 +39,18 @@ export class ListAppoimentCobrosComponent {
   public pageSelection: Array<any> = [];
   public totalPages = 0;
 
-  public payment_generals:any = [];
-  public patient_id:any;
-  public patient_selected:any;
+  public payment_generals: any = [];
+  public patient_id: any;
+  public patient_selected: any;
 
-  data:any;
-    pagoSeleccionado:Payment
+  data: any;
+  pagoSeleccionado: Payment
 
   constructor(
     public paymentService: PaymentService,
     public doctorService: DoctorService,
     private fileSaver: FileSaverService
-    ){
+  ) {
 
   }
   ngOnInit() {
@@ -58,11 +59,11 @@ export class ListAppoimentCobrosComponent {
     this.getTableData();
   }
 
-  private getTableData(page=1): void {
+  private getTableData(page = 1): void {
     this.paymentList = [];
     this.serialNumberArray = [];
     this.isLoading = true;
-    this.paymentService.getAll(page, this.searchReferencia).subscribe((resp:any)=>{
+    this.paymentService.getAll(page, this.searchReferencia).subscribe((resp: any) => {
       this.isLoading = false;
       // console.log(resp.payments.data);
       this.paymentList = resp.payments.data;
@@ -76,14 +77,14 @@ export class ListAppoimentCobrosComponent {
     })
   }
 
-  getTableDataGeneral(){
+  getTableDataGeneral() {
     this.paymentList = [];
     this.serialNumberArray = [];
-    
+
     this.payment_generals.map((res: any, index: number) => {
       const serialNumber = index + 1;
       if (index >= this.skip && serialNumber <= this.limit) {
-       
+
         this.paymentList.push(res);
         this.serialNumberArray.push(serialNumber);
       }
@@ -91,7 +92,7 @@ export class ListAppoimentCobrosComponent {
     this.dataSource = new MatTableDataSource<any>(this.paymentList);
     this.calculateTotalPages(this.totalDataPayment, this.pageSize);
   }
-  
+
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public searchData() {
@@ -173,7 +174,7 @@ export class ListAppoimentCobrosComponent {
   }
 
 
-  excelExport(){
+  excelExport() {
     const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8';
     const EXCLE_EXTENSION = '.xlsx';
 
@@ -184,20 +185,20 @@ export class ListAppoimentCobrosComponent {
     const worksheet = XLSX.utils.json_to_sheet(this.paymentList);
 
     const workbook = {
-      Sheets:{
+      Sheets: {
         'testingSheet': worksheet
       },
-      SheetNames:['testingSheet']
+      SheetNames: ['testingSheet']
     }
 
-    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'});
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
 
-    const blobData = new Blob([excelBuffer],{type: EXCEL_TYPE});
+    const blobData = new Blob([excelBuffer], { type: EXCEL_TYPE });
 
     this.fileSaver.save(blobData, "transferencias_db_appcitasmedicas",)
 
   }
-  csvExport(){
+  csvExport() {
     const CSV_TYPE = 'text/csv';
     const CSV_EXTENSION = '.csv';
 
@@ -207,21 +208,21 @@ export class ListAppoimentCobrosComponent {
     const worksheet = XLSX.utils.json_to_sheet(this.paymentList);
 
     const workbook = {
-      Sheets:{
+      Sheets: {
         'testingSheet': worksheet
       },
-      SheetNames:['testingSheet']
+      SheetNames: ['testingSheet']
     }
 
-    const excelBuffer = XLSX.write(workbook, {bookType:'csv', type: 'array'});
+    const excelBuffer = XLSX.write(workbook, { bookType: 'csv', type: 'array' });
 
-    const blobData = new Blob([excelBuffer],{type: CSV_TYPE});
+    const blobData = new Blob([excelBuffer], { type: CSV_TYPE });
 
     this.fileSaver.save(blobData, "transferencias_db_appcitasmedicas", CSV_EXTENSION)
 
   }
 
-  txtExport(){
+  txtExport() {
     const TXT_TYPE = 'text/txt';
     const TXT_EXTENSION = '.txt';
 
@@ -232,23 +233,23 @@ export class ListAppoimentCobrosComponent {
     const worksheet = XLSX.utils.json_to_sheet(this.paymentList);
 
     const workbook = {
-      Sheets:{
+      Sheets: {
         'testingSheet': worksheet
       },
-      SheetNames:['testingSheet']
+      SheetNames: ['testingSheet']
     }
 
-    const excelBuffer = XLSX.write(workbook, {bookType:'xlsx', type: 'array'});
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
 
-    const blobData = new Blob([excelBuffer],{type: TXT_TYPE});
+    const blobData = new Blob([excelBuffer], { type: TXT_TYPE });
 
     this.fileSaver.save(blobData, "transferencias_db_appcitasmedicas", TXT_EXTENSION)
 
   }
 
-  pdfExport(){
+  pdfExport() {
     // var doc = new jspdf(); 
-    
+
     // const worksheet = XLSX.utils.json_to_sheet(this.patientList);
 
     // const workbook = {
@@ -267,16 +268,16 @@ export class ListAppoimentCobrosComponent {
   }
 
 
-   openViewModal(data: any): void {
+  openViewModal(data: any): void {
     this.pagoSeleccionado = data;
 
   }
 
- onCloseModal(): void {
+  onCloseModal(): void {
     this.pagoSeleccionado = null;
-}
+  }
 
-     cambiarStatus(data: any) {
+  cambiarStatus(data: any) {
     const nuevoEstado = data.status;
     const monto = data.monto; // Extraemos de una vez
     const appointment_id = data.appointment_id;
@@ -304,7 +305,7 @@ export class ListAppoimentCobrosComponent {
         }
       });
 
-    // 2. Caso: APROBADO (Confirmación de seguridad)
+      // 2. Caso: APROBADO (Confirmación de seguridad)
     } else if (nuevoEstado === 'APPROVED') {
       Swal.fire({
         title: '¿Confirmar Pago?',
@@ -326,23 +327,23 @@ export class ListAppoimentCobrosComponent {
       // 3. Caso: PENDIENTE (Cambio directo)
       this.ejecutarUpdateStatus(id, nuevoEstado, monto, appointment_id);
     }
-}
+  }
 
 
-// Función auxiliar para no repetir código del subscribe
-private ejecutarUpdateStatus(id: number, nuevoEstado: string, 
-  monto: any,          // <--- Nuevo parámetro
-  appointment_id: any,
-  // eslint-disable-next-line @typescript-eslint/no-inferrable-types
-  motivo_rechazo: string = '',
-) {
+  // Función auxiliar para no repetir código del subscribe
+  private ejecutarUpdateStatus(id: number, nuevoEstado: string,
+    monto: any,          // <--- Nuevo parámetro
+    appointment_id: any,
+    // eslint-disable-next-line @typescript-eslint/no-inferrable-types
+    motivo_rechazo: string = '',
+  ) {
     const payload = {
-      id:id,
+      id: id,
       status: nuevoEstado,
       motivo_rechazo: motivo_rechazo,
-       monto: monto,            // <--- Usa el parámetro
-       amount: monto,            // <--- Usa el parámetro
-      appointment_id: appointment_id 
+      monto: monto,            // <--- Usa el parámetro
+      amount: monto,            // <--- Usa el parámetro
+      appointment_id: appointment_id
     };
 
     this.paymentService.updateStatus(payload, id).subscribe({
@@ -362,5 +363,5 @@ private ejecutarUpdateStatus(id: number, nuevoEstado: string,
         this.getTableData();
       }
     });
-}
+  }
 }

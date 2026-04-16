@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AdminDashboardRoutingModule } from './admin-dashboard-routing.module';
 import { AdminDashboardComponent } from './admin-dashboard.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 @NgModule({

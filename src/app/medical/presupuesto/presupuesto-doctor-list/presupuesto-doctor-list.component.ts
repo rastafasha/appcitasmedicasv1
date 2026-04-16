@@ -2,17 +2,18 @@ import { Component } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { FileSaverService } from 'ngx-filesaver';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { PresupuestoService } from 'src/app/services/presupuesto.service';
-import { RolesService } from 'src/app/services/roles.service';
-import { routes } from 'src/app/shared/routes/routes';
 import Swal from 'sweetalert2';
 import * as XLSX from 'xlsx';
+import { DoctorService } from '../../../services/doctor.service';
+import { PresupuestoService } from '../../../services/presupuesto.service';
+import { RolesService } from '../../../services/roles.service';
+import { routes } from '../../../shared/routes/routes';
 declare var $:any;
 @Component({
-  selector: 'app-presupuesto-doctor-list',
-  templateUrl: './presupuesto-doctor-list.component.html',
-  styleUrls: ['./presupuesto-doctor-list.component.scss']
+    selector: 'app-presupuesto-doctor-list',
+    templateUrl: './presupuesto-doctor-list.component.html',
+    styleUrls: ['./presupuesto-doctor-list.component.scss'],
+    standalone: false
 })
 export class PresupuestoDoctorListComponent {
 public routes = routes;

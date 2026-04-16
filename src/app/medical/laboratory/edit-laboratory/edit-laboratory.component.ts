@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { routes } from 'src/app/shared/routes/routes';
 import Swal from 'sweetalert2';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AppointmentService } from 'src/app/services/appointment.service';
-import { LaboratoryService } from 'src/app/services/laboratory.service';
+import { AppointmentService } from '../../../services/appointment.service';
+import { LaboratoryService } from '../../../services/laboratory.service';
+import { routes } from '../../../shared/routes/routes';
 declare let $:any;  
 @Component({
-  selector: 'app-edit-laboratory',
-  templateUrl: './edit-laboratory.component.html',
-  styleUrls: ['./edit-laboratory.component.scss']
+    selector: 'app-edit-laboratory',
+    templateUrl: './edit-laboratory.component.html',
+    styleUrls: ['./edit-laboratory.component.scss'],
+    standalone: false
 })
 export class EditLaboratoryComponent {
 

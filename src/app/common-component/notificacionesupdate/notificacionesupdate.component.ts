@@ -1,14 +1,14 @@
 import { Component, Input, OnInit, OnDestroy } from "@angular/core";
-import { User } from "src/app/models/user.model";
-import { AppointmentService } from "src/app/services/appointment.service";
-import { PaymentService } from "src/app/services/payment.service";
-import { RolesService } from "src/app/services/roles.service";
-import { AuthService } from "src/app/shared/auth/auth.service";
+import { AppointmentService } from "../../services/appointment.service";
+import { PaymentService } from "../../services/payment.service";
+import { RolesService } from "../../services/roles.service";
+import { AuthService } from "../../shared/auth/auth.service";
 
 @Component({
-  selector: "app-notificacionesupdate",
-  templateUrl: "./notificacionesupdate.component.html",
-  styleUrls: ["./notificacionesupdate.component.scss"],
+    selector: "app-notificacionesupdate",
+    templateUrl: "./notificacionesupdate.component.html",
+    styleUrls: ["./notificacionesupdate.component.scss"],
+    standalone: false
 })
 export class NotificacionesupdateComponent implements OnInit, OnDestroy {
   @Input() routes;

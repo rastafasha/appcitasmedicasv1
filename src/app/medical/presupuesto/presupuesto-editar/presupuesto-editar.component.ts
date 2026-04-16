@@ -1,24 +1,24 @@
 import { Component } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
-import { routes } from 'src/app/shared/routes/routes';
 import Swal from 'sweetalert2';
 import { Doctor, Patient, Presupuesto, Speciality } from '../presupuesto-model';
-import { AuthService } from 'src/app/shared/auth/auth.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ReusablesModule } from "../../../reusables/reusables.module";
-import { AppointmentService } from 'src/app/services/appointment.service';
-import { DoctorService } from 'src/app/services/doctor.service';
-import { LaboratoryService } from 'src/app/services/laboratory.service';
-import { PresupuestoService } from 'src/app/services/presupuesto.service';
-import { RolesService } from 'src/app/services/roles.service';
-import { SpecialitieService } from 'src/app/services/specialitie.service';
+import { AppointmentService } from '../../../services/appointment.service';
+import { DoctorService } from '../../../services/doctor.service';
+import { LaboratoryService } from '../../../services/laboratory.service';
+import { PresupuestoService } from '../../../services/presupuesto.service';
+import { RolesService } from '../../../services/roles.service';
+import { SpecialitieService } from '../../../services/specialitie.service';
+import { AuthService } from '../../../shared/auth/auth.service';
+import { routes } from '../../../shared/routes/routes';
 declare let $:any;  
 
 @Component({
-  selector: 'app-presupuesto-editar',
-  templateUrl: './presupuesto-editar.component.html',
-  styleUrls: ['./presupuesto-editar.component.scss'],
+    selector: 'app-presupuesto-editar',
+    templateUrl: './presupuesto-editar.component.html',
+    styleUrls: ['./presupuesto-editar.component.scss'],
+    standalone: false
 })
 export class PresupuestoEditarComponent {
 

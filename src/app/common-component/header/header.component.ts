@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SettignService } from 'src/app/core/settings/settigs.service';
-import { AuthService } from 'src/app/shared/auth/auth.service';
-import { routes } from 'src/app/shared/routes/routes';
-import { SideBarService } from 'src/app/shared/side-bar/side-bar.service';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
+import { SettignService } from '../../core/settings/settigs.service';
+import { AuthService } from '../../shared/auth/auth.service';
+import { routes } from '../../shared/routes/routes';
+import { SideBarService } from '../../shared/side-bar/side-bar.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: false
 })
 export class HeaderComponent {
   public routes = routes;

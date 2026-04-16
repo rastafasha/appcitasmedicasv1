@@ -3,26 +3,22 @@ import { CommonModule } from '@angular/common';
 
 import { GeneralSettingsRoutingModule } from './general-settings-routing.module';
 import { GeneralSettingsComponent } from './general-settings.component';
-import { SharedModule } from 'src/app/shared/shared.module';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ReusablesModule } from 'src/app/reusables/reusables.module';
+import { ReusablesModule } from '../../../reusables/reusables.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 
-@NgModule({
-  declarations: [
-    GeneralSettingsComponent
-  ],
-  imports: [
-    CommonModule,
-    GeneralSettingsRoutingModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule,
-    ReusablesModule
-  ]
-})
+@NgModule({ declarations: [
+        GeneralSettingsComponent
+    ], imports: [
+        CommonModule,
+        GeneralSettingsRoutingModule,
+        SharedModule,
+        FormsModule,
+        ReactiveFormsModule,
+        RouterModule,
+        ReusablesModule
+    ], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class GeneralSettingsModule { }
